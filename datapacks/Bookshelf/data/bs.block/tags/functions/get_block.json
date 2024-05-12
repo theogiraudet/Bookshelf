@@ -1,4 +1,5 @@
 {
+  "feature": true,
   "values": [
     "bs.block:get/get_block",
     "bs.block:get/compile/block"
