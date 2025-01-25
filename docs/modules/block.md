@@ -894,6 +894,47 @@ function #bs.block:emit_block_particle
 ```
 
 ::::
+::::{tab-item} Block Sound
+
+```{function} #bs.block:play_block_sound
+
+Play a block sound of the given block.
+
+:Inputs:
+  **Execution `at <entity>` or `positioned <x> <y> <z>`**: Position where the sound will be played.
+
+  **Storage `bs:in block.play_block_sound`**:
+  :::{treeview}
+  - {nbt}`compound` Block sound data
+    - {nbt}`array` **sounds**: The sound list of a block (similar to block output).
+    - {nbt}`string` **sound_type**: The type of the sound (among break, hit, fall, place, step).
+    - {nbt}`string` **source**: The source of the sound. Similar to the /playsound command.
+    - {nbt}`string` **targets**: The targets of the sound. Similar to the /playsound command.
+    - {nbt}`string` **pos**: X Y Z coordinates, the position of the sound. Similar to the /playsound command.
+    - {nbt}`int` **volume**: Volume of the sound. Similar to the /playsound command.
+    - {nbt}`int` **pitch**: Pitch of the sound. Similar to the /playsound command.
+    - {nbt}`int` **min_volume**: Minimum volume of the sound. Similar to the /playsound command.
+  :::
+
+:Outputs:
+  **State**: The sound is played.
+```
+
+*Play the sound of the block at 0 0 0:*
+
+```mcfunction
+# Get block data
+execute positioned 0 0 0 run function #bs.block:get_block
+
+# Setup the input
+data modify storage bs:in block.play_block_sound set value { sound_type: "break", source: "block", targets: "@s", pos: "~ ~ ~", volume: 1, pitch: 1, min_volume: 0 }
+data modify storage bs:in block.play_block_sound merge from storage bs:out block
+
+# Play the block sound
+function #bs.block:play_block_sound
+```
+
+::::
 :::::
 
 > **Credits**: Aksiome, theogiraudet

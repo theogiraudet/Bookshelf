@@ -9,7 +9,10 @@
     "slug": "bookshelf-block",
     "description": "Manage blocks, including states and NBTs, while offering advanced tools for seamless transformations.",
     "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/block.html",
-    "tags": ["default"]
+    "tags": ["default"],
+    "weak_dependencies": [
+      "bs.log"
+    ]
   },
   "pipeline": [
     "gen_blocks"
