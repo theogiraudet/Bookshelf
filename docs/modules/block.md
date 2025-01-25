@@ -906,7 +906,7 @@ Play a block sound of the given block.
   **Storage `bs:in block.play_block_sound`**:
   :::{treeview}
   - {nbt}`compound` Block sound data
-    - {nbt}`array` **sounds**: The sound list of a block (similar to block output).
+    - {nbt}`list` **sounds**: The sound list of a block (similar to block output).
     - {nbt}`string` **sound_type**: The type of the sound (among break, hit, fall, place, step).
     - {nbt}`string` **source**: The source of the sound. Similar to the /playsound command.
     - {nbt}`string` **targets**: The targets of the sound. Similar to the /playsound command.
