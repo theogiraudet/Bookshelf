@@ -732,12 +732,12 @@
       ]
     },
     {
-      "id": "bs.generate",
-      "name": "Generate",
-      "slug": "bookshelf-generate",
-      "readme": "https://raw.githubusercontent.com/mcbookshelf/Bookshelf/refs/heads/master/modules/bs.generate/README.md",
+      "id": "bs.generation",
+      "name": "Generation",
+      "slug": "bookshelf-generation",
+      "readme": "https://raw.githubusercontent.com/mcbookshelf/Bookshelf/refs/heads/master/modules/bs.generation/README.md",
       "description": "Generate diverse terrains and landscapes, incorporating natural features.",
-      "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generate.html",
+      "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generation.html",
       "kind": "data_pack",
       "tags": [
         "default"
@@ -747,8 +747,8 @@
       ],
       "features": [
         {
-          "id": "#bs.generate:fractal_shape_2d",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generate.html#shape-2d",
+          "id": "#bs.generation:gen_fractal_shape_2d",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generation.html#shape-2d",
           "authors": [
             "Aksiome"
           ],
@@ -762,8 +762,8 @@
           }
         },
         {
-          "id": "#bs.generate:shape_2d",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generate.html#shape-2d",
+          "id": "#bs.generation:gen_shape_2d",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generation.html#shape-2d",
           "authors": [
             "Aksiome"
           ],
@@ -777,8 +777,8 @@
           }
         },
         {
-          "id": "#bs.generate:simplex_shape_2d",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generate.html#shape-2d",
+          "id": "#bs.generation:gen_simplex_shape_2d",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/generation.html#shape-2d",
           "authors": [
             "Aksiome"
           ],
