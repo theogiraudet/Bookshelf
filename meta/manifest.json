@@ -136,9 +136,6 @@
       "tags": [
         "default"
       ],
-      "weak_dependencies": [
-        "bs.log"
-      ],
       "features": [
         {
           "id": "#bs.block:emit_block_particle",
