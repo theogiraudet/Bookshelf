@@ -346,6 +346,21 @@
           }
         },
         {
+          "id": "#bs.block:play_block_sound",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/block.html#produce",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2025/01/25",
+            "minecraft_version": "1.21.4"
+          },
+          "updated": {
+            "date": "2025/01/25",
+            "minecraft_version": "1.21.4"
+          }
+        },
+        {
           "id": "#bs.block:remove_properties",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/block.html#manage-state",
           "authors": [
