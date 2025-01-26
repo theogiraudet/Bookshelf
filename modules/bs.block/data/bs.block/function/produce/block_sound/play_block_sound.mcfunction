@@ -13,6 +13,4 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-data modify storage bs:ctx _ set from storage bs:in block.play_block_sound
-
-function bs.block:produce/block_sound/run with storage bs:ctx _
+function bs.block:produce/block_sound/run with storage bs:in block.play_block_sound

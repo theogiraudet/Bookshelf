@@ -918,7 +918,7 @@ Play a block sound of the given block.
   **Storage `bs:in block.play_block_sound`**:
   :::{treeview}
   - {nbt}`compound` Block sound data
-    - {nbt}`string` **sound**: The sound to play. Usually took from the `sounds` property of the virtual block (cf [Get](#get) functions).
+    - {nbt}`string` **sound**: The sound to play. Usually took from the `sounds` property of the virtual block (cf get functions).
     - {nbt}`string` **source**: The source of the sound. Similar to the /playsound command.
     - {nbt}`string` **targets**: The targets of the sound. Similar to the /playsound command.
     - {nbt}`string` **pos**: X Y Z coordinates, the position of the sound. Similar to the /playsound command.
