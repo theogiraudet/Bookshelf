@@ -15,6 +15,6 @@
     }
   },
   "values": [
-    "bs.generation:shape_2d/gen_shape_2d"
+    "bs.generation:shape_2d/gen_simplex_shape_2d"
   ]
 }
