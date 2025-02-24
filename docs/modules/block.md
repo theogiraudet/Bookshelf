@@ -10,7 +10,7 @@ Manage blocks, including states and NBTs, while offering advanced tools for seam
 -- Louis Kahn
 ```
 
-```{admonition} Virtual block format
+```{admonition} Virtual Block Format
 :class: info
 
 To manipulate blocks and their states, Bookshelf utilizes a [virtual block format](#get) stored in the block output. It's crucial not to update it manually; instead, utilize the helper functions provided in the library.
@@ -183,6 +183,12 @@ Get all data related to the block at the current location, including its state a
     - {nbt}`string` **state**: Represent the state of a block (e.g., `[shape=straight]`).
     - {nbt}`compound` **nbt**: Data tags used by block entities or an empty string.
     - {nbt}`compound` **properties**: Block state as properties (used by entities like falling blocks).
+    - {nbt}`compound` **sounds**: The sound list of a block.
+      - {nbt}`string` **break**: The sound played when a player break the block.
+      - {nbt}`string` **hit**: The sound played when a player hit the block.
+      - {nbt}`string` **fall**: The sound played when a player fall on the block.
+      - {nbt}`string` **place**: The sound played when a player place the block.
+      - {nbt}`string` **step**: The sound played when a player step on the block.
   :::
 ```
 
@@ -217,6 +223,12 @@ Get the block type at the current location. Although states, NBTs, and propertie
     - {nbt}`string` **state**: Represent the state of a block **[empty string]**.
     - {nbt}`compound` **nbt**: Data tags used by block entities **[empty string]**.
     - {nbt}`compound` **properties**: Block state as properties **[empty compound]**.
+    - {nbt}`compound` **sounds**: The sound list of a block.
+      - {nbt}`string` **break**: The sound played when a player break the block.
+      - {nbt}`string` **hit**: The sound played when a player hit the block.
+      - {nbt}`string` **fall**: The sound played when a player fall on the block.
+      - {nbt}`string` **place**: The sound played when a player place the block.
+      - {nbt}`string` **step**: The sound played when a player step on the block.
   :::
 ```
 
@@ -233,7 +245,7 @@ data get storage bs:out block
 ::::
 :::::
 
-```{admonition} Read-only output
+```{admonition} Read-only Output
 :class: warning
 
 The `bs:out block` output is intended to be read-only. Modifying parts manually could lead to potential bugs. That's why the module provides numerous functions capable of making modifications to the output while preserving its integrity.
@@ -243,7 +255,7 @@ The `bs:out block` output is intended to be read-only. Modifying parts manually 
 
 ---
 
-### Manage state
+### Manage State
 
 :::::{tab-set}
 ::::{tab-item} Keep
@@ -431,7 +443,7 @@ data get storage bs:out block.block
 
 ---
 
-### Manage type
+### Manage Type
 
 :::::{tab-set}
 ::::{tab-item} Replace
@@ -473,7 +485,8 @@ data get storage bs:out block.block
 
 Swap related block types while ensuring coherent replacements within the defined mapping registry. A mapping registry is defined as follows:
 
-```mcfunction
+```{code-block} mcfunction
+:force:
 data modify storage bs:const block.mapping_registry.bs.colors set value [ \
   { set: "wool", attrs: ["red"], type: "minecraft:red_wool" }, \
   { set: "wool", attrs: ["green"], type: "minecraft:green_wool" }, \
@@ -530,7 +543,8 @@ This function may sometimes behave unpredictably due to the arbitrary nature of 
 
 Mix block types while ensuring coherent replacements within the defined mapping registry. A mapping registry is defined as follows:
 
-```mcfunction
+```{code-block} mcfunction
+:force:
 data modify storage bs:const block.mapping_registry.bs.colors set value [ \
   { set: "cube", attrs: ["stone"], type: "minecraft:stone" }, \
   { set: "cube", attrs: ["brick"], type: "minecraft:bricks" }, \
@@ -577,7 +591,7 @@ data get storage bs:out block.block
 ```
 
 ::::
-::::{tab-item} Lookup item
+::::{tab-item} Lookup Item
 
 ```{function} #bs.block:lookup_item {item:<value>}
 
@@ -609,7 +623,7 @@ Minecraft does not perfectly map between blocks and items. Some items may corres
 ```
 
 ::::
-::::{tab-item} Lookup type
+::::{tab-item} Lookup Type
 
 ```{function} #bs.block:lookup_type {type:<value>}
 
@@ -749,7 +763,7 @@ execute positioned 0 0 0 run function #bs.block:set_type
 ### Produce
 
 :::::{tab-set}
-::::{tab-item} Block display
+::::{tab-item} Block Display
 
 ```{function} #bs.block:spawn_block_display
 
@@ -784,7 +798,7 @@ function #bs.block:spawn_block_display
 ```
 
 ::::
-::::{tab-item} Falling block
+::::{tab-item} Falling Block
 
 ```{function} #bs.block:spawn_falling_block
 
@@ -819,7 +833,7 @@ function #bs.block:spawn_falling_block
 ```
 
 ::::
-::::{tab-item} Solid block display
+::::{tab-item} Solid Block Display
 
 ```{function} #bs.block:spawn_solid_block_display
 
@@ -854,7 +868,7 @@ function #bs.block:spawn_solid_block_display
 ```
 
 ::::
-::::{tab-item} Block particle
+::::{tab-item} Block Particle
 
 ```{function} #bs.block:emit_block_particle
 
@@ -892,13 +906,54 @@ function #bs.block:emit_block_particle
 ```
 
 ::::
+::::{tab-item} Block Sound
+
+```{function} #bs.block:play_block_sound
+
+Play a block sound of the given block.
+
+:Inputs:
+  **Execution `at <entity>` or `positioned <x> <y> <z>`**: Position where the sound will be played.
+
+  **Storage `bs:in block.play_block_sound`**:
+  :::{treeview}
+  - {nbt}`compound` Block sound data
+    - {nbt}`string` **sound**: The sound to play. Usually took from the `sounds` property of the virtual block (cf get functions).
+    - {nbt}`string` **source**: The source of the sound. Similar to the /playsound command.
+    - {nbt}`string` **targets**: The targets of the sound. Similar to the /playsound command.
+    - {nbt}`string` **pos**: X Y Z coordinates, the position of the sound. Similar to the /playsound command.
+    - {nbt}`int` **volume**: Volume of the sound. Similar to the /playsound command.
+    - {nbt}`int` **pitch**: Pitch of the sound. Similar to the /playsound command.
+    - {nbt}`int` **min_volume**: Minimum volume of the sound. Similar to the /playsound command.
+  :::
+
+:Outputs:
+  **State**: The sound is played.
+```
+
+*Play the sound of the block at 0 0 0:*
+
+```mcfunction
+# Get block data
+execute positioned 0 0 0 run function #bs.block:get_block
+
+# Setup the input
+data modify storage bs:in block.play_block_sound set value { source: "block", targets: "@s", pos: "~ ~ ~", volume: 1, pitch: 1, min_volume: 0 }
+data modify storage bs:in block.play_block_sound.sound set from storage bs:out block.sounds.break
+
+# Play the block sound
+function #bs.block:play_block_sound
+```
+
+::::
 :::::
 
 > **Credits**: Aksiome, theogiraudet
 
 ---
 
-## 🎓 Custom mapping registry
+(custom-mapping-registry)=
+## 🎓 Custom Mapping Registry
 
 This module allows you to create a personalized mapping registry tailored to your specific needs.
 
@@ -906,7 +961,8 @@ This module allows you to create a personalized mapping registry tailored to you
 
 To create a new registry, you need to define an array within the `bs:const block.mapping_registry` storage. Each new registry should be namespaced, and each element must include `set`, `attrs`, and `type`. Here’s how you can define a new mapping registry:
 
-```mcfunction
+```{code-block} mcfunction
+:force:
 data modify storage bs:const block.mapping_registry.<namespace>.<name> [
   { set: "cube", attrs: ["oak"], type: "minecraft:oak_planks" }, \
   { set: "cube", attrs: ["spruce"], type: "minecraft:spruce_planks" }, \

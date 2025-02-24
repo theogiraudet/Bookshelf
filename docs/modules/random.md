@@ -23,14 +23,14 @@ You can find below all functions available in this module.
 
 ---
 
-### Random choice
+### Random Choice
 
 :::::{tab-set}
 ::::{tab-item} Choice
 
 ```{function} #bs.random:choice
 
-Selects a random value from a list.
+Select a random value from a list.
 
 :Inputs:
   **Storage `bs:in random.choice.options`**: {nbt}`list` The list of values to choose from.
@@ -59,7 +59,7 @@ tellraw @a [{"text":"Value: ","color":"dark_gray"},{"nbt":"random.choice","stora
 
 ```{function} #bs.random:weighted_choice
 
-Selects a random value from a list based on specified weights.
+Select a random value from a list based on specified weights.
 
 :Inputs:
   **Storage `bs:in random.weighted_choice.options`**: {nbt}`list` The list of values to choose from.
@@ -94,14 +94,14 @@ tellraw @a [{"text":"Value: ","color":"dark_gray"},{"nbt":"random.weighted_choic
 
 ---
 
-### Random distributions
+### Random Distributions
 
 :::::{tab-set}
 ::::{tab-item} Uniform
 
 ```{function} #bs.random:uniform {min:<min>,max:<max>}
 
-Generates a random number uniformly distributed between `min` and `max`.
+Generate a random number uniformly distributed between `min` and `max`.
 
 :Inputs:
   **Function macro**:
@@ -136,7 +136,7 @@ Every outcome has an equal chance of happening. It's like rolling a fair die. Ea
 
 ```{function} #bs.random:binomial {trials:<trials>,probability:<probability>}
 
-Generates a random number with a binomial distribution using the specified `trials` and `probability`.
+Generate a random number with a binomial distribution using the specified `trials` and `probability`.
 
 :Inputs:
   **Function macro**:
@@ -171,7 +171,7 @@ Used when you have a fixed number of trials, each with two possible outcomes (li
 
 ```{function} #bs.random:geometric {probability:<probability>}
 
-Generates a random number following a geometric distribution with the given `probability`.
+Generate a random number following a geometric distribution with the given `probability`.
 
 :Inputs:
   **Function macro**:
@@ -205,7 +205,7 @@ Measures the number of trials needed to get the first success in a series of ind
 
 ```{function} #bs.random:poisson {lambda:<lambda>}
 
-Generates a random number following a Poisson distribution with the expected value `lambda`.
+Generate a random number following a Poisson distribution with the expected value `lambda`.
 
 :Inputs:
   **Function macro**:
@@ -251,14 +251,14 @@ A Poisson distribution produces values that tend to cluster around an average va
 
 ---
 
-### Noise algorithms
+### Noise Algorithms
 
 :::::{tab-set}
 ::::{tab-item} Simplex Noise
 
 ```{function} #bs.random:simplex_noise_2d
 
-Computes the simplex noise value at given coordinates. Simplex noise is a type of gradient noise, similar to Perlin noise, used for textures or procedural generation.
+Compute the simplex noise value at given coordinates. Simplex noise is a type of gradient noise, similar to Perlin noise, used for textures or procedural generation.
 
 :Inputs:
   **Score `$random.simplex_noise_2d.seed bs.in`**: The seed used for generation.
@@ -284,7 +284,7 @@ function #bs.random:simplex_noise_2d
 
 ```{function} #bs.random:fractal_noise_2d
 
-Generates fractal noise by combining multiple noise layers at different scales, often used for terrain generation.
+Generate fractal noise by combining multiple noise layers at different scales, often used for terrain generation.
 
 :Inputs:
   **Score `$random.fractal_noise_2d.seed bs.in`**: The seed used for generation.
@@ -321,14 +321,14 @@ function #bs.random:fractal_noise_2d
 
 ---
 
-### Noise matrices
+### Noise Matrices
 
 :::::{tab-set}
-::::{tab-item} White noise 1D
+::::{tab-item} White Noise 1D
 
 ```{function} #bs.random:white_noise_mat_1d {length:<length>,with:{}}
 
-Generates a 1-dimensional array of white noise values.
+Generate a 1-dimensional array of white noise values.
 
 :Inputs:
   **Function macro**:
@@ -354,11 +354,11 @@ tellraw @a [{"text": "Noise: ", "color": "dark_gray"},{"nbt":"white_noise_mat_1d
 ```
 
 ::::
-::::{tab-item} White noise 2D
+::::{tab-item} White Noise 2D
 
 ```{function} #bs.random:white_noise_mat_2d {width:<width>,height:<height>,with:{}}
 
-Generates a 2-dimensional array of white noise values.
+Generate a 2-dimensional array of white noise values.
 
 :Inputs:
   **Function macro**:
@@ -388,7 +388,7 @@ tellraw @a [{"text": "Noise: ", "color": "dark_gray"},{"nbt":"white_noise_mat_2d
 
 ```{function} #bs.random:simplex_noise_mat_2d {width:<width>,height:<height>,with:{}}
 
-Generates a 2D simplex noise texture of size `width` by `height`. Simplex noise is a gradient noise often used for textures.
+Generate a 2D simplex noise texture of size `width` by `height`. Simplex noise is a gradient noise often used for textures.
 
 :Inputs:
   **Function macro**:
@@ -421,8 +421,7 @@ tellraw @a [{"text": "Noise: ", "color": "dark_gray"},{"nbt":"simplex_noise_mat_
 
 ```{function} #bs.random:fractal_noise_mat_2d {width:<width>,height:<height>,with:{}}
 
-Generates a 2D fractal noise texture of size `width` by `height`. Fractal noise combines multiple layers of noise for detailed textures.
-
+Generate a 2D fractal noise texture of size `width` by `height`. Fractal noise combines multiple layers of noise for detailed textures.
 
 :Inputs:
   **Function macro**:
@@ -457,7 +456,7 @@ tellraw @a [{"text": "Noise: ", "color": "dark_gray"},{"nbt":"fractal_noise_mat_
 :::::
 
 ::::{grid} 3
-:::{grid-item-card} White noise
+:::{grid-item-card} White Noise
 :margin: 0 3 0 0
 :text-align: center
 
@@ -465,14 +464,14 @@ tellraw @a [{"text": "Noise: ", "color": "dark_gray"},{"nbt":"fractal_noise_mat_
 
 :::
 
-:::{grid-item-card} Simplex noise
+:::{grid-item-card} Simplex Noise
 :margin: 0 3 0 0
 :text-align: center
 
 ![](/_imgs/modules/random/simplex_noise.png)
 :::
 
-:::{grid-item-card} Fractal noise
+:::{grid-item-card} Fractal Noise
 :margin: 0 3 0 0
 :text-align: center
 

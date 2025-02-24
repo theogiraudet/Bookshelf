@@ -21,7 +21,7 @@ You can find below all functions available in this API.
 
 ---
 
-### Clear events
+### Clear Events
 
 ```{function} #bs.interaction:clear_events
 
@@ -30,7 +30,7 @@ Clear events registered for the specified interaction entity.
 :Inputs:
   **Execution `as <entity>`**: Interaction entity for which the events will be cleared.
 
-  **Function Macro**:
+  **Function macro**:
   :::{treeview}
   - {nbt}`compound` **Arguments**:
     - {nbt}`compound` **with**: Parameters to filter which events to clear. Clear all events if empty.
@@ -60,10 +60,10 @@ execute as @n[tag=bs.entity.interaction] run function #bs.interaction:clear_even
 
 ---
 
-### On event
+### On Event
 
 :::::{tab-set}
-::::{tab-item} Left click
+::::{tab-item} Left Click
 
 ```{function} #bs.interaction:on_left_click
 
@@ -88,7 +88,7 @@ Each interaction can respond to multiple events.
   **State**: The interaction will trigger the event when left clicked.
 ```
 ::::
-::::{tab-item} Right click
+::::{tab-item} Right Click
 
 ```{function} #bs.interaction:on_right_click
 
@@ -98,7 +98,7 @@ Each interaction can respond to multiple events.
 :Inputs:
   **Execution `as <entity>`**: Interaction entity for which the event is registered.
 
-  **Function Macro**:
+  **Function macro**:
   :::{treeview}
   - {nbt}`compound` **Arguments**:
     - {nbt}`string` **run**: Command to execute upon right-click.
@@ -123,7 +123,7 @@ Each interaction can respond to multiple events.
 :Inputs:
   **Execution `as <entity>`**: Interaction entity for which the event is registered.
 
-  **Function Macro**:
+  **Function macro**:
   :::{treeview}
   - {nbt}`compound` **Arguments**:
     - {nbt}`string` **run**: Command to execute while hovering over the interaction.
@@ -138,7 +138,7 @@ Each interaction can respond to multiple events.
   **State**: The interaction will trigger the event continuously while hovered over.
 ```
 ::::
-::::{tab-item} Enter hover
+::::{tab-item} Enter Hover
 
 ```{function} #bs.interaction:on_hover_enter
 
@@ -148,7 +148,7 @@ Each interaction can respond to multiple events.
 :Inputs:
   **Execution `as <entity>`**: Interaction entity for which the event is registered.
 
-  **Function Macro**:
+  **Function macro**:
   :::{treeview}
   - {nbt}`compound` **Arguments**:
     - {nbt}`string` **run**: Command to execute when hovering begins.
@@ -163,7 +163,7 @@ Each interaction can respond to multiple events.
   **State**: The interaction will trigger the event once upon hover entry.
 ```
 ::::
-::::{tab-item} Leave hover
+::::{tab-item} Leave Hover
 
 ```{function} #bs.interaction:on_hover_leave
 
@@ -173,7 +173,7 @@ Each interaction can respond to multiple events.
 :Inputs:
   **Execution `as <entity>`**: Interaction entity for which the event is registered.
 
-  **Function Macro**:
+  **Function macro**:
   :::{treeview}
   - {nbt}`compound` **Arguments**:
     - {nbt}`string` **run**: Command to execute when hovering ends.
@@ -189,7 +189,7 @@ Each interaction can respond to multiple events.
 ```
 
 
-```{admonition} Edge case
+```{admonition} Edge Case
 :class: warning
 
 If a player logs out while hovering over the interaction, the hover leave event will trigger on the executor. If the executor is the player, the event won’t be triggered again when they log back in. Be sure to account for this edge case and handle it appropriately when the player returns.
@@ -214,7 +214,7 @@ execute as @n[tag=bs.entity.interaction] run function #bs.interaction:on_hover_l
 
 ---
 
-### Predefined callbacks
+### Predefined Callbacks
 
 :::::{tab-set}
 ::::{tab-item} Glow
@@ -244,17 +244,17 @@ You can find below all tags available in this API.
 
 ---
 
-### Listen a specific event?
+### Listen to a Specific Event?
 
 :::::{tab-set}
-::::{tab-item} Right click
+::::{tab-item} Right Click
 
 **`bs.interaction.listen_right_click`**
 
 
 Determine if the current interaction listen to right click interaction.
 ::::
-::::{tab-item} Left click
+::::{tab-item} Left Click
 
 **`bs.interaction.listen_left_click`**
 
@@ -266,13 +266,13 @@ Determine if the current interaction listen to left click interaction.
 
 Determine if the current interaction listen to hover interaction.
 ::::
-::::{tab-item} Enter hover
+::::{tab-item} Enter Hover
 
 **`bs.interaction.listen_hover_enter`**
 
 Determine if the current interaction listen to enter hover interaction.
 ::::
-::::{tab-item} Leave hover
+::::{tab-item} Leave Hover
 
 **`bs.interaction.listen_hover_leave`**
 
@@ -284,7 +284,7 @@ Determine if the current interaction listen to leave hover interaction.
 
 ---
 
-### Is source?
+### Is Source?
 
 **`bs.interaction.source`**
 
@@ -295,7 +295,7 @@ Determine if the current entity is the source of the event.
 
 ---
 
-### Is target?
+### Is Target?
 
 **`bs.interaction.target`**
 

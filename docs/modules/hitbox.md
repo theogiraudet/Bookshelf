@@ -87,10 +87,10 @@ Static entities, such as paintings and item frames, do not provide height and wi
 
 ---
 
-### Is entity inside
+### Is Entity Inside
 
 :::::{tab-set}
-::::{tab-item} Entity in block
+::::{tab-item} Entity in Block
 
 ```{function} #bs.hitbox:is_entity_in_block
 
@@ -119,7 +119,7 @@ execute summon minecraft:cow if function #bs.hitbox:is_entity_in_block run say I
 ```
 
 ::::
-::::{tab-item} Entity in blocks
+::::{tab-item} Entity in Blocks
 
 ```{function} #bs.hitbox:is_entity_in_blocks
 
@@ -218,25 +218,32 @@ You can find below all tags available in this module.
 ### Blocks
 
 ::::{tab-set}
-:::{tab-item} Has offset
+:::{tab-item} Can Pass Through
+
+**`#bs.hitbox:can_pass_through`**
+
+Determine if the block has a collision box.
+
+:::
+:::{tab-item} Has Offset
 
 **`#bs.hitbox:has_offset`**
 
-Determines if the block's hitbox has an intentional random offset. This is commonly used in blocks that have slightly shifted hitboxes to give a more dynamic visual effect.
+Determine if the block's hitbox has an intentional random offset. This is commonly used in blocks that have slightly shifted hitboxes to give a more dynamic visual effect.
 
 :::
 :::{tab-item} Intangible
 
 **`#bs.hitbox:intangible`**
 
-Indicates whether the block is intangible, meaning it is typically invisible and lacks interaction collision.
+Indicate whether the block is intangible, meaning it is typically invisible and lacks interaction collision.
 
 :::
-:::{tab-item} Is composite
+:::{tab-item} Not Full Cube
 
-**`#bs.hitbox:is_composite`**
+**`#bs.hitbox:not_full_cube`**
 
-Checks if the block is made up of multiple smaller hitboxes or shapes, rather than a single unified block.
+Check if the block is not a full cube of 16\*16\*16 and has a special shape.
 
 :::
 ::::
@@ -255,14 +262,14 @@ Checks if the block is made up of multiple smaller hitboxes or shapes, rather th
 Determines if the entity's hitbox is intangible, meaning it won't interact physically with other blocks or entities.
 
 :::
-:::{tab-item} Is shaped
+:::{tab-item} Is Shaped
 
 **`#bs.hitbox:is_shaped`**
 
 Identifies if the entity has a non-standard hitbox shape, differing from the typical cubic or rectangular hitbox.
 
 :::
-:::{tab-item} Is sized
+:::{tab-item} Is Sized
 
 **`#bs.hitbox:is_sized`**
 
