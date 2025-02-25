@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Create the base properties
-$data modify storage bs:ctx _ set value { width: $(width), height: $(height), on_click: "$(on_click)" , item: { id: $(item) }, Tags: ["bs.component.item_display"], transformation: { translation: [0f, 0.5f, 0f]}, with: {}}
+$data modify storage bs:ctx _ set value { width: $(width), height: $(height), on_click: "$(on_click)" , item: { id: $(item) }, Tags: ["bs.component.item_display", "smithed.entity", "smithed.strict"], transformation: { translation: [0f, 0.5f, 0f]}, with: {}}
 $data modify storage bs:ctx _ merge value $(with)
 data modify storage bs:ctx _.with.hover set from storage bs:ctx _.hover
 data modify storage bs:ctx _.with.hover_leave set from storage bs:ctx _.hover_leave
