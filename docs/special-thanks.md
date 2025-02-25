@@ -88,7 +88,7 @@ Contributor of the original Gunivers Libs.
 
 ::::{grid} 2
 
-:::{grid-item-card} Plagiatus
+:::{grid-item-card} Lukas Scheuerle (aka Plagiatus)
 :link: https://plagiatus.net
 :link-type: url
 :margin: 0 3 0 0
