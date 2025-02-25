@@ -46,7 +46,7 @@ The button trigger a given event when left clicked and by default glows when hov
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the block by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the block by default.
-      - {nbt}`boolean` **click_sound**: If false, disable the click sound.
+      - {nbt}`bool` **click_sound**: If false, disable the click sound.
       - {nbt}`compound` **display_data**: the display data. See Display format in the Minecraft Wiki.
   :::
 
@@ -90,7 +90,7 @@ The button trigger a given event when left clicked and by default glows when hov
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the item by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the item by default.
-      - {nbt}`boolean` **click_sound**: If false, disable the click sound.
+      - {nbt}`bool` **click_sound**: If false, disable the click sound.
       - {nbt}`string` **item_display**: The model to display. Can be `none`, `thirdperson_lefthand`, `thirdperson_righthand`, `firstperson_lefthand`, `firstperson_righthand`, `head`, `gui`, `ground`, or `fixed`. Defaults to `none`.
       - {nbt}`compound` **item**: the properties of the item to display. Empty by default.
         - {nbt}`compound` **components**: the data components of the item. See Data component format in the Minecraft Wiki.
@@ -136,13 +136,13 @@ The button trigger a given event when left clicked and by default glows when hov
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the text by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the text by default.
-      - {nbt}`boolean` **click_sound**: If false, disable the click sound.
+      - {nbt}`bool` **click_sound**: If false, disable the click sound.
       - {nbt}`string` **alignment**: The alignment of the text. Can be `center`, `left`, or `right`. Defaults to `center`.
       - {nbt}`int` **background**: The background color of the text. Default to `1073741824`.
-      - {nbt}`boolean` **default_background**: If true, use the default background color. Defaults to `false`.
+      - {nbt}`bool` **default_background**: If true, use the default background color. Defaults to `false`.
       - {nbt}`int` **line_width**: The maximum width of the text (note: new line can be also added with `\n` characters). Defaults to `200`.
-      - {nbt}`boolean` **see_through**: If true, the text can be seen through blocks. Defaults to `false`.
-      - {nbt}`boolean` **shadow**: If true, the text has a shadow. Defaults to `false`.
+      - {nbt}`bool` **see_through**: If true, the text can be seen through blocks. Defaults to `false`.
+      - {nbt}`bool` **shadow**: If true, the text has a shadow. Defaults to `false`.
       - {nbt}`int` **text_opacity**: The opacity of the text. Default to `255` (completely opaque).
       - {nbt}`compound` **display_data**: the display data. See Display format in the Minecraft Wiki.
   :::
