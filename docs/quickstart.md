@@ -9,14 +9,8 @@ This page gives a quick overview of how to get started with the Bookshelf librar
 :::::{tab-set}
 ::::{tab-item} 🔌 from manager
 
-The Bookshelf Manager is still in its development phase, and there is no straightforward installation process at the moment. If you're not familiar with datapacks, feel free to join our Discord, we'll be delighted to assist you with the installation and usage of the library!
-
-
-```{admonition} 🤝 Help us improve the installation process
-:class: info
-
-We are actively searching for web developers to create the new version of the Bookshelf Manager, a website that helps users download modules and their respective dependencies. We've already finalized the mockup for the website, you can [check it here](https://www.figma.com/file/kVAmQnmP5pWWzun0Iq2kBa/Bookshelf-Manager-V2.0-prod?type=design&node-id=0-1). If you are interested in helping us, please contact us on Discord!
-```
+You want to build your own Bookshelf Bundle? You can do it with the [Bookshelf Manager](https://mcbookshelf.dev)!
+Thanks to it, you can select the modules you want to use, see their dependencies, and download the bundle directly from the website.
 
 ::::
 ::::{tab-item} 🏷️ from release
