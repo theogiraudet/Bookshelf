@@ -5,7 +5,7 @@
 Create easily graphical components in Minecraft.
 
 ```{epigraph}
-"About ten years ago, most push buttons went “3D”. Using shades of grey, they appear to pop out of the screen. This is not just to look cool: it’s important because 3D buttons afford pushing."
+"About ten years ago, most push buttons went "3D". Using shades of grey, they appear to pop out of the screen. This is not just to look cool: it's important because 3D buttons afford pushing."
 
 -- joel Spolsky
 ```
@@ -47,7 +47,7 @@ The button trigger a given event when left clicked and by default glows when hov
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the block by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the block by default.
       - {nbt}`boolean` **click_sound**: If false, disable the click sound.
-      - {nbt}`compound` **display_data**: the display data. See [Display format](https://minecraft.wiki/w/Entity_format#Display).
+      - {nbt}`compound` **display_data**: the display data. See `Display format <https://minecraft.wiki/w/Entity_format#Display>`_.
   :::
 
 :Outputs:
@@ -93,8 +93,8 @@ The button trigger a given event when left clicked and by default glows when hov
       - {nbt}`boolean` **click_sound**: If false, disable the click sound.
       - {nbt}`string` **item_display**: The model to display. Can be `none`, `thirdperson_lefthand`, `thirdperson_righthand`, `firstperson_lefthand`, `firstperson_righthand`, `head`, `gui`, `ground`, or `fixed`. Defaults to `none`.
       - {nbt}`compound` **item**: the properties of the item to display. Empty by default.
-        - {nbt}`compound` **components**: the data components of the item. See [Data component format](https://minecraft.wiki/w/Data_component_format).
-      - {nbt}`compound` **display_data**: the display data. See [Display format](https://minecraft.wiki/w/Entity_format#Display).
+        - {nbt}`compound` **components**: the data components of the item. See `Data component format <https://minecraft.wiki/w/Data_component_format>`_.
+      - {nbt}`compound` **display_data**: the display data. See `Display format <https://minecraft.wiki/w/Entity_format#Display>`_.
   :::
 
 :Outputs:
@@ -104,7 +104,7 @@ The button trigger a given event when left clicked and by default glows when hov
 *Add a new button represented by a 1×1 slimeball that trigger "say Clicked" when clicked:*
 
 ```mcfunction
-function #bs.component:create_block_button { width: 1f, height: 1f, on_click: "say Clicked", item: "minecraft:slimeball", with: {} }
+function #bs.component:create_item_button { width: 1f, height: 1f, on_click: "say Clicked", item: "minecraft:slimeball", with: {} }
 
 # Same command but with more readable syntax
 function #bs.component:create_item_button { \
@@ -116,7 +116,7 @@ function #bs.component:create_item_button { \
 }
 ```
 ::::
-::::{tab-item} Item Display Button
+::::{tab-item} Text Display Button
 
 ```{function} #bs.component:create_text_button
 
@@ -132,7 +132,7 @@ The button trigger a given event when left clicked and by default glows when hov
     - {nbt}`float` **width**: The width of the button. This will also be used as the width of the interaction hitbox.
     - {nbt}`float` **height**: The height of the button. This will also be used as the width of the interaction hitbox.
     - {nbt}`string` **on_click**: The event to trigger when the button is left clicked.
-    - {nbt}`string` **text**: The text to display on the button. Should be [raw JSON text](https://minecraft.wiki/w/Text_component_format).
+    - {nbt}`string` **text**: The text to display on the button. Should be `raw JSON text <https://minecraft.wiki/w/Text_component_format>`_.
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the text by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the text by default.
@@ -143,10 +143,9 @@ The button trigger a given event when left clicked and by default glows when hov
       - {nbt}`int` **line_width**: The maximum width of the text (note: new line can be also added with `\n` characters). Defaults to `200`.
       - {nbt}`boolean` **see_through**: If true, the text can be seen through blocks. Defaults to `false`.
       - {nbt}`boolean` **shadow**: If true, the text has a shadow. Defaults to `false`.
-      - {nbt}`int` **text_opacity**: The opacity of the text. Defaults to `255` (completely opaque).
-      - {nbt}`compound` **display_data**: the display data. See [Display format](https://minecraft.wiki/w/Entity_format#Display).
+      - {nbt}`int` **text_opacity**: The opacity of the text. Default to `255` (completely opaque).
+      - {nbt}`compound` **display_data**: the display data. See `Display format <https://minecraft.wiki/w/Entity_format#Display>`_.
   :::
-
 
 :Outputs:
   **State**: A clickable button, represented by the defined text display.
