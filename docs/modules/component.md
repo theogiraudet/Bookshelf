@@ -47,7 +47,7 @@ The button trigger a given event when left clicked and by default glows when hov
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the block by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the block by default.
       - {nbt}`boolean` **click_sound**: If false, disable the click sound.
-      - {nbt}`compound` **display_data**: the display data. See `Display format <https://minecraft.wiki/w/Entity_format#Display>`_.
+      - {nbt}`compound` **display_data**: the display data. See Display format in the Minecraft Wiki.
   :::
 
 :Outputs:
@@ -93,8 +93,8 @@ The button trigger a given event when left clicked and by default glows when hov
       - {nbt}`boolean` **click_sound**: If false, disable the click sound.
       - {nbt}`string` **item_display**: The model to display. Can be `none`, `thirdperson_lefthand`, `thirdperson_righthand`, `firstperson_lefthand`, `firstperson_righthand`, `head`, `gui`, `ground`, or `fixed`. Defaults to `none`.
       - {nbt}`compound` **item**: the properties of the item to display. Empty by default.
-        - {nbt}`compound` **components**: the data components of the item. See `Data component format <https://minecraft.wiki/w/Data_component_format>`_.
-      - {nbt}`compound` **display_data**: the display data. See `Display format <https://minecraft.wiki/w/Entity_format#Display>`_.
+        - {nbt}`compound` **components**: the data components of the item. See Data component format in the Minecraft Wiki.
+      - {nbt}`compound` **display_data**: the display data. See Display format in the Minecraft Wiki.
   :::
 
 :Outputs:
@@ -132,7 +132,7 @@ The button trigger a given event when left clicked and by default glows when hov
     - {nbt}`float` **width**: The width of the button. This will also be used as the width of the interaction hitbox.
     - {nbt}`float` **height**: The height of the button. This will also be used as the width of the interaction hitbox.
     - {nbt}`string` **on_click**: The event to trigger when the button is left clicked.
-    - {nbt}`string` **text**: The text to display on the button. Should be `raw JSON text <https://minecraft.wiki/w/Text_component_format>`_.
+    - {nbt}`string` **text**: The text to display on the button. Should be a raw JSON text (see Text component format in the Minecraft Wiki).
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glow the text by default.
       - {nbt}`string` **hover_leave**: The event to trigger when the mouse leave the button. Unglow the text by default.
@@ -144,7 +144,7 @@ The button trigger a given event when left clicked and by default glows when hov
       - {nbt}`boolean` **see_through**: If true, the text can be seen through blocks. Defaults to `false`.
       - {nbt}`boolean` **shadow**: If true, the text has a shadow. Defaults to `false`.
       - {nbt}`int` **text_opacity**: The opacity of the text. Default to `255` (completely opaque).
-      - {nbt}`compound` **display_data**: the display data. See `Display format <https://minecraft.wiki/w/Entity_format#Display>`_.
+      - {nbt}`compound` **display_data**: the display data. See Display format in the Minecraft Wiki.
   :::
 
 :Outputs:
