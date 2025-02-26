@@ -652,7 +652,7 @@ You can find below all predicates available in this module.
 
 Determine if a component is selected.
 
-> **Credits**: Aksiome
+> **Credits**: theogiraudet
 
 ---
 
@@ -662,7 +662,7 @@ Determine if a component is selected.
 
 Determine if a component is disabled.
 
-> **Credits**: Aksiome
+> **Credits**: theogiraudet
 
 ---
 
