@@ -44,8 +44,8 @@ The button triggers a given event when left-clicked and by default glows when ho
     - {nbt}`string` **block**: The block to use to display the button.
     - {nbt}`compound` **properties**: The properties of the block to display. Same as block display NBT `properties`.
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glows the block by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the button. Unglows the block by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the button is hovered. Glows the block by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the button. Unglows the block by default.
       - {nbt}`string` **tooltip**: The tooltip to display when the button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the button is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the button is disabled. Defaults to `true`.
@@ -81,8 +81,8 @@ The button triggers a given event when left-clicked and by default glows when ho
     - {nbt}`string` **on_click**: The event to trigger when the button is left-clicked.
     - {nbt}`string` **item**: The item to use to display the button.
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glows the item by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the button. Unglows the item by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the button is hovered. Glows the item by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the button. Unglows the item by default.
       - {nbt}`string` **tooltip**: The tooltip to display when the button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the button is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the button is disabled. Defaults to `true`.
@@ -121,8 +121,8 @@ The button triggers a given event when left-clicked and by default glows when ho
     - {nbt}`string` **on_click**: The event to trigger when the button is left-clicked.
     - {nbt}`string` **text**: The text to display on the button. Should be a raw JSON text (see Text component format in the Minecraft Wiki).
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glows the text by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the button. Unglows the text by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the button is hovered. Glows the text by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the button. Unglows the text by default.
       - {nbt}`string` **tooltip**: The tooltip to display when the button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the button is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the button is disabled. Defaults to `true`.
@@ -177,8 +177,8 @@ By default, the checkbox is not selected, will glow when selected, unglow when d
     - {nbt}`string` **block**: The block to use to display the checkbox.
     - {nbt}`compound` **properties**: The properties of the block to display. Same as block display NBT `properties`.
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
       - {nbt}`bool` **selected**: If true, the checkbox is selected by default. Defaults to `false`.
       - {nbt}`bool` **disabled**: If true, the checkbox is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the checkbox is disabled. Defaults to `true`.
@@ -218,8 +218,8 @@ By default, the checkbox is not selected, will glow when selected, unglow when d
     - {nbt}`string` **on_deselected**: The event to trigger when the checkbox is deselected.
     - {nbt}`string` **item**: The item to use to display the checkbox.
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
       - {nbt}`bool` **selected**: If true, the checkbox is selected by default. Defaults to `false`.
       - {nbt}`bool` **disabled**: If true, the checkbox is disabled (unclickable). Defaults to `false`.
       - {nbt}`string` **tooltip**: The tooltip to display when the checkbox is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
@@ -262,8 +262,8 @@ By default, the checkbox is not selected, will glow when selected, unglow when d
     - {nbt}`string` **on_deselected**: The event to trigger when the checkbox is deselected.
     - {nbt}`string` **text**: The text to display on the button. Should be a raw JSON text (see Text component format in the Minecraft Wiki).
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
       - {nbt}`bool` **selected**: If true, the checkbox is selected by default. Defaults to `false`.
       - {nbt}`string` **tooltip**: The tooltip to display when the checkbox is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the checkbox is disabled (unclickable). Defaults to `false`.
@@ -320,8 +320,8 @@ By default, the radio button is not deselected.
     - {nbt}`string` **block**: The block to use to display the radio button.
     - {nbt}`compound` **properties**: The properties of the block to display. Same as block display NBT `properties`.
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the radio button is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the radio button is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
       - {nbt}`bool` **selected**: If true, the radio button is selected by default. Defaults to `false`.
       - {nbt}`string` **tooltip**: The tooltip to display when the radio button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the radio button is disabled (unclickable). Defaults to `false`.
@@ -361,8 +361,8 @@ By default, the radio button is not deselected.
     - {nbt}`string` **on_selected**: The event to trigger when the radio button is selected.
     - {nbt}`string` **item**: The item to use to display the radio button.
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the radio button is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the radio button is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
       - {nbt}`bool` **selected**: If true, the radio button is selected by default. Defaults to `false`.
       - {nbt}`string` **tooltip**: The tooltip to display when the radio button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the radio button is disabled (unclickable). Defaults to `false`.
@@ -405,8 +405,8 @@ By default, the radio button is not deselected.
     - {nbt}`string` **on_selected**: The event to trigger when the radio button is selected.
     - {nbt}`string` **text**: The text to display on the button. Should be a raw JSON text (see Text component format in the Minecraft Wiki).
     - {nbt}`compound` **with**: Optional parameters.
-      - {nbt}`string` **hover**: The event to trigger when the radio button is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the radio button is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
       - {nbt}`bool` **selected**: If true, the radio button is selected by default. Defaults to `false`.
       - {nbt}`string` **tooltip**: The tooltip to display when the radio button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the radio button is disabled (unclickable). Defaults to `false`.
@@ -522,8 +522,8 @@ Change the properties of a button.
   - {nbt}`compound` **Arguments**:
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **on_click**: The event to trigger when the button is left-clicked.
-      - {nbt}`string` **hover**: The event to trigger when the button is hovered. Glows the block by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the button. Unglows the block by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the button is hovered. Glows the block by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the button. Unglows the block by default.
       - {nbt}`string` **tooltip**: The tooltip to display when the button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the button is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the button is disabled. Defaults to `true`.
@@ -555,8 +555,8 @@ Change the properties of a checkbox.
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **on_selected**: The event to trigger when the checkbox is selected.
       - {nbt}`string` **on_deselected**: The event to trigger when the checkbox is deselected.
-      - {nbt}`string` **hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the checkbox is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the checkbox. Do nothing by default.
       - {nbt}`string` **tooltip**: The tooltip to display when the checkbox is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the checkbox is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the checkbox is disabled. Defaults to `true`.
@@ -588,8 +588,8 @@ Change the properties of a radio button.
   - {nbt}`compound` **Arguments**:
     - {nbt}`compound` **with**: Optional parameters.
       - {nbt}`string` **on_selected**: The event to trigger when the radio button is selected.
-      - {nbt}`string` **hover**: The event to trigger when the radio button is hovered. Do nothing by default.
-      - {nbt}`string` **hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
+      - {nbt}`string` **on_hover**: The event to trigger when the radio button is hovered. Do nothing by default.
+      - {nbt}`string` **on_hover_leave**: The event to trigger when the mouse leaves the radio button. Do nothing by default.
       - {nbt}`string` **tooltip**: The tooltip to display when the radio button is hovered. Should be a raw JSON text (see Text component format in the Minecraft Wiki). Displayed through the entity display name. Empty by default.
       - {nbt}`bool` **disabled**: If true, the radio button is disabled (unclickable). Defaults to `false`.
       - {nbt}`bool` **disabled_click_sound**: If false, disables the click sound when the radio button is disabled. Defaults to `true`.
