@@ -104,7 +104,7 @@ Main developer of the Bookshelf Manager.
 
 :::
 
-:::{grid-item-card} Aeris
+:::{grid-item-card} Charles P. (aka Aeris)
 :link: https://github.com/Aeris1One
 :link-type: url
 :margin: 0 3 0 0
