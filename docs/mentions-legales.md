@@ -7,7 +7,7 @@ Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la co
 
 Le présent site, accessible à l’URL [docs.mcbookshelf.dev](https://docs.mcbookshelf.dev) (le « Site »), est édité par :
 
-L’association Altearn, enregistrée auprès de la préfecture/sous-préfecture de 75 - Préfecture de police de Paris sous le numéro W061014075, ayant son siège situé à Appartement 561, 16 rue Curial, 75019 PARIS, représentée par Vincent Foriel dûment habilité.
+L’association Altearn, enregistrée auprès de la préfecture de police de Paris au répertoire national des associations sous le numéro W061014075, ayant son siège situé à Appartement 561, 16 rue Curial, 75019 PARIS, et représentée par Vincent Foriel, président.
 
 ## Hébergement
 
@@ -16,7 +16,8 @@ Pour toute question relative à l'hébergement, vous pouvez contacter le support
 
 ## Directeur de publication
 
-Le Directeur de la publication du Site est l’association Altearn.
+La direction de publication du Site est assurée par le·a président·e de l'association Altearn.
+
 
 ## Nous contacter
 
@@ -26,4 +27,6 @@ Par courrier : Appartement 561, 16 rue Curial, 75019 Paris
 
 ## Données personnelles
 
-Nous traitons certaines données personnelles, telles que votre adresse IP, votre user-agent et d'autres informations techniques similaires, dans le but de faire fonctionner correctement notre site. Le traitement de ces données est nécessaire à l'exécution du contrat d'utilisation du site, et ce, conformément à la base légale suivante : exécution du contrat. Nous ne traitons aucune autre donnée personnelle vous concernant.
+Nous traitons certaines données personnelles, telles que votre adresse IP, votre user-agent et d'autres informations techniques similaires, dans le but de faire fonctionner correctement notre site.
+Le traitement de ces données étant strictement nécessaire pour le fonctionnement du site, celui-ci est licite conformément à l'article 6.1(b) du RGPD (base légale "le traitement est nécessaire à l'exécution d'un contrat").
+Nous ne traitons aucune autre donnée personnelle vous concernant.
