@@ -119,3 +119,19 @@ Main developer of the Bookshelf Manager.
 Sysadmin and legal referent.
 
 ::::
+
+:::{grid-item-card} Ultimatech
+:link: https://ultimatech-studios.carrd.co
+:link-type: url
+:margin: 0 3 0 0
+
+```{image} /_imgs/credits/aeris.jpg
+:align: center
+:class: dark_light, bs-rounded
+```
+
+---
+
+Creator of the Bookshelf logo.
+
+::::
