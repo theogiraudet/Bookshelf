@@ -26,3 +26,27 @@ To run any command, type `pdm run` before the command itself. Alternatively, you
 |-----------------|-------------------------|
 | `pdm run build` | `pdm run modules build` |
 | `pdm run watch` | `pdm run modules watch` |
+
+*Exemple: Create a new module:*
+
+```bash
+bookshelf create module my_module
+```
+
+*Exemple: Build the project:*
+
+```bash
+bookshelf build
+```
+
+*Exemple: Run tests:*
+
+```bash
+bookshelf test
+```
+
+*Exemple: Generate documentation:*
+
+```bash
+bookshelf docs
+```

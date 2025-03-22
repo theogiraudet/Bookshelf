@@ -19,7 +19,7 @@ Manage entity positions and rotations using scores.
 
 ## 🔧 Functions
 
-You can find below all functions available in this module.
+Bellow, you can find all functions available in this module.
 
 ---
 
@@ -309,7 +309,7 @@ tellraw @a [{"text": "Distance: ", "color": "dark_gray"},{"score":{"name":"$posi
 ```{admonition} Performance Tip
 :class: tip
 
-For several applications such as comparing distances, you can use the squared distance instead of the "normal" distance. It is a bit faster to compute.
+For several applications such as comparing distances, using the squared distance instead of the "normal" distance is more efficient to compute.
 ```
 
 ::::
@@ -347,7 +347,7 @@ tellraw @a [{"text": "Distance^2: ", "color": "dark_gray"},{"score":{"name":"$po
 ```{admonition} Score Limitation
 :class: warning
 
-Scores in Minecraft have a limited size similar to a signed integer variable. The latter is huge, but not unlimited and can overflow. Since this function uses powers of 2 to calculate the result, you should prefer the "normal" version (which does not rely on powers) when working over big distances.
+Scores in Minecraft have a limited size similar to a signed integer variable. While this limit is substantial, it is not unlimited and can overflow. Since this function uses powers of 2 to calculate the result, prefer the "normal" version (which does not rely on powers) when working with large distances.
 ```
 
 ::::
@@ -387,7 +387,7 @@ Get the execution position of the function and store the coordinates in 3 scores
 # Once
 execute as @e[type=spider,limit=1,sort=nearest] run function #bs.position:get_pos {scale:1}
 
-# See the resluts
+# See the results
 tellraw @a [{"text": "X = ", "color": "dark_gray"},{"score":{"name":"@e[type=spider,limit=1,sort=nearest]", "objective": "bs.pos.x"}, "color": "gold"},{"text":", Y = ", "color": "dark_gray"},{"score":{"name":"@e[type=spider,limit=1,sort=nearest]", "objective": "bs.pos.y"}, "color": "gold"},{"text":", Z = ", "color": "dark_gray"},{"score":{"name":"@e[type=spider,limit=1,sort=nearest]", "objective": "bs.pos.z"}, "color": "gold"}]
 ```
 
@@ -880,9 +880,7 @@ Place and rotate an entity according to its position and rotation scores.
 
 :Inputs:
   **Execution `as <entities>`**: Entity to teleport.
-
-  **Scores `@s bs.rot.[x,y,z]`**: Coordinates to teleport to.
-
+  **Scores `@s bs.pos.[x,y,z]`**: Coordinates to teleport to.
   **Scores `@s bs.rot.[h,v]`**: Rotation to teleport to.
 
   **Function macro**:

@@ -2,13 +2,13 @@
 
 **`#bs.sidebar:help`**
 
-Create a visually appealing and dynamic sidebar using the scoreboard.
+Create visually appealing and dynamic sidebars using the scoreboard system.
 
 ---
 
 ## 🔧 Functions
 
-You can find below all functions available in this module.
+Bellow, you can find all functions available in this module.
 
 ---
 
@@ -30,8 +30,8 @@ Create and register a new sidebar.
 ```
 
 *Create and display a new sidebar with left-aligned text:*
-```{code-block} mcfunction
-:force:
+
+```mcfunction
 # Create a new sidebar
 function #bs.sidebar:create { \
     objective: "my_guessing_game", \
@@ -49,8 +49,8 @@ scoreboard objectives setdisplay sidebar my_guessing_game
 ```
 
 *Create and display a new sidebar with right-aligned text:*
-```{code-block} mcfunction
-:force:
+
+```mcfunction
 # Create a new sidebar
 function #bs.sidebar:create { \
     objective: "my_guessing_game_2", \
@@ -86,6 +86,7 @@ Update dynamic parts of the sidebar.
 ```
 
 *Refresh a sidebar:*
+
 ```mcfunction
 function #bs.sidebar:refresh {objective:"my_guessing_game"}
 ```

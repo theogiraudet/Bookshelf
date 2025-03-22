@@ -8,7 +8,7 @@ Enhance command scheduling with this module, providing flexibility beyond vanill
 
 ## 🔧 Functions
 
-You can find below all functions available in this module.
+Bellow, you can find all functions available in this module.
 
 ---
 
@@ -30,7 +30,8 @@ Cancel all scheduled commands that match the given ID.
   :::
 ```
 
-*Cancel all commands that have an `id` parameter set to "foo":*
+*Cancel all commands with an `id` parameter set to "foo":*
+
 ```mcfunction
 function #bs.schedule:cancel_all {with:{id:"foo"}}
 ```
@@ -40,7 +41,7 @@ function #bs.schedule:cancel_all {with:{id:"foo"}}
 
 ```{function} #bs.schedule:cancel_one {with:{}}
 
-Cancel the first scheduled command that match the given ID.
+Cancel the first scheduled command that matches the given ID.
 
 :Inputs:
   **Function macro**:
@@ -51,7 +52,8 @@ Cancel the first scheduled command that match the given ID.
   :::
 ```
 
-*Cancel the next command that have an `id` parameter set to "foo":*
+*Cancel the next command with an `id` parameter set to "foo":*
+
 ```mcfunction
 function #bs.schedule:cancel_one {with:{id:"foo"}}
 ```
