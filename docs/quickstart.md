@@ -67,32 +67,38 @@ pipeline:
 ::::
 ::::{tab-item} 🗃️ from source
 
-If you know how datapacks work, and want to handle the installation process on your own 💪😎, first familiarize yourself with the structure of the project below. Then rendez-vous on [github](https://github.com/mcbookshelf/bookshelf) to download the repository, and extract only what you need!
+If you're a developer who wants to work directly with the source code, you'll need to build Bookshelf before using it. This build process is necessary because some features require computed data that can't be directly included in the source code. Here's how to get started:
 
-Once Bookshelf is installed on your map with specific modules (rather than the entire library), the initial step is to ensure that each module can be properly loaded with all its dependencies. Verify this by calling the `#bs.<module>:load` function for each module or check your game console for any errors.
+### 🛠️ Prerequisites
 
-Upon exploring the main datapack, you may notice files within the minecraft namespace. These files facilitate the autoloading of modules and the ticking of specific functions. While they are not strictly needed for Bookshelf to work, without them, you have the responsibility to manually call tick functions or reload modules.
+- Basic understanding of datapacks
+- [Python](https://www.python.org/downloads/) and [PDM](https://pdm.fming.dev/latest/) (Python Dependency Manager) installed
+- Git (for cloning the repository)
 
+### 📥 Installation Steps
 
-### 🏗️ Structural Overview
+1. Clone the repository:
+```shell
+git clone https://github.com/mcbookshelf/bookshelf.git
+cd bookshelf
+```
 
-The Github repository includes a demo map (still a work in progress) and four datapacks:
+2. Install dependencies:
+```shell
+pdm install
+```
 
-**📁 datapacks / Bookshelf**
+3. Build the library:
+```shell
+pdm run modules build
+```
 
-This is the main datapack of the library, containing all the useful tools for your project. It's the only one to keep in the end. The datapack is divided into modules, so install only the ones you need.
+After building, you'll find all modules as datapacks in the `build` folder. Each module includes its own dependencies, allowing you to install only what you need.
 
-**📁 datapacks / Bookshelf Dev**
+### ⚠️ Important Notes
 
-This datapack includes utilities for developers, such as logs and more. Its purpose is to provide essential tools to assist you during the development phase of your project.
-
-**📁 datapacks / Bookshelf Examples (WIP)**
-
-This datapack contains easily-readable examples showcasing systems that can be created with Bookshelf. Its main purpose is to be read. Install it only if you wish to gain familiarity with the library by examining practical examples.
-
-**📁 datapacks / Bookshelf World (WIP)**
-
-This datapack contains code utilized by the world itself. It is not intended for direct use.
+- The main datapack contains files in the `minecraft` namespace for autoloading and ticking
+- While these files aren't strictly required, they handle module autoloading and tick functions
 
 ::::
 :::::
