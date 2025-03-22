@@ -989,8 +989,8 @@
           }
         },
         {
-          "id": "#bs.hitbox:intangible",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/hitbox.html#entities",
+          "id": "#bs.hitbox:has_offset",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/hitbox.html#blocks",
           "authors": [
             "Aksiome"
           ],
