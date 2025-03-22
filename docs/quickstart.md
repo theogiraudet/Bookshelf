@@ -9,32 +9,39 @@ This page gives a quick overview of how to get started with the Bookshelf librar
 :::::{tab-set}
 ::::{tab-item} 🔌 from manager
 
-The [Bookshelf Manager](https://mcbookshelf.dev) is the official tool for creating your own custom Bookshelf bundle. Here are its main advantages:
+The [Bookshelf Manager](https://mcbookshelf.dev) is the official tool for creating your own custom Bookshelf bundle.
+
+### ✨ Key Benefits
 
 - 🎯 **Precise Selection**: Choose exactly the modules you need
 - 📊 **Dependency Visualization**: Intuitive interface showing relationships between modules
 - 🏷️ **Tag System**: Easily identify modules with tags, grouping them by purpose
 
-Getting started:
+### 📥 Installation Steps
+
 1. Visit [mcbookshelf.dev](https://mcbookshelf.dev)
 2. Select your desired modules
 3. Review automatically added dependencies
 4. Download your custom bundle
 
-This method is recommended for creators who want precise control over their installation.
-
 ::::
 ::::{tab-item} 🏷️ from release
 
-Bookshelf releases are available on both [Github](https://github.com/mcbookshelf/bookshelf/releases) and [Modrinth](https://modrinth.com/datapack/bookshelf-library). In each release, you will find zipped datapacks. You have multiple options for installation:
+Bookshelf releases are available on both [Github](https://github.com/mcbookshelf/bookshelf/releases) and [Modrinth](https://modrinth.com/datapack/bookshelf-library).
+In each release, you will find zipped datapacks.
 
-📚 **Whole Datapacks:** You can download entire datapacks which includes all modules and dependencies. This is a good option if you want to explore everything Bookshelf has to offer.
+### 📥 Installation Options
 
-🧩 **Module by Module (only on Github):** Alternatively, you can download individual modules as datapacks. Each module zip file contains all the dependencies needed for that module to work. This is a great option if you only need specific functionalities and want to keep your installation lightweight.
+📚 **Bundles:** You can download entire bundles which includes all modules and dependencies of a certain type in a single datapack. This is a good option if you want to explore everything Bookshelf has to offer.
+
+🧩 **Module by Module:** Alternatively, you can download individual modules as datapacks. Each module zip file contains all the dependencies needed for that module to work. This is a great option if you only need specific functionalities and want to keep your installation lightweight.
 
 After downloading, move the zip file to the datapacks directory of your Minecraft world.
 
+```{admonition} Note
+:class: note
 Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source.
+```
 
 If you like the project, don't hesitate to star it on Github and/or follow it on Modrinth 😉.
 
@@ -42,6 +49,8 @@ If you like the project, don't hesitate to star it on Github and/or follow it on
 ::::{tab-item} 🐍 from PyPI
 
 If you're using the [beet](https://github.com/mcbeet/beet) build pipeline, you can install the Bookshelf package (`mcbookshelf`) from PyPI to include Bookshelf modules in your build.
+
+### 📥 Installation Steps
 
 ```shell
 pip install mcbookshelf
@@ -62,7 +71,6 @@ pipeline:
   - bookshelf.bundle.dev
   - bookshelf.bundle.<name_of_other_bundle>
 ```
-
 
 ::::
 ::::{tab-item} 🗃️ from source
@@ -93,12 +101,12 @@ pdm install
 pdm run modules build
 ```
 
-After building, you'll find all modules as datapacks in the `build` folder. Each module includes its own dependencies, allowing you to install only what you need.
+After building, you'll find all modules as datapacks in the `build` folder. Each module includes its own dependencies as well as some utility namespaces, allowing you to install only what you need.
 
-### ⚠️ Important Notes
-
-- The main datapack contains files in the `minecraft` namespace for autoloading and ticking
-- While these files aren't strictly required, they handle module autoloading and tick functions
+```{admonition} Note
+:class: note
+The main datapack contains files in the `minecraft` namespace for autoloading and ticking. While these files aren't strictly required, they handle module autoloading and tick functions.
+```
 
 ::::
 :::::
