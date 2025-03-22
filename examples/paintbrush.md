@@ -93,7 +93,7 @@ First, we need to create an item that the player can use to paint a block. For t
 
 The reward enables us to trigger a specific function when the brush is used. We'll use the `paintbrush:use` function here.
 
-> Note that this advancement triggers the function only if the brush has the custom data `{"paintbrush":true}`, ensuring that vanilla brushes continue to function normally.
+> Note that this advancement triggers the function only if the brush has the custom data `{paintbrush: true}`, ensuring that vanilla brushes continue to function normally.
 
 **➔ create the `use` function**
 
@@ -107,9 +107,9 @@ say Paintbrush used!
 `@function paintbrush:give`
 ```mcfunction
 give @s minecraft:brush[ \
-  minecraft:custom_data={ "paintbrush": true }, \
-  minecraft:item_name='["",{"text":"MAGIC BRUSH","color":"light_purple","bold":true,"italic":true},{"text":" - Right click to use","color":"gray"}]', \
-  minecraft:lore=['{"text":"A brushstroke of creation.","color":"dark_gray","italic":false}','""','{"text":"Imbue the aimed block with the properties","color":"gray","italic":false}','{"text":"of the block held in your offhand.","color":"gray","italic":false}'], \
+  minecraft:custom_data={ paintbrush: true }, \
+  minecraft:item_name=["",{text:"MAGIC BRUSH",color:"light_purple",bold:true,italic:true},{text:" - Right click to use",color:"gray"}], \
+  minecraft:lore=[{text:"A brushstroke of creation.",color:"dark_gray",italic:false},"",{text:"Imbue the aimed block with the properties",color:"gray",italic:false},{text:"of the block held in your offhand.",color:"gray",italic:false}], \
 ]
 ```
 
@@ -180,7 +180,7 @@ These registries allow for more specific control over how block transformations 
 ```mcfunction
 # Prepare the input of the mix_type function
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
-execute store success score #success data run data modify storage painterbrush:input type set from entity @s Inventory[{Slot:-106b}].id
+execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
 ```
 
@@ -198,7 +198,7 @@ The `#bs.view:at_aimed_block` function ensures that execution is already at the 
 ```mcfunction
 # Prepare the input of the mix_type function
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
-execute store success score #success data run data modify storage painterbrush:input type set from entity @s Inventory[{Slot:-106b}].id
+execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
 
 # Load the aimed block
@@ -217,7 +217,7 @@ Now that the block is loaded and the transformation input is ready, we can apply
 ```mcfunction
 # Prepare the input of the mix_type function
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
-execute store success score #success data run data modify storage painterbrush:input type set from entity @s Inventory[{Slot:-106b}].id
+execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
 
 # Load the aimed block
@@ -242,7 +242,7 @@ Finally, we apply the transformed block to the world using `set_block`.
 ```mcfunction
 # Prepare the input of the mix_type function
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
-execute store success score #success data run data modify storage painterbrush:input type set from entity @s Inventory[{Slot:-106b}].id
+execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
 
 # Load the aimed block
