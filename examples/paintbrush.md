@@ -179,6 +179,7 @@ These registries allow for more specific control over how block transformations 
 `@function paintbrush:replace_block`
 ```mcfunction
 # Prepare the input of the mix_type function
+data remove storage painterbrush:input type
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
 execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
@@ -197,6 +198,7 @@ The `#bs.view:at_aimed_block` function ensures that execution is already at the 
 `@function paintbrush:replace_block`
 ```mcfunction
 # Prepare the input of the mix_type function
+data remove storage painterbrush:input type
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
 execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
@@ -216,6 +218,7 @@ Now that the block is loaded and the transformation input is ready, we can apply
 `@function paintbrush:replace_block`
 ```mcfunction
 # Prepare the input of the mix_type function
+data remove storage painterbrush:input type
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
 execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
@@ -241,6 +244,7 @@ Finally, we apply the transformed block to the world using `set_block`.
 `@function paintbrush:replace_block`
 ```mcfunction
 # Prepare the input of the mix_type function
+data remove storage painterbrush:input type
 data modify storage painterbrush:input mapping_registry set value "bs.shapes"
 execute store success score #success data run data modify storage painterbrush:input type set from entity @s equipment.offhand.id
 execute if score #success data matches 0 run return fail
