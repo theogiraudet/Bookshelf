@@ -30,7 +30,7 @@ Cancel all scheduled commands that match the given ID.
   :::
 ```
 
-*Cancel all commands with an `id` parameter set to "foo":*
+*Example: Cancel all commands with an `id` parameter set to "foo":*
 
 ```mcfunction
 function #bs.schedule:cancel_all {with:{id:"foo"}}
@@ -52,7 +52,7 @@ Cancel the first scheduled command that matches the given ID.
   :::
 ```
 
-*Cancel the next command with an `id` parameter set to "foo":*
+*Example: Cancel the next command with an `id` parameter set to "foo":*
 
 ```mcfunction
 function #bs.schedule:cancel_one {with:{id:"foo"}}
@@ -71,7 +71,7 @@ function #bs.schedule:cancel_one {with:{id:"foo"}}
 Clear all scheduled commands.
 ```
 
-*Remove all scheduled commands:*
+*Example: Remove all scheduled commands:*
 
 ```mcfunction
 function #bs.schedule:clear
@@ -103,13 +103,13 @@ If a command is registered during a tick where other commands are already schedu
   **Return**: A unique identifier for the scheduled command.
 ```
 
-*Execute `say foo` in 2 seconds:*
+*Example: Execute `say foo` in 2 seconds:*
 
 ```mcfunction
 function #bs.schedule:schedule {run:"say foo",with:{time:2,unit:"s"}}
 ```
 
-*Schedule then cancel commands that match a complex ID:*
+*Example: Schedule then cancel commands that match a complex ID:*
 
 ```mcfunction
 function #bs.schedule:schedule {run:"say failure",with:{id:{foo:"bar",fails:true},time:10,unit:"s"}}

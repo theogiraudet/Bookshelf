@@ -42,7 +42,7 @@ Get biome data at the execution position of the function.
   :::
 ```
 
-*Get biome data at the current location:*
+*Example: Get biome data at the current location:*
 
 ```mcfunction
 # Once
@@ -73,7 +73,7 @@ Get the temperature at the execution position of the function, taking the altitu
   **Return | Score `$environment.get_temperature bs.out`**: Temperature at the given position.
 ```
 
-*Get the temperature at the current altitude:*
+*Example: Get the temperature at the current altitude:*
 
 ```mcfunction
 # Once

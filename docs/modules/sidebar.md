@@ -29,7 +29,7 @@ Create and register a new sidebar.
   :::
 ```
 
-*Create and display a new sidebar with left-aligned text:*
+*Example: Create and display a new sidebar with left-aligned text:*
 
 ```mcfunction
 # Create a new sidebar
@@ -48,7 +48,7 @@ function #bs.sidebar:create { \
 scoreboard objectives setdisplay sidebar my_guessing_game
 ```
 
-*Create and display a new sidebar with right-aligned text:*
+*Example: Create and display a new sidebar with right-aligned text:*
 
 ```mcfunction
 # Create a new sidebar
@@ -85,7 +85,7 @@ Update dynamic parts of the sidebar.
   :::
 ```
 
-*Refresh a sidebar:*
+*Example: Refresh a sidebar:*
 
 ```mcfunction
 function #bs.sidebar:refresh {objective:"my_guessing_game"}

@@ -134,7 +134,7 @@ Generate a shape in 2D space using a Fractal noise algorithm. The shape is gener
 ::::
 :::::
 
-*Generate a 3D terrain using a heightmap. This function employs a linear approach; for more interesting terrain, consider scaling the noise values differently according to various ranges. Check out [this video](https://www.youtube.com/watch?v=CSa5O6knuwI) for more insights on terrain generation:*
+*Example: Generate a 3D terrain using a heightmap. This function employs a linear approach; for more interesting terrain, consider scaling the noise values differently according to various ranges. Check out [this video](https://www.youtube.com/watch?v=CSa5O6knuwI) for more insights on terrain generation:*
 
 ```{code-block} mcfunction
 :force:

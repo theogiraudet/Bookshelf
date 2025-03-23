@@ -420,6 +420,7 @@ Removes an existing link between entities. When executed on a parent entity, it 
 ```
 
 *Example: Unlink the nearest armor stand from a sheep:*
+
 ```mcfunction
 # Once
 execute as @e[type=armor_stand] at @e[type=sheep,limit=1,sort=nearest] run function #bs.link:create_link_ata
