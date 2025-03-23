@@ -32,7 +32,7 @@ The beautiful world of mathematics... **in Minecraft!**
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 

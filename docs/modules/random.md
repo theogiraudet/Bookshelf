@@ -19,7 +19,7 @@ Contains many random functions for different distributions and noise patterns.
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 

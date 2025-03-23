@@ -23,7 +23,7 @@ This module uses scaled integers and can overflow when coordinates are higher th
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 
@@ -614,7 +614,7 @@ You usually don't need to call this function while using others. However, if you
 
 ## 👁️ Predicates
 
-Below, you can find all predicates available in this module.
+You can find below all predicates available in this module.
 
 ---
 

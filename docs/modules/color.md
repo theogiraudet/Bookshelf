@@ -25,7 +25,7 @@ The internal color format for Minecraft is decimal. This module facilitates the 
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 

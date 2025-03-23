@@ -14,7 +14,7 @@ Manage entity IDs, essential in scenarios like shooting games where you need to 
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 
@@ -100,7 +100,7 @@ scoreboard objective setdisplay sidebar bs.cid
 
 ## 👁️ Predicates
 
-Below, you can find all predicates available in this module.
+You can find below all predicates available in this module.
 
 ---
 

@@ -14,7 +14,7 @@ Get and check the hitboxes of blocks or entities.
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 
@@ -286,7 +286,7 @@ execute summon minecraft:cow if function #bs.hitbox:is_in_entity run say Oh no..
 
 ## 🏷️ Tags
 
-Below, you can find below all tags available in this module.
+You can find below below all tags available in this module.
 
 ---
 

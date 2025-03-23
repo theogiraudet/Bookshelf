@@ -19,7 +19,7 @@ Comprehensive information and tools related to weather and biome properties.
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 
@@ -86,7 +86,7 @@ function #bs.environment:get_temperature {scale:1000}
 
 ## 👁️ Predicates
 
-Below, you can find all predicates available in this module.
+You can find below all predicates available in this module.
 
 ---
 

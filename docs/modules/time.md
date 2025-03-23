@@ -12,7 +12,7 @@ This module uses a command block to get the system time. For the time to be disp
 
 ## 🔧 Functions
 
-Below, you can find all functions available in this module.
+You can find below all functions available in this module.
 
 ---
 
