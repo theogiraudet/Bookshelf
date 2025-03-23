@@ -19,5 +19,5 @@ function bs.dump:format/any
 data remove storage bs:data dump[-1]
 data remove storage bs:data dump[-1].var[0]
 
-execute if data storage bs:data dump[-1].var[0] run data modify storage bs:out dump append value '", "'
+execute if data storage bs:data dump[-1].var[0] run data modify storage bs:out dump append value ", "
 execute if data storage bs:data dump[-1].var[0] run function bs.dump:format/array/compact/loop

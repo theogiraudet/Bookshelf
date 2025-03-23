@@ -13,7 +13,7 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-data modify entity B5-0-0-0-2 text set value '{"storage":"bs:data","nbt":"dump[-1].var"}'
+data modify entity B5-0-0-0-2 text set value {storage:"bs:data",nbt:"dump[-1].var"}
 function bs.dump:key/unquote with entity B5-0-0-0-2
 
 data modify storage bs:ctx _ set string storage bs:data dump[-1].key 1 2
