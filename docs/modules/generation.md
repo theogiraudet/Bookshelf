@@ -32,7 +32,7 @@ Generate diverse terrains and landscapes, incorporating natural features.
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

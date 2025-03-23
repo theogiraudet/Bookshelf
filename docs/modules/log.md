@@ -14,7 +14,7 @@ This module uses a command block to get the system time. For the time to be disp
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

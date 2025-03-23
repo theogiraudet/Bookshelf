@@ -27,7 +27,7 @@ Make your entity move exactly the way you want it to!
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 
@@ -227,7 +227,7 @@ execute as @e[type=minecraft:pig] run function #bs.move:set_motion {scale:0.001}
 
 ## 👁️ Predicates
 
-Bellow, you can find all predicates available in this module.
+Below, you can find all predicates available in this module.
 
 ---
 

@@ -19,7 +19,7 @@ Execute commands based on what an entity sees.
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 
@@ -342,7 +342,7 @@ As this function relies on a player-specific predicate, it is exclusively design
 
 ## 🏷️ Tags
 
-Bellow, you can find below all tags available in this module.
+Below, you can find below all tags available in this module.
 
 ---
 

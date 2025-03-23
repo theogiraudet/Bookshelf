@@ -34,7 +34,7 @@ Vectors are fundamental and incredibly powerful tools to manage motions, forces 
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

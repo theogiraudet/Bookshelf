@@ -8,7 +8,7 @@ Enhance command scheduling with this module, providing flexibility beyond vanill
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

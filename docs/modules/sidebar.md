@@ -8,7 +8,7 @@ Create visually appealing and dynamic sidebars using the scoreboard system.
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

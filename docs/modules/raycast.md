@@ -18,7 +18,7 @@ Unlike traditional raycasts, this module uses a [voxel traversal algorithm](http
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

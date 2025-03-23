@@ -24,7 +24,7 @@ A collection of various bitwise operations, providing versatile tools for manipu
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

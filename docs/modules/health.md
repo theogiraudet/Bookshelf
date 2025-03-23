@@ -20,7 +20,7 @@ When using the module, you cannot rely on NBTs to get health information. Use th
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

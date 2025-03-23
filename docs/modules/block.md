@@ -20,7 +20,7 @@ To manipulate blocks and their states, Bookshelf utilizes a [virtual block forma
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 

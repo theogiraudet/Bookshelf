@@ -8,7 +8,7 @@ The dump module provides mechanisms for printing the state of any "variables".
 
 ## 🔧 Functions
 
-Bellow, you can find all functions available in this module.
+Below, you can find all functions available in this module.
 
 ---
 
