@@ -21,7 +21,7 @@ execute unless score #s bs.ctx matches 1 run return run function #bs.log:error {
   namespace: "bs.sidebar", \
   path: "#bs.sidebar:create", \
   tag: "create", \
-  message: '[{"text":"The objective [","color":"red"},{"storage":"bs:ctx","nbt":"_.id"},{"text":"] contain invalid characters."}]', \
+  message: [{text:"The objective [",color:"red"},{storage:"bs:ctx",nbt:"_.id"},{text:"] contain invalid characters."}], \
 }
 
 # check that the name format is valid
@@ -30,7 +30,7 @@ execute unless score #s bs.ctx matches 1 run return run function #bs.log:error {
   namespace: "bs.sidebar", \
   path: "#bs.sidebar:create", \
   tag: "create", \
-  message: '[{"text":"The name [","color":"red"},{"storage":"bs:ctx","nbt":"_.name"},{"text":"] must be a valid JSON text component."}]', \
+  message: [{text:"The name [",color:"red"},{storage:"bs:ctx",nbt:"_.name"},{text:"] must be a valid JSON text component."}], \
 }
 
 # check that the contents have between 1 and 15 entries
@@ -39,7 +39,7 @@ execute unless score #s bs.ctx matches 1..15 run return run function #bs.log:err
   namespace: "bs.sidebar", \
   path: "#bs.sidebar:create", \
   tag: "create", \
-  message: '[{"text":"The contents must have between 1 and 15 lines (","color":"red"},{"score":{"name":"#s","objective":"bs.ctx"}},{"text":" given)."}]', \
+  message: [{text:"The contents must have between 1 and 15 lines (",color:"red"},{score:{name:"#s",objective:"bs.ctx"}},{text:" given)."}], \
 }
 
 # start the recursion to create each line abort if a line failed

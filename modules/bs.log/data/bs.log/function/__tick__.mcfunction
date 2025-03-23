@@ -14,5 +14,5 @@
 # ------------------------------------------------------------------------------------------------------------
 
 schedule function bs.log:__tick__ 1t
-execute store success score #s bs.ctx run data modify storage bs:data log.time set string block -30000000 0 1605 LastOutput 10 18
+execute store success score #s bs.ctx run data modify storage bs:data log.time set string block -30000000 0 1605 LastOutput.text 1 -2
 execute if score #s bs.ctx matches 1 store result score #log.gametime bs.data run time query gametime
