@@ -486,7 +486,7 @@ data get storage bs:out block.block
 ::::
 ::::{tab-item} Map
 
-```{function} #bs.block:map_type {type:<value>,mapping_registry:<value>}
+`````{function} #bs.block:map_type {type:<value>,mapping_registry:<value>}
 
 Swap related block types while ensuring coherent replacements within the defined mapping registry. A mapping registry is defined as follows:
 
@@ -520,7 +520,7 @@ Bookshelf includes two predefined mapping registries (`bs.shapes` and `bs.colors
   **Return**: Whether a type was found and the replacement occurred.
 
   **Storage `bs:out block`**: {nbt}`compound` The `block`, `state` and `properties` are updated to reflect this change.
-```
+`````
 
 *Example: Replace all oak-related blocks with spruce ones (the function replaces the oak stairs block with a spruce stairs block):*
 
@@ -538,7 +538,7 @@ data get storage bs:out block.block
 ::::
 ::::{tab-item} Mix
 
-```{function} #bs.block:mix_type {type:<value>,mapping_registry:<value>}
+`````{function} #bs.block:mix_type {type:<value>,mapping_registry:<value>}
 
 ```{admonition} Experimental
 :class: warning
@@ -580,7 +580,7 @@ Bookshelf includes two predefined mapping registries (`bs.shapes` and `bs.colors
   **Return**: Whether a type was found and the replacement occurred.
 
   **Storage `bs:out block`**: {nbt}`compound` The `block`, `state` and `properties` are updated to reflect this change.
-```
+`````
 
 *Example: Mix a mossy cobblestone block with bricks resulting in a mossy stone bricks block:*
 

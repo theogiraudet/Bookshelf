@@ -30,7 +30,7 @@ Log an error message. For more information on how it works see the [usage](#usag
 :Inputs:
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **message**: Logged message. Must be a valid JSON text component.
     - {nbt}`string` **namespace**: Namespace of the function.
     - {nbt}`string` **path**: Origin path for the log (current Minecraft function).
@@ -54,7 +54,7 @@ Log a warning message. For more information on how it works see the [usage](#usa
 :Inputs:
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **message**: Logged message. Must be a valid JSON text component.
     - {nbt}`string` **namespace**: Namespace of the function.
     - {nbt}`string` **path**: Origin path for the log (current Minecraft function).

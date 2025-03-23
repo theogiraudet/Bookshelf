@@ -57,33 +57,3 @@ In addition to these few constraints, contributors are free to organize their fi
 :::
 ::::
 :::::
-
-*Example: Basic module structure:*
-
-```
-my_module/
-├── data/
-│   └── my_module/
-│       └── functions/
-│           ├── __help__.mcfunction
-│           ├── __load__.mcfunction
-│           └── __unload__.mcfunction
-└── pack.mcmeta
-```
-
-*Example: Module with submodules:*
-
-```
-my_module/
-├── data/
-│   └── my_module/
-│       └── functions/
-│           ├── __help__.mcfunction
-│           ├── __load__.mcfunction
-│           ├── __unload__.mcfunction
-│           └── submodule/
-│               ├── __help__.mcfunction
-│               ├── __load__.mcfunction
-│               └── __unload__.mcfunction
-└── pack.mcmeta
-```

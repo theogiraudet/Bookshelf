@@ -32,7 +32,7 @@ Clear events registered for the specified interaction entity.
 
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`compound` **with**: Parameters to filter which events to clear. Clear all events if empty.
       - {nbt}`string` **type**: Specify the type of events to clear.
       - {nbt}`int` **id**: Specify the ID of events to clear.
@@ -75,7 +75,7 @@ Each interaction can respond to multiple events.
 
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **run**: Command to execute upon left-click.
     - {nbt}`string` {nbt}`compound` **executor**: Defines the entity on which the command will be executed. Can be either **"source"** for the player who performed the action or **"target"** for the interaction entity itself. A compound can also be used to target other entities:
       - {nbt}`string` **selector**: Specifies entities for the command execution (`execute as <entity>`).
@@ -100,7 +100,7 @@ Each interaction can respond to multiple events.
 
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **run**: Command to execute upon right-click.
     - {nbt}`string` {nbt}`compound` **executor**: Defines the entity on which the command will be executed. Can be either **"source"** for the player who performed the action or **"target"** for the interaction entity itself. A compound can also be used to target other entities:
       - {nbt}`string` **selector**: Specifies entities for the command execution (`execute as <entity>`).
@@ -125,7 +125,7 @@ Each interaction can respond to multiple events.
 
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **run**: Command to execute while hovering over the interaction.
     - {nbt}`string` {nbt}`compound` **executor**: Defines the entity on which the command will be executed. Can be either **"source"** for the player who performed the action or **"target"** for the interaction entity itself. A compound can also be used to target other entities:
       - {nbt}`string` **selector**: Specifies entities for the command execution (`execute as <entity>`).
@@ -150,7 +150,7 @@ Each interaction can respond to multiple events.
 
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **run**: Command to execute when hovering begins.
     - {nbt}`string` {nbt}`compound` **executor**: Defines the entity on which the command will be executed. Can be either **"source"** for the player who performed the action or **"target"** for the interaction entity itself. A compound can also be used to target other entities:
       - {nbt}`string` **selector**: Specifies entities for the command execution (`execute as <entity>`).
@@ -175,7 +175,7 @@ Each interaction can respond to multiple events.
 
   **Function macro**:
   :::{treeview}
-  - {nbt}`compound` **Arguments**:
+  - {nbt}`compound` Arguments
     - {nbt}`string` **run**: Command to execute when hovering ends.
     - {nbt}`string` {nbt}`compound` **executor**: Defines the entity on which the command will be executed. Can be either **"source"** for the player who performed the action or **"target"** for the interaction entity itself. A compound can also be used to target other entities:
       - {nbt}`string` **selector**: Specifies entities for the command execution (`execute as <entity>`).

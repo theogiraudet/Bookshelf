@@ -12,33 +12,3 @@ In this section, you'll find a variety of practical examples and use cases for *
 
 *
 ```
-
-*Example: Basic usage of the ID module:*
-
-```mcfunction
-# Once
-function #bs.id:create
-
-# See the result
-# Your unique ID has been created
-```
-
-*Example: Basic usage of the XP module:*
-
-```mcfunction
-# Once
-function #bs.xp:add_levels {levels:10}
-
-# See the result
-# Your level has increased by 10
-```
-
-*Example: Basic usage of the Paintbrush module:*
-
-```mcfunction
-# Once
-function #bs.paintbrush:create {block:"minecraft:stone"}
-
-# See the result
-# Your paintbrush has been created
-```
