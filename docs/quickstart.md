@@ -24,6 +24,11 @@ The [Bookshelf Manager](https://mcbookshelf.dev) is the official tool for creati
 3. Review automatically added dependencies
 4. Download your custom bundle
 
+```{admonition} Note
+:class: note
+Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source.
+```
+
 ::::
 ::::{tab-item} 🏷️ from release
 
@@ -70,6 +75,11 @@ To include a full bundle:
 pipeline:
   - bookshelf.bundle.dev
   - bookshelf.bundle.<name_of_other_bundle>
+```
+
+```{admonition} Note
+:class: note
+Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source.
 ```
 
 ::::
