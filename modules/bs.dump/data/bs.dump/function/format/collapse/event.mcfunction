@@ -14,5 +14,5 @@
 # ------------------------------------------------------------------------------------------------------------
 
 data modify entity B5-0-0-0-2 text set value [{text:" ",color:"#999999"},{score:{name:"#dump.count",objective:"bs.data"}},{text:" entries "}]
-data modify storage bs:out dump append from entity B5-0-0-0-2 text
-$data modify storage bs:out dump append value ["",{text:"⌊📄⌉",color:"#cccccc",bold:true,click_event:{action:"copy_to_clipboard",value:"$(var)"},hover_event:{action:"show_text",text:"Click to copy"}},"",{text:"⌊⬇⌉",color:"#cccccc",bold:true,click_event:{action:"run_command",command:"/function bs.dump:expand {var:$(var)}"},hover_event:{action:"show_text",text:"Click to expand"}},""]
+data modify storage bs:data dump.out append from entity B5-0-0-0-2 text
+$data modify storage bs:data dump.out append value ["",{text:"⌊📄⌉",color:"#cccccc",bold:true,click_event:{action:"copy_to_clipboard",value:"$(value)"},hover_event:{action:"show_text",value:"Click to copy"}}," ",{text:"⌊⬇⌉",color:"#cccccc",bold:true,click_event:{action:"run_command",command:"/function bs.dump:expand {var:$(value)}"},hover_event:{action:"show_text",value:"Click to expand"}}," "]

@@ -13,10 +13,12 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-data modify entity B5-0-0-0-2 text set value {storage:"bs:data",nbt:"dump[-1].var"}
-function bs.dump:key/unquote with entity B5-0-0-0-2
 
-data modify storage bs:ctx _ set string storage bs:data dump[-1].key 1 2
+# todo rework key to not use bs:ctx, and use less macro
+data modify entity B5-0-0-0-2 text set value {storage:"bs:data",nbt:"dump.stack[-1].var"}
+data modify storage bs:data dump.stack[-1].key set from entity B5-0-0-0-2 text
+
+data modify storage bs:ctx _ set string storage bs:data dump.stack[-1].key 1 2
 execute store result storage bs:ctx x int 1 run scoreboard players set #dump.cursor bs.data 2
 execute store result storage bs:ctx y int 1 run scoreboard players add #dump.cursor bs.data 1
 execute if data storage bs:ctx {_:'"'} run return run function bs.dump:key/parse/quoted/double with storage bs:ctx

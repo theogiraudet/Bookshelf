@@ -13,4 +13,10 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-$data modify storage bs:data dump[-1].key set value $(text)
+data modify storage bs:data dump.escape._ set from storage bs:data dump.value
+data modify entity B5-0-0-0-2 text set value {storage:"bs:data",nbt:"dump.escape"}
+data modify storage bs:data dump.stack[-1].var set string entity B5-0-0-0-2 text 3 -2
+data modify storage bs:data dump.quote set string storage bs:data dump.stack[-1].var 0 1
+data modify storage bs:data dump.value set string storage bs:data dump.stack[-1].var 1
+$data modify entity B5-0-0-0-2 text set value [{storage:"bs:data",nbt:"dump.quote"},{storage:"bs:data",nbt:"dump.value",color:"$(string)"},{storage:"bs:data",nbt:"dump.quote"}]
+data modify storage bs:data dump.out append from entity B5-0-0-0-2 text

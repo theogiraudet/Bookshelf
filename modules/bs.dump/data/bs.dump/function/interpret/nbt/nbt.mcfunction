@@ -13,6 +13,11 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-execute store result storage bs:ctx x int 1 run scoreboard players set #dump.cursor bs.data -2
-execute store result storage bs:ctx y int 1 run scoreboard players set #dump.cursor bs.data -1
-function bs.dump:interpret/path/expand/parse/next with storage bs:ctx
+execute store success score #dump.success bs.data run function bs.dump:interpret/nbt/expand/guard with storage bs:data dump.stack[-1]
+execute if score #dump.success bs.data matches 0 run function bs.dump:interpret/nbt/expand/parse/init with storage bs:ctx
+execute if score #dump.success bs.data matches 1 run data modify storage bs:data dump.stack[-1].expand set value 2
+
+function bs.dump:interpret/nbt/populate with storage bs:data dump.stack[-1]
+return run function bs.dump:format/any
+
+$data get $(var)
