@@ -13,6 +13,9 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-schedule function bs.log:__tick__ 1t
-execute store success score #s bs.ctx run data modify storage bs:data log.time set string block -30000000 0 1605 LastOutput 10 18
-execute if score #s bs.ctx matches 1 store result score #log.gametime bs.data run time query gametime
+execute store success score #dump.success bs.data run function bs.dump:interpret/nbt/expand/default with storage bs:data dump.stack[-1]
+execute if score #dump.success bs.data matches 0 run function bs.dump:interpret/nbt/expand/parse/init
+function bs.dump:interpret/nbt/populate with storage bs:data dump.stack[-1]
+return run function bs.dump:format/any
+
+$data get $(var)

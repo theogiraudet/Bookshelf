@@ -13,4 +13,8 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-$data modify storage bs:data dump[-1].key set value $(text)
+data modify storage bs:data dump.char set string storage bs:data dump.parse -1
+data modify storage bs:data dump.parse set string storage bs:data dump.parse 0 -1
+execute store result storage bs:data dump.cursor int 1 run scoreboard players remove #dump.cursor bs.data 1
+execute if data storage bs:data dump{char:" "} run return run function bs.dump:interpret/nbt/expand/parse/terminate with storage bs:data dump
+function bs.dump:interpret/nbt/expand/parse/next
