@@ -103,7 +103,6 @@ Contributor of the original Gunivers Libs.
 Main developer of the Bookshelf Manager.
 
 :::
-
 :::{grid-item-card} Charles P. (aka Aeris)
 :link: https://github.com/Aeris1One
 :link-type: url
@@ -118,14 +117,13 @@ Main developer of the Bookshelf Manager.
 
 Sysadmin and legal referent.
 
-::::
-
+:::
 :::{grid-item-card} Ultimatech
 :link: https://ultimatech-studios.carrd.co
 :link-type: url
 :margin: 0 3 0 0
 
-```{image} /_imgs/credits/aeris.jpg
+```{image} /_imgs/credits/ultimatech.jpg
 :align: center
 :class: dark_light, bs-rounded
 ```
@@ -134,4 +132,5 @@ Sysadmin and legal referent.
 
 Creator of the Bookshelf logo.
 
+:::
 ::::
