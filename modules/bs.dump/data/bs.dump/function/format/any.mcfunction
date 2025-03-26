@@ -13,10 +13,11 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-execute if data storage bs:data dump.stack[-1].var[] run return run function bs.dump:format/array/array
-execute if data storage bs:data dump.stack[-1].var{} run return run function bs.dump:format/compound/compound
+data modify storage bs:data dump.value set from storage bs:data dump.stack[-1].var
+execute if data storage bs:data dump.value[] run return run function bs.dump:format/array/array
+execute if data storage bs:data dump{value:[]} run return run function bs.dump:format/array/empty
+execute if data storage bs:data dump.value{} run return run function bs.dump:format/compound/compound
 
-data modify storage bs:data dump.value set string storage bs:data dump.stack[-1].var
-execute store success score #dump.success bs.data run data modify storage bs:data dump.value set from storage bs:data dump.stack[-1].var
-execute unless score #dump.success bs.data matches 1 run return run function bs.dump:format/string with storage bs:const dump
-function bs.dump:format/number with storage bs:const dump
+execute store success score #dump.success bs.data run data modify storage bs:data dump.value set string storage bs:data dump.stack[-1].var
+execute if score #dump.success bs.data matches 1 run return run function bs.dump:format/number with storage bs:const dump
+function bs.dump:format/string with storage bs:const dump

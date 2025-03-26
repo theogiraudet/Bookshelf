@@ -17,7 +17,7 @@ data modify entity B5-0-0-0-2 text set value {storage:"bs:data",nbt:"dump.stack[
 data modify storage bs:data dump.escape._ set string entity B5-0-0-0-2 text
 data modify entity B5-0-0-0-2 text set value {storage:"bs:data",nbt:"dump.escape"}
 data modify storage bs:data dump.escape._ set string entity B5-0-0-0-2 text
-data modify storage bs:data dump.quote set string storage bs:data dump.escape._ 3 4
+data modify storage bs:data dump.char set string storage bs:data dump.escape._ 3 4
 data modify storage bs:data dump.value set string storage bs:data dump.escape._ 4 -2
-execute if data storage bs:data dump{quote:"'"} run function bs.dump:format/collapse/escape with storage bs:data dump
+execute if data storage bs:data dump{char:"'"} run function bs.dump:format/collapse/escape with storage bs:data dump
 function bs.dump:format/collapse/event with storage bs:data dump

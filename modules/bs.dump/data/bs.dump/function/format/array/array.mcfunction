@@ -16,7 +16,6 @@
 execute store result score #dump.count bs.data if data storage bs:data dump.stack[-1].var[]
 execute store result score #dump.expand bs.data run data get storage bs:data dump.stack[-1].expand
 
-execute if score #dump.count bs.data matches 0 run return run function bs.dump:format/array/empty
 execute if score #dump.count bs.data matches ..3 \
   unless data storage bs:data dump.stack[-1].var[][] \
   unless data storage bs:data dump.stack[-1].var[{}] \
