@@ -20,7 +20,7 @@ class Runner:
             r"::error title=(?P<title>.*?)::(?P<message>.*)",
         ),
         "test_environment": re.compile(
-            r"Running test environment '(?P<name>bs.*?):default' batch 0 "
+            r"Running test environment 'bs.load:(?P<name>.*?)' batch 0 "
             r"\((?P<count>\d+) tests\)",
         ),
         "test_error": re.compile(
@@ -66,7 +66,7 @@ class Runner:
     def _handle_test_environment(self, match: re.Match, logger: StepLogger) -> None:
         """Handle test environment start logs."""
         logger.debug(
-            "Test '%s' module (%s tests)",
+            "Test 'bs.%s' module (%s tests)",
             match["name"],
             int(match["count"]),
         )
