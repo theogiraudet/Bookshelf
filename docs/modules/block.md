@@ -884,9 +884,11 @@ Emit block particle of the given block.
   - {nbt}`compound` Block particle data
     - {nbt}`string` **type**: Block type (similar to block output).
     - {nbt}`compound` **properties**: Block properties (similar to block output).
-    - {nbt}`string` **delta**: X Y Z coordinates, the motion value of the particle. Similar to the /particle command.
-    - {nbt}`int` **speed**: Speed of the particle. Similar to the /particle command.
-    - {nbt}`int` **count**: Number of particle. Similar to the /particle command.
+    - {nbt}`string` **delta**: X Y Z coordinates, the motion value of the particle (default: `0 0 0`).
+    - {nbt}`int` **speed**: Speed of the particle (default: `1`).
+    - {nbt}`int` **count**: Number of particle (default: `1`).
+    - {nbt}`string` **mode**: Display mode: `normal` or `force` (default: `normal`).
+    - {nbt}`string` **viewers**: Control which player should view this particle (default: `@a`).
   :::
 
 :Outputs:
@@ -920,13 +922,13 @@ Play a block sound of the given block.
   **Storage `bs:in block.play_block_sound`**:
   :::{treeview}
   - {nbt}`compound` Block sound data
-    - {nbt}`string` **sound**: The sound to play. Usually took from the `sounds` property of the virtual block (cf get functions).
-    - {nbt}`string` **source**: The source of the sound. Similar to the /playsound command.
-    - {nbt}`string` **targets**: The targets of the sound. Similar to the /playsound command.
-    - {nbt}`string` **pos**: X Y Z coordinates, the position of the sound. Similar to the /playsound command.
-    - {nbt}`int` **volume**: Volume of the sound. Similar to the /playsound command.
-    - {nbt}`int` **pitch**: Pitch of the sound. Similar to the /playsound command.
-    - {nbt}`int` **min_volume**: Minimum volume of the sound. Similar to the /playsound command.
+    - {nbt}`string` **sound**: Sound to play. Found in the `sounds` property of the virtual block (cf get functions).
+    - {nbt}`string` **source**: Source of the sound (default: `master`).
+    - {nbt}`string` **targets**: The targets of the sound (default: `@s`).
+    - {nbt}`string` **pos**: X Y Z coordinates, the position of the sound (default: `~ ~ ~`).
+    - {nbt}`int` **pitch**: Pitch of the sound (default: `1`).
+    - {nbt}`int` **volume**: Volume of the sound (default: `1`).
+    - {nbt}`int` **min_volume**: Minimum volume of the sound (default: `0`).
   :::
 
 :Outputs:

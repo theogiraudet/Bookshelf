@@ -13,16 +13,18 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-# return the type if there are no properties or NBT
-execute unless data storage bs:out block._ \
-  unless data storage bs:out block.nbt \
-  run return run data modify storage bs:out block.block set from storage bs:out block.type
+execute store success score #s bs.ctx if data storage bs:out block._
+execute store success score #n bs.ctx if data storage bs:out block.nbt
 
-# compile the state string
-execute if data storage bs:out block._ run function bs.block:get/compile/state
+# return the block string: {type}
+execute if score #s bs.ctx matches 0 if score #n bs.ctx matches 0 run return run data modify storage bs:out block.block set from storage bs:out block.type
 
-# generate the full block string representation
+# generate the state string
+execute if score #s bs.ctx matches 1 run function bs.block:get/compile/state
 data modify storage bs:ctx _ set from storage bs:out block
-execute unless data storage bs:ctx _.state run data modify storage bs:ctx _.state set value ""
-execute if data storage bs:out block.nbt{} as B5-0-0-0-2 run return run function bs.block:get/compile/nbt
-return run function bs.block:get/compile/concat/block/state with storage bs:ctx _
+
+# return the block string: {type}{state}
+execute if score #n bs.ctx matches 0 run return run function bs.block:get/compile/concat/block/state with storage bs:ctx _
+
+# return the block string: {type}{state}{nbt}
+execute as B5-0-0-0-2 run return run function bs.block:get/compile/nbt

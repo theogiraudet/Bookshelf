@@ -21,4 +21,5 @@ data modify entity @s text set value {storage:"bs:data",nbt:"block.nbt"}
 data modify storage bs:ctx _.nbt set string entity @s text 13 -3
 
 # generate the full block string representation
+execute unless data storage bs:ctx _.state run data modify storage bs:ctx _.state set value ""
 return run function bs.block:get/compile/concat/block/nbt with storage bs:ctx _
