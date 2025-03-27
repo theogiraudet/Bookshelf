@@ -923,7 +923,7 @@ Play a block sound of the given block.
   :::{treeview}
   - {nbt}`compound` Block sound data
     - {nbt}`string` **sound**: Sound to play. Found in the `sounds` property of the virtual block (cf get functions).
-    - {nbt}`string` **source**: Source of the sound (default: `master`).
+    - {nbt}`string` **source**: Source of the sound: `master`, `music`, `record`, `weather`, `block`, `hostile`, `neutral`, `player`, `ambient`, or `voice` (default: `master`).
     - {nbt}`string` **targets**: The targets of the sound (default: `@s`).
     - {nbt}`string` **pos**: X Y Z coordinates, the position of the sound (default: `~ ~ ~`).
     - {nbt}`int` **pitch**: Pitch of the sound (default: `1`).
