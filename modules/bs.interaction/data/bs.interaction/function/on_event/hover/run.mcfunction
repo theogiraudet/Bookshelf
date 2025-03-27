@@ -13,6 +13,6 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-$data modify storage bs:ctx _ set value $(with)
-execute store result storage bs:ctx y int 1 run scoreboard players get @s bs.interaction.id
-return run function bs.interaction:clear_events/remove_matching with storage bs:ctx
+data modify storage bs:data interaction set value []
+data modify storage bs:data interaction append from entity @s data."bs.interaction".events[{type:"hover"}]
+execute if data storage bs:data interaction[-1] run function bs.interaction:on_event/run with storage bs:data interaction[-1]

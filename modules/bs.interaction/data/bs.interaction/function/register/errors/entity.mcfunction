@@ -13,6 +13,10 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-data modify storage bs:data interaction.run set value []
-$data modify storage bs:data interaction.run append from storage bs:data interaction.$(y)[{type:"hover"}]
-execute if data storage bs:data interaction.run[-1] run function bs.interaction:on_event/run with storage bs:data interaction.run[-1]
+$function #bs.log:error { \
+  namespace: bs.interaction, \
+  path: "#bs.interaction:$(event)", \
+  tag: "$(event)", \
+  message: ["The current entity is not an interaction."], \
+}
+return fail
