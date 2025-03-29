@@ -13,10 +13,10 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 # @dummy
+# @skyaccess true
 
 ## === SETUP ===
 
-fill ~-1 ~-1 ~-1 ~1 ~1 ~1 minecraft:air replace minecraft:barrier
 summon minecraft:interaction ~ ~ ~1.5 {Tags: ["bs.packtest","bs.packtest.1"], width: 1.0, height: 2.0}
 summon minecraft:interaction ~1 ~ ~1.5 {Tags: ["bs.packtest","bs.packtest.2"], width: 1.0, height: 2.0}
 execute as @n[type=minecraft:interaction,tag=bs.packtest,distance=..3,limit=2] run function #bs.interaction:on_hover_enter { run: "tag @s add bs.packtest.target", executor: "target" }
