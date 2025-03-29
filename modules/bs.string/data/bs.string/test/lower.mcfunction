@@ -13,12 +13,6 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-# Test simple case
-data modify storage bs:in string.find set value {str:"hello world",substr:"world"}
-execute store result score #c bs.ctx run function #bs.string:find
-assert score #c bs.ctx matches 6
-
-# Test not found case
-data modify storage bs:in string.find set value {str:"hello minecraft",substr:"world"}
-execute store result score #c bs.ctx run function #bs.string:find
-assert score #c bs.ctx matches -1
+data modify storage bs:in string.lower.str set value "ꞪELLO ＷORLD!"
+function #bs.string:lower
+assert data storage bs:out string{lower:"ɦello ｗorld!"}

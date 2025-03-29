@@ -13,10 +13,6 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-data modify storage bs:in string.lower.str set value "ꞪELLO ＷORLD!"
-function #bs.string:lower
-assert data storage bs:out string{lower:"ɦello ｗorld!"}
-
-data modify storage bs:in string.upper.str set value "ɦello ｗorld!"
-function #bs.string:upper
-assert data storage bs:out string{upper:"ꞪELLO ＷORLD!"}
+data modify storage bs:in string.parse.str set value "42"
+function #bs.string:parse
+assert data storage bs:out string{parse:42}
