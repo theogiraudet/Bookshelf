@@ -13,7 +13,7 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-# Test basic find
+# Test simple case
 data modify storage bs:in string.find merge value {str:"hello world",substr:"world"}
 execute store result score #c bs.ctx run function #bs.string:find
 assert score #c bs.ctx matches 6
