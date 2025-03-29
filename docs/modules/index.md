@@ -44,6 +44,7 @@ raycast
 schedule
 sidebar
 spline
+string
 time
 vector
 view
