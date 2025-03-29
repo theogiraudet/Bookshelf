@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from collections.abc import Callable, Iterable
 from datetime import datetime
 from functools import wraps
@@ -88,7 +89,7 @@ def render_snbt(obj: object) -> str:
     }
 
     def quote_key(k: str) -> str:
-        return f'"{k}"' if ":" in k else k
+        return f'"{k}"' if ":" in k or not re.fullmatch(r"[A-Za-z0-9]", k) else k
 
     for t, handler in handlers.items():
         if isinstance(obj, t):
