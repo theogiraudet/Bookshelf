@@ -4,6 +4,17 @@
 
 Manage and transform strings with a versatile set of manipulation and search functions.
 
+```{image} /_imgs/modules/string.png
+:align: center
+:class: dark_light p-2
+```
+
+```{epigraph}
+"Words are the most powerful drug used by mankind."
+
+-- Rudyard Kipling
+```
+
 ---
 
 ## 🔧 Functions
