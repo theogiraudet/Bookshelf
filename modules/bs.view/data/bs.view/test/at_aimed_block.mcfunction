@@ -13,8 +13,8 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 # @dummy
-# @skyaccess true
 
+fill ~-1 ~ ~-1 ~1 ~1 ~1 minecraft:air
 setblock ~ ~1 ~1 minecraft:sponge
 function #bs.view:at_aimed_block {run:"setblock ~ ~ ~ minecraft:bookshelf",with:{}}
 assert block ~ ~1 ~1 minecraft:bookshelf

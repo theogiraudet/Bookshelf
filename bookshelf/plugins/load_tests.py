@@ -40,6 +40,7 @@ def beet_default(ctx: Context) -> Generator:
             header,
             "function #bs.load:unload",
             f"function #bs.load:module/{module}",
+            "forceload add 0 0",
         ])
 
         ctx.data[f"bs.load:{module}"] = TestEnvironment({

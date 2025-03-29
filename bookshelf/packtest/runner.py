@@ -87,9 +87,9 @@ class Runner:
             return
         for line in iter(process.stdout.readline, ""):
             for pattern, callback in (
-                (self.PATTERNS["any_error"], self._handle_any_error),
                 (self.PATTERNS["test_environment"], self._handle_test_environment),
                 (self.PATTERNS["test_error"], self._handle_test_error),
+                (self.PATTERNS["any_error"], self._handle_any_error),
             ):
                 if match := pattern.search(line):
                     callback(match, logger)
