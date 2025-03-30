@@ -1,6 +1,7 @@
 import json
 import sys
 import time
+from collections.abc import Sequence
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -149,7 +150,7 @@ def link(
 
 
 def create_config(
-    modules: tuple[str, ...] | None = None,
+    modules: Sequence[str] | None = None,
     output: Path | None = None,
     meta: dict | None = None,
     zipped: bool | None = None,
@@ -163,15 +164,15 @@ def create_config(
     ) if zipped else PackConfig()
 
     return ProjectConfig(
-        extend="module.json",
-        broadcast=[MODULES_DIR / mod for mod in modules or MODULES],
+        extend="module.json", # type: ignore[arg-type]
+        broadcast=[MODULES_DIR / mod for mod in modules or MODULES], # type: ignore[arg-type]
         data_pack=pack_config,
         resource_pack=pack_config,
         output=output,
         meta=meta or {},
         require=[
             "bookshelf.plugins.log_build",
-            *require,
+            *(require if require is not None else []),
             "bookshelf.plugins.set_pack_meta",
         ],
     ).resolve(ROOT_DIR)

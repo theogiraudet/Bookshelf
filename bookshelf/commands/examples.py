@@ -22,7 +22,7 @@ def utf8_safe_read_text(
     """Safely read UTF8 files."""
     return original_read_text(self, encoding=encoding, errors=errors)
 
-Path.read_text = utf8_safe_read_text
+Path.read_text = utf8_safe_read_text # type: ignore[method-assign]
 
 
 @click.group()
@@ -82,7 +82,7 @@ def create_config(
 ) -> ProjectConfig:
     """Create a configuration for the project."""
     return ProjectConfig(
-        broadcast=[EXAMPLES_DIR / f"{example}.md" for example in examples or ["*"]],
+        broadcast=[EXAMPLES_DIR / f"{example}.md" for example in examples or ["*"]], # type: ignore[arg-type]
         data_pack=PackConfig(),
         resource_pack=PackConfig(),
         require=["lectern.contrib.require"],

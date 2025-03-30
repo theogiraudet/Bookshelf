@@ -31,16 +31,16 @@ def beet_default(ctx: Context) -> None:
     shapes = get_block_shapes(ctx, MC_VERSIONS[-1])
 
     ctx.data.block_tags \
-        .get(f"{namespace}:can_pass_through") \
+        .get(f"{namespace}:can_pass_through", BlockTag()) \
         .merge(gen_can_pass_through_block_tag(shapes))
     ctx.data.block_tags \
-        .get(f"{namespace}:has_offset") \
+        .get(f"{namespace}:has_offset", BlockTag()) \
         .merge(gen_has_offset_block_tag(shapes))
     ctx.data.block_tags \
-        .get(f"{namespace}:intangible") \
+        .get(f"{namespace}:intangible", BlockTag()) \
         .merge(gen_intangible_block_tag(shapes))
     ctx.data.block_tags \
-        .get(f"{namespace}:is_full_cube") \
+        .get(f"{namespace}:is_full_cube", BlockTag()) \
         .merge(gen_is_full_cube_block_tag(shapes))
 
     with ctx.override(generate_namespace=namespace):

@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 VERSION = "2.2.2"
@@ -22,7 +21,7 @@ MODULES_DIR = ROOT_DIR / "bookshelf/modules" \
     else ROOT_DIR / "modules"
 
 MODULES = sorted([
-    mod
-    for mod in os.listdir(MODULES_DIR)
-    if (MODULES_DIR / mod).is_dir() and mod.startswith("bs.")
+    mod.name
+    for mod in MODULES_DIR.iterdir()
+    if mod.is_dir() and mod.name.startswith("bs.")
 ])

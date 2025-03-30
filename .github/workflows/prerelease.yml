@@ -63,7 +63,7 @@ jobs:
         run: pdm run modules release
       - uses: softprops/action-gh-release@v2
         with:
-          body_path: docs/_templates/changelog/${{ needs.check.outputs.release_tag }}.md
+          body_path: docs/changelog/${{ needs.check.outputs.release_tag }}.md
           name: ${{ needs.check.outputs.release_name }}
           tag_name: dev
           prerelease: true

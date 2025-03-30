@@ -24,15 +24,10 @@ The [Bookshelf Manager](https://mcbookshelf.dev) is the official tool for creati
 3. Review automatically added dependencies
 4. Download your custom bundle
 
-```{admonition} Note
-:class: note
-Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source.
-```
-
 ::::
 ::::{tab-item} 🏷️ from release
 
-Bookshelf releases are available on both [Github](https://github.com/mcbookshelf/bookshelf/releases) and [Modrinth](https://modrinth.com/datapack/bookshelf-library).
+Bookshelf releases are available on both [Github](https://github.com/mcbookshelf/bookshelf/releases) and [Modrinth](https://modrinth.com/organization/mcbookshelf).
 In each release, you will find zipped datapacks.
 
 ### 📥 Installation Options
@@ -42,14 +37,6 @@ In each release, you will find zipped datapacks.
 🧩 **Module by Module:** Alternatively, you can download individual modules as datapacks. Each module zip file contains all the dependencies needed for that module to work. This is a great option if you only need specific functionalities and want to keep your installation lightweight.
 
 After downloading, move the zip file to the datapacks directory of your Minecraft world.
-
-```{admonition} Note
-:class: note
-Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source.
-```
-
-If you like the project, don't hesitate to star it on Github and/or follow it on Modrinth 😉.
-
 ::::
 ::::{tab-item} 🐍 from PyPI
 
@@ -63,25 +50,14 @@ pip install mcbookshelf
 
 Once installed, you can reference Bookshelf modules directly in your beet pipeline configuration.
 
-To include a specific module:
-```yaml
-pipeline:
-  - bookshelf.module.raycast
-  - bookshelf.module.<name_of_other_module>
-```
-
-To include a full bundle:
+To include a complete bundle or a specific module:
 ```yaml
 pipeline:
   - bookshelf.bundle.dev
-  - bookshelf.bundle.<name_of_other_bundle>
+  - bookshelf.bundle.<name_of_bundle>
+  - bookshelf.module.raycast
+  - bookshelf.module.<name_of_module>
 ```
-
-```{admonition} Note
-:class: note
-Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source.
-```
-
 ::::
 ::::{tab-item} 🗃️ from source
 
@@ -111,15 +87,17 @@ pdm install
 pdm run modules build
 ```
 
-After building, you'll find all modules as datapacks in the `build` folder. Each module includes its own dependencies as well as some utility namespaces, allowing you to install only what you need.
-
-```{admonition} Note
-:class: note
-The main datapack contains files in the `minecraft` namespace for autoloading and ticking. While these files aren't strictly required, they handle module autoloading and tick functions.
-```
+After building, you'll find all modules as datapacks in the `build` folder. Each module includes its own dependencies as well as some utility namespaces.
 
 ::::
 :::::
+
+```{admonition} Note
+:class: note
+Please note that while the datapacks from releases are stable, they might not include the very latest features or fixes that are available in the source code. If you want the most up-to-date version of Bookshelf, consider installing from source or downloading a pre-release from Github.
+```
+
+If you like the project, don't hesitate to star it on [Github](https://github.com/mcbookshelf/bookshelf) and/or follow it on [Modrinth](https://modrinth.com/organization/mcbookshelf) 😉.
 
 ---
 

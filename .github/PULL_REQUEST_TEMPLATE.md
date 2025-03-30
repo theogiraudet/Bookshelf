@@ -11,7 +11,7 @@
 
 - [ ] I agree to release my contribution under the [MPL v2 License](http://mozilla.org/MPL/2.0/).
 - [ ] My pull request is associated with an existing issue.
-- [ ] I have updated the [changelog](https://github.com/mcbookshelf/bookshelf/blob/master/docs/CHANGELOG.md) to reflect my contribution.
+- [ ] I have updated the [changelog](https://github.com/mcbookshelf/bookshelf/blob/master/docs/changelog/index.html) to reflect my contribution.
 - [ ] If this pull request adds or modifies a feature:
   - [ ] I have documented my changes in the `/docs` folder.
   - [ ] I have updated the metadata of the feature. See [feature metadata](https://docs.mcbookshelf.dev/en/master/contribute/metadata.html#feature-metadata).
