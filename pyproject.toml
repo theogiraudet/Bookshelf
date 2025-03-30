@@ -11,7 +11,7 @@ dependencies = [
   "beet>=0.109.4",
   "click>=8.1.8",
   "colorama>=0.4.6",
-  "pydantic>=2.10.6",
+  "pydantic>=2.11.1",
   "requests>=2.32.3",
   "lectern>=0.34.0",
 ]
@@ -24,7 +24,7 @@ dev = [
   "ruff>=0.11.2",
   "types-colorama>=0.4.15.20240311",
   "types-docutils>=0.21.0.20241128",
-  "types-requests>=2.32.0.20250306",
+  "types-requests>=2.32.0.20250328",
 ]
 docs = [
   "linkify-it-py>=2.0.3",
@@ -53,11 +53,11 @@ version.getter = "bookshelf:version"
 version.source = "call"
 
 [tool.mypy]
-files = ["bs", "modules"]
+files = ["bookshelf", "modules"]
 explicit_package_bases = true
 namespace_packages = true
 
 [tool.ruff]
-namespace-packages = ["bs"]
+namespace-packages = ["bookshelf"]
 lint.select = ["ALL"]
 lint.ignore = ["D100", "D203", "D213", "INP001", "S603", "UP017"]

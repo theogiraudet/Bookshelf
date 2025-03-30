@@ -137,7 +137,7 @@ def beet_default(ctx: Context) -> None:
 
     with ctx.override(generate_namespace=namespace):
         ctx.data.block_tags \
-            .get(f"{namespace}:has_state") \
+            .get(f"{namespace}:has_state", BlockTag()) \
             .merge(gen_has_state_block_tag(blocks))
 
         ctx.generate("get/get_type", gen_get_type_loot_table(blocks))

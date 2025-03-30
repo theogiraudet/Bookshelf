@@ -22,7 +22,7 @@ def beet_default(ctx: Context) -> None:
             )
 
 
-def gen_bezier_table() -> list[tuple[float, float, float, float]]:
+def gen_bezier_table() -> list[dict[str, float]]:
     """Generate scaled Bernstein coefficients for the Bezier curve."""
     return [{
         "a": (-t**3+3*t**2-3*t+1) * 1000,
@@ -32,7 +32,7 @@ def gen_bezier_table() -> list[tuple[float, float, float, float]]:
     } for t in (i / 1000 for i in range(1000))]
 
 
-def gen_bspline_table() -> list[tuple[float, float, float, float]]:
+def gen_bspline_table() -> list[dict[str, float]]:
     """Generate scaled Bernstein coefficients for the B-Spline curve."""
     return [{
         "a": (-1*t**3+3*t**2-3*t+1) * 1000 / 6,
@@ -42,7 +42,7 @@ def gen_bspline_table() -> list[tuple[float, float, float, float]]:
     } for t in (i / 1000 for i in range(1000))]
 
 
-def gen_catmull_rom_table() -> list[tuple[float, float, float, float]]:
+def gen_catmull_rom_table() -> list[dict[str, float]]:
     """Generate scaled Bernstein coefficients for the Catmull-Rom curve."""
     return [{
         "a": (-1*t**3+2*t**2-1*t) * 1000 / 2,
@@ -52,7 +52,7 @@ def gen_catmull_rom_table() -> list[tuple[float, float, float, float]]:
     } for t in (i / 1000 for i in range(1000))]
 
 
-def gen_hermite_table() -> list[tuple[float, float, float, float]]:
+def gen_hermite_table() -> list[dict[str, float]]:
     """Generate scaled Bernstein coefficients for the Hermite curve."""
     return [{
         "a": (2*t**3-3*t**2+1) * 1000,
