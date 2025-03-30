@@ -89,6 +89,6 @@ examples/index
 contribute/index
 related/index
 faq
-CHANGELOG
+changelog/index
 special-thanks
 ```

@@ -83,7 +83,7 @@ def publish_pack(_: Context, opts: PublishOptions) -> None:
 
 def create_specialized_changelog(module: str) -> str:
     """Create a changelog specific to the given module."""
-    changelog = (DOC_DIR / f"_templates/changelog/v{VERSION}.md").read_text("utf-8")
+    changelog = (DOC_DIR / f"changelog/v{VERSION}.md").read_text("utf-8")
     sections = re.split(r"(###.*?)$", changelog, flags=re.MULTILINE)
     return sections.pop(0) + "".join(
         "".join(sections[i:i+2])
