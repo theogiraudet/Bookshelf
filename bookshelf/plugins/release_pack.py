@@ -68,17 +68,14 @@ def beet_default(ctx: Context) -> Generator:
 @configurable(validator=PublishOptions)
 def publish_pack(_: Context, opts: PublishOptions) -> None:
     """Attempt to publish pack to platforms."""
-    if MODRINTH_TOKEN and (
-        update_modrinth_project(opts)
-        or create_modrinth_project(opts)
-    ):
-        create_modrinth_version(opts)
-
-    if SMITHED_TOKEN and (
-        update_smithed_project(opts)
-        or create_smithed_project(opts)
-    ):
-        create_smithed_version(opts)
+    if MODRINTH_TOKEN:
+        get_step_logger().debug("Uploading module '%s' to modrinth.", opts.module_name)
+        if update_modrinth_project(opts) or create_modrinth_project(opts):
+            create_modrinth_version(opts)
+    if SMITHED_TOKEN:
+        get_step_logger().debug("Uploading module '%s' to smithed.", opts.module_name)
+        if update_smithed_project(opts) or create_smithed_project(opts):
+            create_smithed_version(opts)
 
 
 def create_specialized_changelog(module: str) -> str:
