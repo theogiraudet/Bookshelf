@@ -61,6 +61,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set Up Git User
         uses: fregante/setup-git-user@v2
       - name: Install PDM
@@ -81,6 +83,7 @@ jobs:
           files: release/*.zip
       - name: Update Tag
         run: |
+          git fetch --tags
           git tag -f latest ${{ needs.check.outputs.release_tag }}
           git push -f origin latest
 
