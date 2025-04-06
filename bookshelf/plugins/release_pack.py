@@ -102,10 +102,14 @@ def create_specialized_changelog(module: str) -> str:
 
 def get_modrinth_project_id(slug: str) -> str | None:
     """Attempt to get the Modrinth project id."""
-    response = requests.get(f"{MODRINTH_API}/project/{slug}/check", timeout=5, headers={
-        "Authorization": MODRINTH_TOKEN,
-        "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
-    })
+    response = requests.get(
+        f"{MODRINTH_API}/project/{slug}/check",
+        timeout=10,
+        headers={
+            "Authorization": MODRINTH_TOKEN,
+            "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
+        },
+    )
 
     return response.json()["id"] if response.status_code == requests.codes.ok else None
 
@@ -114,7 +118,7 @@ def create_modrinth_project(opts: PublishOptions) -> bool:
     """Attempt to create a new Modrinth project."""
     return handle_response_error(requests.post(
         f"{MODRINTH_API}/project",
-        timeout=5,
+        timeout=10,
         headers={
             "Authorization": MODRINTH_TOKEN,
             "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
@@ -149,7 +153,7 @@ def update_modrinth_project(opts: PublishOptions) -> bool:
     """Attempt to update a Modrinth project."""
     response = requests.patch(
         f"{MODRINTH_API}/project/{opts.module_slug}",
-        timeout=5,
+        timeout=10,
         headers={
             "Authorization": MODRINTH_TOKEN,
             "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
@@ -171,7 +175,7 @@ def update_modrinth_project(opts: PublishOptions) -> bool:
     return handle_response_error(
         requests.patch(
             f"{MODRINTH_API}/project/{opts.module_slug}/icon",
-            timeout=5,
+            timeout=10,
             headers={
                 "Authorization": MODRINTH_TOKEN,
                 "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
@@ -190,7 +194,7 @@ def create_modrinth_version(opts: PublishOptions) -> bool:
     """Attempt to create a new Modrinth version."""
     if requests.get(
         f"{MODRINTH_API}/project/{opts.module_slug}/version/{VERSION}",
-        timeout=5,
+        timeout=10,
         headers={
             "Authorization": MODRINTH_TOKEN,
             "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
@@ -206,7 +210,7 @@ def create_modrinth_version(opts: PublishOptions) -> bool:
 
     return handle_response_error(requests.post(
         f"{MODRINTH_API}/version",
-        timeout=5,
+        timeout=10,
         headers={
             "Authorization": MODRINTH_TOKEN,
             "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
@@ -230,7 +234,7 @@ def create_smithed_project(opts: PublishOptions) -> bool:
     """Attempt to create a new Smithed project."""
     return handle_response_error(requests.post(
         f"{SMITHED_API}/packs",
-        timeout=5,
+        timeout=10,
         headers={"Content-Type": "application/json"},
         params={"token": SMITHED_TOKEN, "id": opts.module_slug},
         json={"data": {
@@ -260,7 +264,7 @@ def update_smithed_project(opts: PublishOptions) -> bool:
     """Attempt to update a Smithed project."""
     response = requests.patch(
         f"{SMITHED_API}/packs/{opts.module_slug}",
-        timeout=5,
+        timeout=10,
         headers={"Content-Type": "application/json"},
         params={"token": SMITHED_TOKEN},
         json={"data": {
@@ -281,7 +285,7 @@ def create_smithed_version(opts: PublishOptions) -> bool:
     """Attempt to create a new Smithed version."""
     if not handle_response_error(response := requests.get(
         f"{SMITHED_API}/packs/{opts.module_slug}/versions",
-        timeout=5,
+        timeout=10,
     ), "Failed to get versions on Smithed."):
         return False
 
@@ -296,7 +300,7 @@ def create_smithed_version(opts: PublishOptions) -> bool:
 
     return handle_response_error(requests.post(
         f"{SMITHED_API}/packs/{opts.module_slug}/versions",
-        timeout=5,
+        timeout=10,
         headers={"Content-Type": "application/json"},
         params={"token": SMITHED_TOKEN, "version": VERSION},
         json={"data": create_smithed_pack_version(opts)},
@@ -312,7 +316,7 @@ def create_smithed_pack_version(
     for _ in range(retries):
         response = requests.get(
             f"{MODRINTH_API}/project/{opts.module_slug}/version/{VERSION}",
-            timeout=5,
+            timeout=10,
             headers={
                 "Authorization": MODRINTH_TOKEN,
                 "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
