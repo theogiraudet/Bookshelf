@@ -24,11 +24,7 @@ jobs:
       - name: Install Dependencies
         run: pdm install
       - name: Update Metadata
-        if: ${{ !startsWith(github.ref_name, 'release/v') }}
         run: pdm run modules update
-      - name: Update Metadata for Release
-        if: ${{ startsWith(github.ref_name, 'release/v') }}
-        run: pdm run modules update --versions
       - name: Commit and Push Changes
         run: |
           git add .
