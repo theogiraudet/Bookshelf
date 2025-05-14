@@ -21,3 +21,6 @@ scoreboard objectives add bs.ctx dummy [{text:"BS ",color:"dark_gray"},{text:"Co
 scoreboard objectives add bs.out dummy [{text:"BS ",color:"dark_gray"},{text:"Output",color:"aqua"}]
 
 scoreboard players set 125000 bs.const 125000
+scoreboard players set 8 bs.const 8
+
+data modify storage bs.data environment.moon_phases set value ["full_moon", "waning_gibbous", "third_quarter", "waning_crescent", "new_moon", "waxing_crescent", "first_quarter", "waxing_gibbous"]
