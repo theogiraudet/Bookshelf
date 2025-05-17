@@ -18,7 +18,7 @@ from bookshelf.helpers import (
 
 BLOCKS_META = "https://raw.githubusercontent.com/misode/mcmeta/{}-summary/blocks/data.min.json"
 ITEMS_META = "https://raw.githubusercontent.com/misode/mcmeta/{}-registries/item/data.min.json"
-DATA_META = "https://raw.githubusercontent.com/mcbookshelf/mcdata/refs/tags/{}/blocks/data.min.json"
+SOUNDS_META = "https://raw.githubusercontent.com/mcbookshelf/mcdata/refs/tags/{}/blocks/sounds.min.json"
 SPECIAL_ITEMS = {
   "minecraft:acacia_wall_hanging_sign": "minecraft:acacia_hanging_sign",
   "minecraft:acacia_wall_sign": "minecraft:acacia_sign",
@@ -108,7 +108,7 @@ type StatesDict = dict[str, list[str]]
 type StatesTuple = tuple[tuple[str, tuple[str, ...]], ...]
 type Blocks = dict[str, tuple[StatesDict, StrDict]]
 type Items = StrDict
-type Data = dict[str, dict[str, StrDict]]
+type Sounds = dict[str, StrDict]
 
 class Block(BaseModel):
     """Represents a Minecraft block."""
@@ -117,12 +117,6 @@ class Block(BaseModel):
     item: str | None
     group: int
     sounds: dict[str, str]
-    blast_resistance: float
-    hardness: float
-    transparent: bool
-    ignited_by_lava: bool
-    stack_size: int
-    map_color: str
     states: list["State"]
 
 class State(BaseModel):
@@ -187,20 +181,20 @@ def get_blocks(ctx: Context, version: str) -> list[Block]:
             error_msg = f"Expected a list, but got {type(items)}"
             raise TypeError(error_msg)
 
-        data = download_and_parse_json(cache, DATA_META.format(version))
-        if not isinstance(data, dict):
-            error_msg = f"Expected a dict, but got {type(data)}"
+        sounds = download_and_parse_json(cache, SOUNDS_META.format(version))
+        if not isinstance(sounds, dict):
+            error_msg = f"Expected a dict, but got {type(sounds)}"
             raise TypeError(error_msg)
 
         return group_and_optimize_blocks(blocks, {
             with_prefix(item): with_prefix(item)
             for item in items
-        } | SPECIAL_ITEMS, data)
+        } | SPECIAL_ITEMS, sounds)
 
     return [Block.model_validate(data) for data in get_optimized_blocks()]
 
 
-def group_and_optimize_blocks(blocks: Blocks, items: Items, data: Data) -> list:
+def group_and_optimize_blocks(blocks: Blocks, items: Items, sounds: Sounds) -> list:
     """Group blocks and optimizes block state sequences."""
     formatted_blocks: list[dict] = []
     groups: dict[StatesTuple, int] = {(): 0}
@@ -211,13 +205,7 @@ def group_and_optimize_blocks(blocks: Blocks, items: Items, data: Data) -> list:
         insort(formatted_blocks, {
             "type": namespaced_block,
             "item": items.get(namespaced_block),
-            "sounds": data.get(namespaced_block, {}).get("sounds", {}),
-            "blast_resistance": data.get(namespaced_block, {}).get("blast_resistance", 0),
-            "hardness": data.get(namespaced_block, {}).get("hardness", 0),
-            "transparent": data.get(namespaced_block, {}).get("transparent", False),
-            "ignited_by_lava": data.get(namespaced_block, {}).get("ignited_by_lava", False),
-            "stack_size": data.get(namespaced_block, {}).get("stack_size", 64),
-            "map_color": data.get(namespaced_block, {}).get("map_color", "#000000"),
+            "sounds": sounds.get(namespaced_block, {}),
             "group": groups.setdefault(ordered_states, len(groups)),
         }, key=lambda x: x["group"])
 
