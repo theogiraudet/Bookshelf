@@ -16,29 +16,16 @@
 <br/>
 <br/>
 
+# 📚 Bookshelf Suite
 
-# 🕵️‍♂️ What is Bookshelf?
+  The complete Bookshelf package, combining all modules into one unified bundle.
 
-Bookshelf (formerly known as Gunivers Libs) is a modular library datapack designed to simplify complex systems in Minecraft maps. It is ideal for mapmakers seeking easy-to-implement tools.
+> "The whole is greater than the sum of its parts."
+> — Aristotle
 
-<div align="center">
-    <a href="https://docs.mcbookshelf.dev/en/latest/quickstart.html">
-      <picture>
-        <source alt="quickstart" srcset="https://github.com/mcbookshelf/bookshelf/raw/master/docs/_imgs/readme/quickstart.svg" width="140px">
-        <img alt="quickstart" src="https://github.com/mcbookshelf/bookshelf/raw/master/docs/_imgs/readme/quickstart.svg" width="140px">
-      </picture>
-    </a>
-    &nbsp;
-    <a href="https://www.youtube.com/watch?v=E2nKYEvjETk">
-      <picture>
-        <source alt="watch-trailer" srcset="https://github.com/mcbookshelf/bookshelf/raw/master/docs/_imgs/readme/watch-trailer.svg" width="140px">
-        <img alt="watch-trailer" src="https://github.com/mcbookshelf/bookshelf/raw/master/docs/_imgs/readme/watch-trailer.svg" width="140px">
-      </picture>
-    </a>
-</div>
+---
 
-
-# 🌟 Featured Modules
+## ✨ Features
 
 <div align="center">
     <picture>
@@ -76,22 +63,20 @@ Bookshelf (formerly known as Gunivers Libs) is a modular library datapack design
     <p>And much more!</p>
 </div>
 
+📚 [Read the full documentation](https://docs.mcbookshelf.dev/en/latest/index.html)
 
-# 🔥 Motivation
+---
 
-As developers, we understand the value of libraries: they save time, streamline workflows, and eliminate the need to reinvent the wheel. However, we have noticed that many mapmakers in the Minecraft community are less familiar with this concept.
+## 📖 About Bookshelf
 
-That is why we started this project: to provide a variety of reusable tools and encourage mapmakers to embrace the use of libraries.
+This bundle is part of the [Bookshelf Library](https://docs.mcbookshelf.dev/en/latest/index.html), a modular collection of Minecraft datapacks built to simplify complex systems and empower mapmakers.
 
-While we strive to keep our modules as optimized as possible, our top priority is accessibility. We focus on creating features that are easy to use and simple to install, ensuring they are practical for everyone.
+🧩 Find more modules in the [Bookshelf organization](https://modrinth.com/organization/mcbookshelf)
+📦 Get the full suite [Bookshelf Suite](https://modrinth.com/datapack/bookshelf-suite)
 
-> "I have seen further than others because I have stood on the shoulders of giants."
->
-> -- Isaac Newton
+---
 
+## 🤝 Get Involved
 
-# 🤝 Contribution
-
-If you have any questions about the project or want to discuss something, join [our Discord](https://discord.gg/MkXytNjmBt) server.
-
-If you want to contribute, please refer to the [contribution docs](https://docs.mcbookshelf.dev/en/latest/contribute/index.html) for more information.
+💬 Join our [Discord community](https://discord.gg/MkXytNjmBt)
+🛠 Contribute via the [contribution guide](https://docs.mcbookshelf.dev/en/latest/contribute/)
