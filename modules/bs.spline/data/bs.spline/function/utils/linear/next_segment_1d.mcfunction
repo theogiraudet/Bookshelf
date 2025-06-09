@@ -13,10 +13,14 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-execute store success score #dump.success bs.data run function bs.dump:interpret/nbt/expand/default with storage bs:data dump.stack[-1]
-execute if score #dump.success bs.data matches 0 run function bs.dump:interpret/nbt/expand/parse/init
-function bs.dump:interpret/nbt/populate with storage bs:data dump.stack[-1]
-function bs.dump:format/any
-return 1
+data modify storage bs:lambda spline.point set value [0d]
+execute store result score #x bs.ctx run scoreboard players operation #t bs.ctx %= 1000 bs.const
 
-$data get $(var)
+execute store result score #a bs.ctx run data get storage bs:ctx _.points[0][0] 1000
+execute store result score #b bs.ctx run data get storage bs:ctx _.points[1][0] 1000
+
+# Compute Lerp coefficients
+execute store result score #c bs.ctx run scoreboard players set #d bs.ctx 0
+scoreboard players operation #b bs.ctx -= #a bs.ctx
+
+data remove storage bs:ctx _.points[0]
