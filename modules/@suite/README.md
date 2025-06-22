@@ -71,12 +71,12 @@
 
 This bundle is part of the [Bookshelf Library](https://docs.mcbookshelf.dev/en/latest/index.html), a modular collection of Minecraft datapacks built to simplify complex systems and empower mapmakers.
 
-🧩 Find more modules in the [Bookshelf organization](https://modrinth.com/organization/mcbookshelf)
-📦 Get the full suite [Bookshelf Suite](https://modrinth.com/datapack/bookshelf-suite)
+🧩 Find more modules in the [Bookshelf organization](https://modrinth.com/organization/mcbookshelf). \
+📦 Get the full suite [Bookshelf Suite](https://modrinth.com/datapack/bookshelf-suite).
 
 ---
 
 ## 🤝 Get Involved
 
-💬 Join our [Discord community](https://discord.gg/MkXytNjmBt)
-🛠 Contribute via the [contribution guide](https://docs.mcbookshelf.dev/en/latest/contribute/)
+💬 Join our [Discord community](https://discord.gg/MkXytNjmBt). \
+🛠 Contribute via the [contribution guide](https://docs.mcbookshelf.dev/en/latest/contribute/).
