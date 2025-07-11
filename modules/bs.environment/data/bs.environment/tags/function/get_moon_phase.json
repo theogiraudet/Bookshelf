@@ -15,6 +15,6 @@
     }
   },
   "values": [
-    "bs.environment:get/moon/get_moon"
+    "bs.environment:celestial/get_moon_phase"
   ]
 }
