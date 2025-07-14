@@ -13,4 +13,4 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-$data modify storage bs:out environment.get_moon_phase set from storage bs:data environment.moon_phases[$(x)]
+$data modify storage bs:out environment.get_moon_phase set from storage bs:const environment.moon_phases[$(x)]
