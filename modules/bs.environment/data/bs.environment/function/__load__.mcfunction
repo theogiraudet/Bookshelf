@@ -22,6 +22,7 @@ scoreboard objectives add bs.out dummy [{text:"BS ",color:"dark_gray"},{text:"Ou
 
 scoreboard players set -1 bs.const -1
 scoreboard players set 2 bs.const 2
+scoreboard players set 3 bs.const 3
 scoreboard players set 8 bs.const 8
 scoreboard players set 10 bs.const 10
 scoreboard players set 180 bs.const 180
