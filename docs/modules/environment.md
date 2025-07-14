@@ -147,6 +147,7 @@ Get the current moon's angle on the Y axis relative to the horizon, in degrees.
 # Once
 function #bs.environment:get_moon_angle {scale: 1000}
 tellraw @a [{"text":"Moon angle: "},{"nbt":"environment.celestial_angle","storage":"bs:out","interpret":true},{"text":"°"}]
+```
 
 ```{admonition} doDaylightCycle gamerule
 :class: info
