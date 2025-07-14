@@ -336,5 +336,132 @@ Determine if it is currently thundering or not.
 
 ---
 
+### Time Predicates
+
+:::::{tab-set}
+::::{tab-item} Day Time
+
+**`bs.environment:is_day_time`**
+
+Determine if it is currently daytime (between 07:00 and 18:00).
+
+> **Credits**: theogiraudet
+
+::::
+::::{tab-item} Night Time
+
+**`bs.environment:is_night_time`**
+
+Determine if it is currently nighttime (between 19:00 and 06:00).
+
+> **Credits**: theogiraudet
+
+::::
+::::{tab-item} Sunrise
+
+**`bs.environment:is_sunrise_time`**
+
+Determine if it is currently sunrise (between 06:00 and 07:00).
+
+> **Credits**: theogiraudet
+
+::::
+::::{tab-item} Sunset
+
+**`bs.environment:is_sunset_time`**
+
+Determine if it is currently sunset (between 18:00 and 19:00).
+
+> **Credits**: theogiraudet
+
+::::
+:::::
+
+---
+
+### Villager Behavior
+
+:::::{tab-set}
+::::{tab-item} Working
+
+**`bs.environment:are_villagers_working`**
+
+Determine if villagers are currently in their working phase (between 08:00 and 15:00).
+
+> **Credits**: theogiraudet
+
+::::
+::::{tab-item} Socializing
+
+**`bs.environment:are_villagers_socializing`**
+
+Determine if villagers are currently in their socializing phase (between 15:00 and 18:00).
+
+> **Credits**: theogiraudet
+
+::::
+::::{tab-item} Sleeping
+
+**`bs.environment:are_villagers_sleeping`**
+
+Determine if villagers are currently sleeping (between 18:00 and 07:00).
+
+> **Credits**: theogiraudet
+
+::::
+:::::
+
+---
+
+### Can Bed Be Used?
+
+**`bs.environment:can_bed_be_used`**
+
+Determine if beds can currently be used by players (between 18:32 and 05:27 in clear weather, or 18:00 and 05:59 in rainy weather).
+
+> **Credits**: theogiraudet
+
+---
+
+### Can Undeads Burn?
+
+**`bs.environment:can_undeads_burn`**
+
+Determine if undead mobs (zombies, skeletons, etc.) can currently burn in sunlight (between 05:27 and 18:32 in clear weather).
+
+> **Credits**: theogiraudet
+
+---
+
+### Is Monsters Spawn Period?
+
+**`bs.environment:is_monsters_spawn_period`**
+
+Determine if hostile monsters can currently spawn outdoors (between 19:11 and 04:48 in clear weather, or 18:58 and 05:01 in rainy weather).
+
+> **Credits**: theogiraudet
+
+---
+
+### Are Bees Sleeping?
+
+**`bs.environment:are_bees_sleeping`**
+
+Determine if bees are currently sleeping in their nests/hives (between 18:32 and 05:27 in clear weather).
+
+> **Credits**: theogiraudet
+
+---
+
+### Is Creakings Spawn Period?
+
+**`bs.environment:is_creakings_spawn_period`**
+
+Determine if creakings can currently spawn (between 18:32 and 05:27 in clear weather, or 18:00 and 05:59 in rainy weather).
+
+> **Credits**: theogiraudet
+
+---
+
 ```{include} ../_templates/comments.md
 ```
