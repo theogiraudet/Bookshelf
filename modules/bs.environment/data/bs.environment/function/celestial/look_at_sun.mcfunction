@@ -15,6 +15,8 @@
 
 execute store result score #d bs.ctx run time query day
 execute store result score #t bs.ctx run time query daytime
-execute store result storage bs:ctx y float 0.001 run function bs.environment:celestial/get_sun_angle_internal
-execute if score #t bs.ctx matches 6000..18000 run function bs.environment:celestial/rotate_90 with storage bs:ctx
-execute unless score #t bs.ctx matches 6000..18000 run function bs.environment:celestial/rotate_-90 with storage bs:ctx
+# scaling factor
+data modify storage bs:ctx z set value 1000f
+function bs.environment:celestial/get_sun_angle_internal
+execute if score #t bs.ctx matches 6000..18000 run function bs.environment:celestial/rotate_90 with storage bs:out environment
+execute unless score #t bs.ctx matches 6000..18000 run function bs.environment:celestial/rotate_-90 with storage bs:out environment
