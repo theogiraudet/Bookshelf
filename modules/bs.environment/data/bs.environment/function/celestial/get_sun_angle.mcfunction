@@ -54,12 +54,9 @@ scoreboard players operation #e bs.ctx *= 180 bs.const
 
 # Call cosine function with precision constraint
 # Prepare input: convert from scale 10³ to 10², since this is the precision of the Bookshelf's cosine function
-scoreboard players operation $math.cos.x bs.in = #e bs.ctx
-scoreboard players operation $math.cos.x bs.in /= 10 bs.const
-# Call the function
-function #bs.math:cos
-# Get output (already at scale 10³ according to the Bookshelf's cosine documentation)
-scoreboard players operation #e bs.ctx = $math.cos bs.out
+scoreboard players operation #e bs.ctx /= 10 bs.const
+# Call the function, output is already at scale 10³ according to the Bookshelf's cosine documentation
+function bs.environment:celestial/cos
 
 scoreboard players operation #e bs.ctx /= 2 bs.const
 scoreboard players operation #c bs.ctx = #e bs.ctx
