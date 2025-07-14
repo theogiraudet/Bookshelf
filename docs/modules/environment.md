@@ -101,7 +101,8 @@ Get the current sun's angle on the Y axis relative to the horizon, in degrees.
   :::
 
 :Outputs:
-  **Return**: Sun's angle in degrees (scaled by `scale`). \
+  **Return**: Sun's angle in degrees (scaled by `scale`).
+
   **Storage `bs:out environment.celestial_angle`** {nbt}`double`: Sun's angle in degrees.
 ```
 
@@ -135,7 +136,8 @@ Get the current moon's angle on the Y axis relative to the horizon, in degrees.
   :::
 
 :Outputs:
-  **Return**: Moon's angle in degrees (scaled by `scale`). \
+  **Return**: Moon's angle in degrees (scaled by `scale`).
+
   **Storage `bs:out environment.celestial_angle`** {nbt}`double`: Moon's angle in degrees.
 ```
 
@@ -170,7 +172,8 @@ Get the sun's angle on the Y axis relative to the horizon at a specific time.
   :::
 
 :Outputs:
-  **Return**: Sun's angle at the given time, in degrees (scaled by `scale`). \
+  **Return**: Sun's angle at the given time, in degrees (scaled by `scale`).
+
   **Storage `bs:out environment.celestial_angle`** {nbt}`double`: Sun's angle in degrees.
 ```
 
@@ -198,7 +201,8 @@ Get the moon's angle on the Y axis relative to the horizon at a specific time.
   :::
 
 :Outputs:
-  **Return**: Moon's angle at the given time, in degrees (scaled by `scale`). \
+  **Return**: Moon's angle at the given time, in degrees (scaled by `scale`).
+
   **Storage `bs:out environment.celestial_angle`** {nbt}`double`: Moon's angle in degrees.
 ```
 
@@ -266,7 +270,8 @@ function #bs.environment:look_at_moon
 Get the current moon phase as a string identifier.
 
 :Outputs:
-  **Storage `bs:out environment.get_moon_phase`**: {nbt}`string` Moon phase identifier. \
+  **Storage `bs:out environment.get_moon_phase`**: {nbt}`string` Moon phase identifier.
+  
   **Return: Moon phase identifier (see the note below).
 ```
 
