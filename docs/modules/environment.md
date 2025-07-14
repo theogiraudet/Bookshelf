@@ -87,12 +87,11 @@ function #bs.environment:get_temperature {scale:1000}
 ### Celestial Movement
 
 :::::{tab-set}
-::::{tab-item} Get Sun Angle
+::::{tab-item} Get Current Sun Angle
 
-```{function} #bs.environment:get_sun_angle
+```{function} #bs.environment:get_current_sun_angle
 
-Get the sun's angle on the Y axis relative to the horizon, in degrees.
-Also works when the doDaylightCycle is set to false.
+Get the current sun's angle on the Y axis relative to the horizon, in degrees.
 
 :Outputs:
   **Return | Score `$environment.get_sun_angle bs.out`**: Sun's angle in degrees (scaled by 1000).
@@ -106,12 +105,19 @@ function #bs.environment:get_sun_angle
 tellraw @a [{"text":"Sun angle: "},{"score":{"name":"$environment.get_sun_angle","objective":"bs.out"}},{"text":"°"}]
 ```
 
+```{admonition} doDaylightCycle gamerule
+:class: info
+
+This feature also works when the doDaylightCycle gamerule is set to false.
+In such situation, the returned value is the sun's angle at the time of daylight cycle freeze.
+```
+
 ::::
-::::{tab-item} Get Moon Angle
+::::{tab-item} Get Current Moon Angle
 
-```{function} #bs.environment:get_moon_angle
+```{function} #bs.environment:get_current_moon_angle
 
-Get the moon's angle on the Y axis relative to the horizon, in degrees.
+Get the current moon's angle on the Y axis relative to the horizon, in degrees.
 Also works when the doDaylightCycle is set to false.
 
 :Outputs:
@@ -124,6 +130,66 @@ Also works when the doDaylightCycle is set to false.
 # Once
 function #bs.environment:get_moon_angle
 tellraw @a [{"text":"Moon angle: "},{"score":{"name":"$environment.get_moon_angle","objective":"bs.out"}},{"text":"°"}]
+
+```{admonition} doDaylightCycle gamerule
+:class: info
+
+This feature also works when the doDaylightCycle gamerule is set to false.
+In such situation, the returned value is the moon's angle at the time of daylight cycle freeze.
+```
+
+::::
+::::{tab-item} Get Sun Angle
+
+```{function} #bs.environment:get_sun_angle
+
+Get the sun's angle on the Y axis relative to the horizon at a specific time.
+
+:Inputs:
+  **Function macro**:
+  :::{treeview}
+  - {nbt}`compound` Arguments
+    - {nbt}`int` **day**: The day number.
+    - {nbt}`int` **daytime**: The time of day in ticks (0-24000).
+  :::
+
+:Outputs:
+  **Return | Score `$environment.get_sun_angle bs.out`**: Sun's angle in degrees (scaled by 1000).
+```
+
+*Example: Get the sun's angle on day 100 at noon (6000 ticks):*
+
+```mcfunction
+# Once
+function #bs.environment:get_sun_angle {day: 100, daytime: 6000}
+tellraw @a [{"text":"Sun angle at day 100, noon: "},{"score":{"name":"$environment.get_sun_angle","objective":"bs.out"}},{"text":"°"}]
+```
+
+::::
+::::{tab-item} Get Moon Angle
+
+```{function} #bs.environment:get_moon_angle {day:<value>, daytime:<value>}
+
+Get the moon's angle on the Y axis relative to the horizon at a specific time.
+
+:Inputs:
+  **Function macro**:
+  :::{treeview}
+  - {nbt}`compound` Arguments
+    - {nbt}`int` **day**: The day number.
+    - {nbt}`int` **daytime**: The time of day in ticks (0-24000).
+  :::
+
+:Outputs:
+  **Return | Score `$environment.get_moon_angle bs.out`**: Moon's angle in degrees (scaled by 1000).
+```
+
+*Example: Get the moon's angle on day 100 at midnight (18000 ticks):*
+
+```mcfunction
+# Once
+function #bs.environment:get_moon_angle {day:100, daytime:18000}
+tellraw @a [{"text":"Moon angle at day 100, midnight: "},{"score":{"name":"$environment.get_moon_angle","objective":"bs.out"}},{"text":"°"}]
 ```
 
 ::::
@@ -183,6 +249,7 @@ Get the current moon phase as a string identifier.
 
 :Outputs:
   **Storage `bs:out environment.get_moon_phase`**: {nbt}`string` Moon phase identifier.
+  **Return: Moon phase identifier (see the note below).
 ```
 
 *Example: Get the current moon phase:*
@@ -197,14 +264,14 @@ data get storage bs:out environment.get_moon_phase
 :class: note
 
 The function returns one of the following string values:
-- `"full_moon"`
-- `"waning_gibbous"`
-- `"third_quarter"`
-- `"waning_crescent"`
-- `"new_moon"`
-- `"waxing_crescent"`
-- `"first_quarter"`
-- `"waxing_gibbous"`
+- `"full_moon" (0)`
+- `"waning_gibbous" (1)`
+- `"third_quarter" (2)`
+- `"waning_crescent" (3)`
+- `"new_moon" (4)`
+- `"waxing_crescent" (5)`
+- `"first_quarter" (6)`
+- `"waxing_gibbous" (7)`
 
 The moon phase cycle follows Minecraft's 8-day lunar cycle.
 ```

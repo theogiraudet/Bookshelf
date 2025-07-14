@@ -13,9 +13,6 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-# input { day: int, daytime: int }
-
-$scoreboard players set #d bs.ctx $(day)
-$scoreboard players set #t bs.ctx $(daytime)
-
-function bs.environment:celestial/get_sun_angle_internal
+execute store result score $environment.get_moon_angle bs.out run function bs.environment:celestial/get_sun_angle_internal
+scoreboard players operation $environment.get_moon_angle bs.out *= -1 bs.const
+return run scoreboard players get $environment.get_moon_angle bs.out

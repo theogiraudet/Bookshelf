@@ -13,9 +13,9 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-# input { day: int, daytime: int }
+# Get initial time values
+execute store result score #d bs.ctx run time query day
+execute store result score #t bs.ctx run time query daytime
 
-$scoreboard players set #d bs.ctx $(day)
-$scoreboard players set #t bs.ctx $(daytime)
-
-function bs.environment:celestial/get_sun_angle_internal
+# Get the current moon angle
+function bs.environment:celestial/get_moon_angle_internal
