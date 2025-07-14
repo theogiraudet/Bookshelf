@@ -690,7 +690,7 @@
         },
         {
           "id": "#bs.environment:get_moon_angle",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#get-moon-angle",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
           "authors": [
             "theogiraudet"
           ],
@@ -705,7 +705,7 @@
         },
         {
           "id": "#bs.environment:get_moon_phase",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#get-moon",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#get-moon-phase",
           "authors": [
             "theogiraudet"
           ],
@@ -720,7 +720,7 @@
         },
         {
           "id": "#bs.environment:get_sun_angle",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#get-sun-angle",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
           "authors": [
             "theogiraudet"
           ],
@@ -751,7 +751,7 @@
         },
         {
           "id": "#bs.environment:look_at_moon",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#look-at-moon",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
           "authors": [
             "theogiraudet"
           ],
@@ -766,7 +766,7 @@
         },
         {
           "id": "#bs.environment:look_at_sun",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#look-at-sun",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
           "authors": [
             "theogiraudet"
           ],
