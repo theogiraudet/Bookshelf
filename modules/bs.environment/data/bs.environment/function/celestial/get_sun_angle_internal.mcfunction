@@ -77,7 +77,7 @@ scoreboard players operation $environment.get_sun_angle bs.out %= 180000 bs.cons
 # Subtract 90 (at scale 1000)
 scoreboard players operation $environment.get_sun_angle bs.out -= 90000 bs.const
 
-execute unless score #t bs.ctx matches 6000..18000 run scoreboard players operation $environment.get_sun_angle bs.out *= -1 bs.const
+execute unless score #t bs.ctx matches 6000..17999 run scoreboard players operation $environment.get_sun_angle bs.out *= -1 bs.const
 
 # --- Return value in degrees, at scale 1000 ---
 return run scoreboard players get $environment.get_sun_angle bs.out

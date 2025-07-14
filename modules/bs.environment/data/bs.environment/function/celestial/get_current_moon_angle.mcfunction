@@ -18,4 +18,4 @@ execute store result score #d bs.ctx run time query day
 execute store result score #t bs.ctx run time query daytime
 
 # Get the current moon angle
-function bs.environment:celestial/get_moon_angle_internal
+return run function bs.environment:celestial/get_moon_angle_internal

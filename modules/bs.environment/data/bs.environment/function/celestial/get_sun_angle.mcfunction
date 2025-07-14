@@ -18,4 +18,4 @@
 $scoreboard players set #d bs.ctx $(day)
 $scoreboard players set #t bs.ctx $(daytime)
 
-function bs.environment:celestial/get_sun_angle_internal
+return run function bs.environment:celestial/get_sun_angle_internal

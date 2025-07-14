@@ -13,7 +13,8 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-execute store result storage bs:ctx y float 0.001 run function bs.environment:celestial/get_moon_angle
+execute store result score #d bs.ctx run time query day
 execute store result score #t bs.ctx run time query daytime
+execute store result storage bs:ctx y float 0.001 run function bs.environment:celestial/get_moon_angle_internal
 execute if score #t bs.ctx matches 6000..18000 run function bs.environment:celestial/rotate_-90 with storage bs:ctx
 execute unless score #t bs.ctx matches 6000..18000 run function bs.environment:celestial/rotate_90 with storage bs:ctx
