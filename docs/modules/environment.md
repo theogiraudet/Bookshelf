@@ -271,8 +271,8 @@ Get the current moon phase as a string identifier.
 
 :Outputs:
   **Storage `bs:out environment.get_moon_phase`**: {nbt}`string` Moon phase identifier.
-  
-  **Return: Moon phase identifier (see the note below).
+
+  **Return**: Moon phase identifier (see the note below).
 ```
 
 *Example: Get the current moon phase:*
