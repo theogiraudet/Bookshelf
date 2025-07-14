@@ -689,7 +689,7 @@
           }
         },
         {
-          "id": "#bs.environment:get_moon_angle",
+          "id": "#bs.environment:get_current_moon_angle",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
           "authors": [
             "theogiraudet"
@@ -700,6 +700,36 @@
           },
           "updated": {
             "date": "2025/07/11",
+            "minecraft_version": "1.21.7"
+          }
+        },
+        {
+          "id": "#bs.environment:get_current_sun_angle",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2025/07/11",
+            "minecraft_version": "1.21.7"
+          },
+          "updated": {
+            "date": "2025/07/11",
+            "minecraft_version": "1.21.7"
+          }
+        },
+        {
+          "id": "#bs.environment:get_moon_angle",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#celestial-movement",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2025/07/14",
+            "minecraft_version": "1.21.7"
+          },
+          "updated": {
+            "date": "2025/07/14",
             "minecraft_version": "1.21.7"
           }
         },
@@ -725,11 +755,11 @@
             "theogiraudet"
           ],
           "created": {
-            "date": "2025/07/11",
+            "date": "2025/07/14",
             "minecraft_version": "1.21.7"
           },
           "updated": {
-            "date": "2025/07/11",
+            "date": "2025/07/14",
             "minecraft_version": "1.21.7"
           }
         },
