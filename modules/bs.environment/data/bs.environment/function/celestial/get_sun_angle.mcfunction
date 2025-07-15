@@ -13,10 +13,10 @@
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
 
-# input { day: int, daytime: int }
+# input:
+# $environment.celestial_angle.day bs.in
+# $environment.celestial_angle.daytime bs.in
 
-$scoreboard players set #d bs.ctx $(day)
-$scoreboard players set #t bs.ctx $(daytime)
 $data modify storage bs:ctx z set value $(scale)f
 
 return run function bs.environment:celestial/get_sun_angle_internal

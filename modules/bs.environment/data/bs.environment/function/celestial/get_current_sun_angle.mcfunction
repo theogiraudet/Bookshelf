@@ -14,8 +14,8 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Get initial time values
-execute store result score #d bs.ctx run time query day
-execute store result score #t bs.ctx run time query daytime
+execute store result score $environment.celestial_angle.day bs.in run time query day
+execute store result score $environment.celestial_angle.daytime bs.in run time query daytime
 $data modify storage bs:ctx z set value $(scale)f
 
 # Get the current sun angle

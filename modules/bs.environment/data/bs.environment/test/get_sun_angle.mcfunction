@@ -1,0 +1,57 @@
+# ------------------------------------------------------------------------------------------------------------
+# Copyright (c) 2025 Gunivers
+#
+# This file is part of the Bookshelf project (https://github.com/mcbookshelf/bookshelf).
+#
+# This source code is subject to the terms of the Mozilla Public License, v. 2.0.
+# If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Conditions:
+# - You may use this file in compliance with the MPL v2.0
+# - Any modifications must be documented and disclosed under the same license
+#
+# For more details, refer to the MPL v2.0.
+# ------------------------------------------------------------------------------------------------------------
+# @dummy
+
+## === TEST get_sun_angle ===
+
+# Test sun angle at specific time: day 100, sunrise (06:00 - 0 ticks)
+function #bs.environment:get_sun_angle {day:100, daytime:0}
+# At sunrise, sun angle should be around 0° (horizon)
+assert score $environment.get_sun_angle bs.out matches -5000..5000
+
+# Test sun angle at specific time: day 50, morning (07:00 - 1000 ticks)
+function #bs.environment:get_sun_angle {day:50, daytime:1000}
+# At morning, sun angle should be around 15° (rising)
+assert score $environment.get_sun_angle bs.out matches 10000..20000
+
+# Test sun angle at specific time: day 200, noon (12:00 - 6000 ticks)
+function #bs.environment:get_sun_angle {day:200, daytime:6000}
+# At noon, sun angle should be around -90° (zenith)
+assert score $environment.get_sun_angle bs.out matches -95000..-85000
+
+# Test sun angle at specific time: day 75, afternoon (15:00 - 9000 ticks)
+function #bs.environment:get_sun_angle {day:75, daytime:9000}
+# At afternoon, sun angle should be around 15° (setting)
+assert score $environment.get_sun_angle bs.out matches 10000..20000
+
+# Test sun angle at specific time: day 150, sunset (18:00 - 12000 ticks)
+function #bs.environment:get_sun_angle {day:150, daytime:12000}
+# At sunset, sun angle should be around 0° (horizon)
+assert score $environment.get_sun_angle bs.out matches -5000..5000
+
+# Test sun angle at specific time: day 25, night (19:00 - 13000 ticks)
+function #bs.environment:get_sun_angle {day:25, daytime:13000}
+# At night, sun angle should be around -15° (below horizon)
+assert score $environment.get_sun_angle bs.out matches -20000..-10000
+
+# Test sun angle at specific time: day 300, midnight (00:00 - 18000 ticks)
+function #bs.environment:get_sun_angle {day:300, daytime:18000}
+# At midnight, sun angle should be around -90° (below horizon)
+assert score $environment.get_sun_angle bs.out matches -95000..-85000
+
+# Test sun angle at specific time: day 80, early morning (04:18 - 22300 ticks)
+function #bs.environment:get_sun_angle {day:80, daytime:22300}
+# At early morning, sun angle should be around -15° (below horizon)
+assert score $environment.get_sun_angle bs.out matches -20000..-10000 

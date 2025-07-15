@@ -110,7 +110,7 @@ Get the current sun's angle on the Y axis relative to the horizon, in degrees.
 
 ```mcfunction
 # Once
-function #bs.environment:get_sun_angle {scale: 1000}
+function #bs.environment:get_current_sun_angle {scale: 1000}
 tellraw @a [{"text":"Sun angle: "},{"nbt":"environment.celestial_angle","storage":"bs:out","interpret":true},{"text":"°"}]
 ```
 
@@ -145,7 +145,7 @@ Get the current moon's angle on the Y axis relative to the horizon, in degrees.
 
 ```mcfunction
 # Once
-function #bs.environment:get_moon_angle {scale: 1000}
+function #bs.environment:get_current_moon_angle {scale: 1000}
 tellraw @a [{"text":"Moon angle: "},{"nbt":"environment.celestial_angle","storage":"bs:out","interpret":true},{"text":"°"}]
 ```
 
@@ -164,11 +164,13 @@ In such situation, the returned value is the moon's angle at the time of dayligh
 Get the sun's angle on the Y axis relative to the horizon at a specific time.
 
 :Inputs:
+  **Scores `$environment.celestial_angle.day bs.in`**: The day number.
+
+  **Scores `$environment.celestial_angle.daytime bs.in`**: The time of day in ticks (0-24000).
+
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`int` **day**: The day number.
-    - {nbt}`int` **daytime**: The time of day in ticks (0-24000).
     - {nbt}`number` **scale**: A scalar applied to the output.
   :::
 
@@ -182,7 +184,10 @@ Get the sun's angle on the Y axis relative to the horizon at a specific time.
 
 ```mcfunction
 # Once
-function #bs.environment:get_sun_angle {day: 100, daytime: 6000, scale: 1000}
+scoreboard players set $environment.celestial_angle.day bs.in 100
+scoreboard players set $environment.celestial_angle.daytime bs.in 6000
+
+function #bs.environment:get_sun_angle {scale: 1000}
 tellraw @a [{"text":"Sun angle at day 100, noon: "},{"nbt":"environment.celestial_angle","storage":"bs:out","interpret":true},{"text":"°"}]
 ```
 
@@ -193,11 +198,13 @@ tellraw @a [{"text":"Sun angle at day 100, noon: "},{"nbt":"environment.celestia
 Get the moon's angle on the Y axis relative to the horizon at a specific time.
 
 :Inputs:
+  **Scores `$environment.celestial_angle.day bs.in`**: The day number.
+
+  **Scores `$environment.celestial_angle.daytime bs.in`**: The time of day in ticks (0-24000).
+
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`int` **day**: The day number.
-    - {nbt}`int` **daytime**: The time of day in ticks (0-24000).
     - {nbt}`number` **scale**: A scalar applied to the output.
   :::
 
@@ -211,7 +218,10 @@ Get the moon's angle on the Y axis relative to the horizon at a specific time.
 
 ```mcfunction
 # Once
-function #bs.environment:get_moon_angle {day:100, daytime:18000, scale: 1000}
+scoreboard players set $environment.celestial_angle.day bs.in 100
+scoreboard players set $environment.celestial_angle.daytime bs.in 18000
+
+function #bs.environment:get_moon_angle {scale: 1000}
 tellraw @a [{"text":"Moon angle at day 100, midnight: "},{"nbt":"environment.celestial_angle","storage":"bs:out","interpret":true},{"text":"°"}]
 ```
 
@@ -408,7 +418,7 @@ Determine if it is currently sunset (between 18:00 and 19:00).
 :::::{tab-set}
 ::::{tab-item} Working
 
-**`bs.environment:are_villagers_working`**
+**`bs.environment:is_villagers_sleeping_time`**
 
 Determine if villagers are currently in their working phase (between 08:00 and 15:00).
 
@@ -417,7 +427,7 @@ Determine if villagers are currently in their working phase (between 08:00 and 1
 ::::
 ::::{tab-item} Socializing
 
-**`bs.environment:are_villagers_socializing`**
+**`bs.environment:is_villagers_socializing_time`**
 
 Determine if villagers are currently in their socializing phase (between 15:00 and 18:00).
 
@@ -426,7 +436,7 @@ Determine if villagers are currently in their socializing phase (between 15:00 a
 ::::
 ::::{tab-item} Sleeping
 
-**`bs.environment:are_villagers_sleeping`**
+**`bs.environment:is_villagers_sleeping_time`**
 
 Determine if villagers are currently sleeping (between 18:00 and 07:00).
 
@@ -439,7 +449,7 @@ Determine if villagers are currently sleeping (between 18:00 and 07:00).
 
 ### Can Bed Be Used?
 
-**`bs.environment:can_bed_be_used`**
+**`bs.environment:are_beds_usable`**
 
 Determine if beds can currently be used by players (between 18:32 and 05:27 in clear weather, or 18:00 and 05:59 in rainy weather).
 
@@ -449,7 +459,7 @@ Determine if beds can currently be used by players (between 18:32 and 05:27 in c
 
 ### Can Undeads Burn?
 
-**`bs.environment:can_undeads_burn`**
+**`bs.environment:is_undeads_burning_time`**
 
 Determine if undead mobs (zombies, skeletons, etc.) can currently burn in sunlight (between 05:27 and 18:32 in clear weather).
 
@@ -459,7 +469,7 @@ Determine if undead mobs (zombies, skeletons, etc.) can currently burn in sunlig
 
 ### Is Monsters Spawn Period?
 
-**`bs.environment:is_monsters_spawn_period`**
+**`bs.environment:is_monsters_spawning_time`**
 
 Determine if hostile monsters can currently spawn outdoors (between 19:11 and 04:48 in clear weather, or 18:58 and 05:01 in rainy weather).
 
@@ -469,7 +479,7 @@ Determine if hostile monsters can currently spawn outdoors (between 19:11 and 04
 
 ### Are Bees Sleeping?
 
-**`bs.environment:are_bees_sleeping`**
+**`bs.environment:is_bees_sleeping_time`**
 
 Determine if bees are currently sleeping in their nests/hives (between 18:32 and 05:27 in clear weather).
 
@@ -479,7 +489,7 @@ Determine if bees are currently sleeping in their nests/hives (between 18:32 and
 
 ### Is Creakings Spawn Period?
 
-**`bs.environment:is_creakings_spawn_period`**
+**`bs.environment:is_creakings_spawning_time`**
 
 Determine if creakings can currently spawn (between 18:32 and 05:27 in clear weather, or 18:00 and 05:59 in rainy weather).
 

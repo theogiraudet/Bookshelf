@@ -37,18 +37,18 @@
 # - macro scale: scale of the output value
 
 # --- Block 1: Calculate d (scale 1000) ---
-scoreboard players operation #d bs.ctx *= 24000 bs.const
-scoreboard players operation #d bs.ctx += #t bs.ctx
-scoreboard players operation #d bs.ctx *= 1000 bs.const
-scoreboard players operation #d bs.ctx /= 24000 bs.const
-scoreboard players operation #d bs.ctx -= 250 bs.const
+scoreboard players operation $environment.celestial_angle.day bs.in *= 24000 bs.const
+scoreboard players operation $environment.celestial_angle.day bs.in += $environment.celestial_angle.daytime bs.in
+scoreboard players operation $environment.celestial_angle.day bs.in *= 1000 bs.const
+scoreboard players operation $environment.celestial_angle.day bs.in /= 24000 bs.const
+scoreboard players operation $environment.celestial_angle.day bs.in -= 250 bs.const
 
 # --- Block 2: Fractional part of d ---
 # This is equivalent to fractionalPart(d) for a scale of 1000
-scoreboard players operation #d bs.ctx %= 1000 bs.const
+scoreboard players operation $environment.celestial_angle.day bs.in %= 1000 bs.const
 
 # --- Block 3: Calculate e ---
-scoreboard players operation #e bs.ctx = #d bs.ctx
+scoreboard players operation #e bs.ctx = $environment.celestial_angle.day bs.in
 # In the original algorithm, d is multiplied by PI to obtain the angle in radians for the cosine function.
 # The cosine function from Bookshelf expects the angle in degrees, so we need to convert it to degrees instead of radians.
 scoreboard players operation #e bs.ctx *= 180 bs.const
@@ -65,7 +65,7 @@ scoreboard players operation #e bs.ctx = 500 bs.const
 scoreboard players operation #e bs.ctx -= #c bs.ctx
 
 # --- Block 4: Calculate intermediate result ---
-scoreboard players operation $r bs.ctx = #d bs.ctx
+scoreboard players operation $r bs.ctx = $environment.celestial_angle.day bs.in
 scoreboard players operation $r bs.ctx *= 2 bs.const
 scoreboard players operation $r bs.ctx += #e bs.ctx
 scoreboard players operation $r bs.ctx /= 3 bs.const
@@ -78,4 +78,4 @@ scoreboard players operation $r bs.ctx %= 180000 bs.const
 # Subtract 90 (at scale 1000)
 scoreboard players operation $r bs.ctx -= 90000 bs.const
 
-execute unless score #t bs.ctx matches 6000..17999 run scoreboard players operation $r bs.ctx *= -1 bs.const
+execute unless score $environment.celestial_angle.daytime bs.in matches 6000..17999 run scoreboard players operation $r bs.ctx *= -1 bs.const
