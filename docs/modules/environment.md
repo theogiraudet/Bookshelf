@@ -447,7 +447,7 @@ Determine if villagers are currently sleeping (between 18:00 and 07:00).
 
 ---
 
-### Can Bed Be Used?
+### Are Beds Usable?
 
 **`bs.environment:are_beds_usable`**
 
@@ -457,7 +457,7 @@ Determine if beds can currently be used by players (between 18:32 and 05:27 in c
 
 ---
 
-### Can Undeads Burn?
+### Is Undeads Burning Time?
 
 **`bs.environment:is_undeads_burning_time`**
 
@@ -467,7 +467,7 @@ Determine if undead mobs (zombies, skeletons, etc.) can currently burn in sunlig
 
 ---
 
-### Is Monsters Spawn Period?
+### Is Monsters Spawning Time?
 
 **`bs.environment:is_monsters_spawning_time`**
 
@@ -477,7 +477,7 @@ Determine if hostile monsters can currently spawn outdoors (between 19:11 and 04
 
 ---
 
-### Are Bees Sleeping?
+### Is Bees Sleeping Time?
 
 **`bs.environment:is_bees_sleeping_time`**
 
@@ -487,7 +487,7 @@ Determine if bees are currently sleeping in their nests/hives (between 18:32 and
 
 ---
 
-### Is Creakings Spawn Period?
+### Is Creakings Spawning Time?
 
 **`bs.environment:is_creakings_spawning_time`**
 
