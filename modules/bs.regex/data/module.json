@@ -1,0 +1,14 @@
+{
+  "extend": "../config.json",
+  "data_pack": {
+    "name": "bs.regex",
+    "load": "."
+  },
+  "meta": {
+    "name": "Regex",
+    "slug": "bookshelf-regex",
+    "description": "Bookshelf regex module, including regex functions and predicates.",
+    "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/regex.html",
+    "tags": ["runtime"]
+  }
+}
