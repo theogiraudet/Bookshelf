@@ -21,6 +21,7 @@
 #   ]
 # }
 
+# TODO: manque la vérification de l'unicité des noms des états
 
 # Check if the FSM already exists.
 $execute if data storage bs:data fsm.fsm.'$(name)' run function #bs.log:error { \
@@ -31,10 +32,10 @@ $execute if data storage bs:data fsm.fsm.'$(name)' run function #bs.log:error { 
 }
 $execute if data storage bs:data fsm.fsm.'$(name)' run return fail
 
-# Check if the initial state exists.
 $data modify storage bs:ctx _ set value { fsm: $(fsm) }
 
-
-
+# Check if the FSM is valid
+execute store success score #s bs.ctx run function bs.fsm:check/is_valid
+execute if score #s bs.ctx matches 0 run return fail
 
 $data modify storage bs:data fsm.fsm.'$(name)' set value $(fsm)
