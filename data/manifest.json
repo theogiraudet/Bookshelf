@@ -752,6 +752,21 @@
       ]
     },
     {
+      "id": "bs.fsm",
+      "name": "Final State Machine",
+      "slug": "bookshelf-fsm",
+      "description": "Bookshelf final state machine module.",
+      "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html",
+      "kind": "data_pack",
+      "tags": [
+        "runtime"
+      ],
+      "dependencies": [
+        "bs.random"
+      ],
+      "features": []
+    },
+    {
       "id": "bs.generation",
       "name": "Generation",
       "slug": "bookshelf-generation",
