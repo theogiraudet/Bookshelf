@@ -418,7 +418,7 @@ Determine if it is currently sunset (between 18:00 and 19:00).
 :::::{tab-set}
 ::::{tab-item} Working
 
-**`bs.environment:is_villagers_sleeping_time`**
+**`bs.environment:is_villager_sleeping_time`**
 
 Determine if villagers are currently in their working phase (between 08:00 and 15:00).
 
@@ -427,7 +427,7 @@ Determine if villagers are currently in their working phase (between 08:00 and 1
 ::::
 ::::{tab-item} Socializing
 
-**`bs.environment:is_villagers_socializing_time`**
+**`bs.environment:is_villager_socializing_time`**
 
 Determine if villagers are currently in their socializing phase (between 15:00 and 18:00).
 
@@ -436,9 +436,9 @@ Determine if villagers are currently in their socializing phase (between 15:00 a
 ::::
 ::::{tab-item} Sleeping
 
-**`bs.environment:is_villagers_sleeping_time`**
+**`bs.environment:is_villager_sleeping_time`**
 
-Determine if villagers are currently sleeping (between 18:00 and 07:00).
+Determine if villagers are currently in their sleeping phase (between 18:00 and 07:00).
 
 > **Credits**: theogiraudet
 
@@ -457,9 +457,9 @@ Determine if beds can currently be used by players (between 18:32 and 05:27 in c
 
 ---
 
-### Is Undeads Burning Time?
+### Is It Undead Burning Time?
 
-**`bs.environment:is_undeads_burning_time`**
+**`bs.environment:is_undead_burning_time`**
 
 Determine if undead mobs (zombies, skeletons, etc.) can currently burn in sunlight (between 05:27 and 18:32 in clear weather).
 
@@ -467,9 +467,9 @@ Determine if undead mobs (zombies, skeletons, etc.) can currently burn in sunlig
 
 ---
 
-### Is Monsters Spawning Time?
+### Is It Monster Spawning Time?
 
-**`bs.environment:is_monsters_spawning_time`**
+**`bs.environment:is_monster_spawning_time`**
 
 Determine if hostile monsters can currently spawn outdoors (between 19:11 and 04:48 in clear weather, or 18:58 and 05:01 in rainy weather).
 
@@ -477,19 +477,19 @@ Determine if hostile monsters can currently spawn outdoors (between 19:11 and 04
 
 ---
 
-### Is Bees Sleeping Time?
+### Is It Bee Sleeping Time?
 
-**`bs.environment:is_bees_sleeping_time`**
+**`bs.environment:is_bee_sleeping_time`**
 
-Determine if bees are currently sleeping in their nests/hives (between 18:32 and 05:27 in clear weather).
+Determine if bees are currently in their sleeping phase (between 18:32 and 05:27 in clear weather).
 
 > **Credits**: theogiraudet
 
 ---
 
-### Is Creakings Spawning Time?
+### Is It Creaking Spawning Time?
 
-**`bs.environment:is_creakings_spawning_time`**
+**`bs.environment:is_creaking_spawning_time`**
 
 Determine if creakings can currently spawn (between 18:32 and 05:27 in clear weather, or 18:00 and 05:59 in rainy weather).
 

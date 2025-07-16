@@ -1,7 +1,7 @@
 {
   "__bookshelf__": {
     "feature": true,
-    "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#time-predicates",
+    "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/environment.html#villager-behavior",
     "authors": [
       "theogiraudet"
     ],
@@ -16,8 +16,8 @@
   },
   "condition": "minecraft:time_check",
   "value": {
-    "min": 13000,
-    "max": 22999
+    "min": 9000,
+    "max": 11999
   },
   "period": 24000
 }
