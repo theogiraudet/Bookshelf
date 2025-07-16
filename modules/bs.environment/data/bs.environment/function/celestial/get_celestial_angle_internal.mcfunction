@@ -65,17 +65,17 @@ scoreboard players operation #e bs.ctx = 500 bs.const
 scoreboard players operation #e bs.ctx -= #c bs.ctx
 
 # --- Block 4: Calculate intermediate result ---
-scoreboard players operation $r bs.ctx = $environment.celestial_angle.day bs.in
-scoreboard players operation $r bs.ctx *= 2 bs.const
-scoreboard players operation $r bs.ctx += #e bs.ctx
-scoreboard players operation $r bs.ctx /= 3 bs.const
+scoreboard players operation #r bs.ctx = $environment.celestial_angle.day bs.in
+scoreboard players operation #r bs.ctx *= 2 bs.const
+scoreboard players operation #r bs.ctx += #e bs.ctx
+scoreboard players operation #r bs.ctx /= 3 bs.const
 
 # --- Block 5: Final transformations ---
 # Simplify '...× PI × 2 × 180 / PI' to '...× 360'
-scoreboard players operation $r bs.ctx *= 360 bs.const
+scoreboard players operation #r bs.ctx *= 360 bs.const
 # Modulo 180 (at scale 1000)
-scoreboard players operation $r bs.ctx %= 180000 bs.const
+scoreboard players operation #r bs.ctx %= 180000 bs.const
 # Subtract 90 (at scale 1000)
-scoreboard players operation $r bs.ctx -= 90000 bs.const
+scoreboard players operation #r bs.ctx -= 90000 bs.const
 
-execute unless score $environment.celestial_angle.daytime bs.in matches 6000..17999 run scoreboard players operation $r bs.ctx *= -1 bs.const
+execute unless score $environment.celestial_angle.daytime bs.in matches 6000..17999 run scoreboard players operation #r bs.ctx *= -1 bs.const
