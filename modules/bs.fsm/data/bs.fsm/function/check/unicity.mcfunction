@@ -7,6 +7,8 @@
 # Following that, we can compare the size of the list of tags with the size of the list of states
 # If they are different, that means that there are duplicate names
 
+data modify storage bs:ctx _.tags set from entity B5-0-0-0-1 Tags
+
 # We get the size of the list of states names
 execute store result score #a bs.ctx run data get storage bs:ctx _.fsm.states
 # We get the size of the list of tags to substract at the end
@@ -15,8 +17,8 @@ execute store result score #s bs.ctx run data get entity B5-0-0-0-1 Tags
 data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.fsm.states[].name
 # We get the list of tags
 execute store result score #b bs.ctx run data get entity B5-0-0-0-1 Tags
-# We reset the tags to the default value
-data modify entity B5-0-0-0-1 Tags set value ["bs.entity","bs.persistent","smithed.entity","smithed.strict"]
+# We reset the tags to the default tags
+data modify entity B5-0-0-0-1 Tags set from storage bs:ctx _.tags
 
 # As our list of tags has our state names with the default tags, we need to substract the size of the list of tags before our append to the size of the list of states
 scoreboard players operation #b bs.ctx -= #s bs.ctx

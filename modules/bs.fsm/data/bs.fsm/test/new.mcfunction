@@ -156,8 +156,20 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
             name: "start", \
             condition: "manual", \
             to: "nonexistent" \
+          }, \
+          { \
+            name: "start", \
+            condition: "manual", \
+            to: "active" \
           } \
         ] \
+      }, \
+      { \
+        name: "active", \
+        on_tick: "bs.fsm:test/tick", \
+        on_enter: "bs.fsm:test/enter", \
+        on_exit: "bs.fsm:test/exit", \
+        final: true \
       } \
     ] \
   } \
@@ -210,7 +222,14 @@ function #bs.fsm:new { \
         name: "waiting", \
         on_tick: "bs.fsm:test/tick", \
         on_enter: "bs.fsm:test/enter", \
-        on_exit: "bs.fsm:test/exit" \
+        on_exit: "bs.fsm:test/exit", \
+        transitions: [ \
+          { \
+            name: "manual_transition", \
+            condition: "manual", \
+            to: "processing" \
+          } \
+        ] \
       }, \
       { \
         name: "processing", \

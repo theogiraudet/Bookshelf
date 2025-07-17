@@ -6,4 +6,4 @@
 # Set the state has selected
 # If no state, return fail
 
-$return run data modify storage bs:ctx _.states_to_find[{name: $(state)}].selected set value true
+$return run data modify storage bs:ctx _.states_to_find[{name: '$(state)'}].selected set value true

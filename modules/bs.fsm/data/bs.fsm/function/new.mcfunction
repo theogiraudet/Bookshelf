@@ -2,13 +2,13 @@
 # Macro: name: string
 # Macro: fsm: {
 #   initial: state
-#   on_cancel: function
+#   on_cancel?: function
 #   states: [
 #     {
 #       name: string
-#       on_tick: function
-#       on_exit: function
-#       on_enter: function
+#       on_tick?: function
+#       on_exit?: function
+#       on_enter?: function
 #       final?: boolean
 #       transitions?: [
 #         {
@@ -37,3 +37,4 @@ execute store success score #s bs.ctx run function bs.fsm:check/is_valid
 execute if score #s bs.ctx matches 0 run return fail
 
 $data modify storage bs:data fsm.fsm.'$(name)' set value $(fsm)
+data remove storage bs:ctx _
