@@ -447,9 +447,9 @@ Determine if villagers are currently in their sleeping phase (between 18:00 and 
 
 ---
 
-### Are Beds Usable?
+### Is It Bed Time?
 
-**`bs.environment:are_beds_usable`**
+**`bs.environment:is_bed_time`**
 
 Determine if beds can currently be used by players (between 18:32 and 05:27 in clear weather, or 18:00 and 05:59 in rainy weather).
 
