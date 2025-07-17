@@ -764,7 +764,23 @@
       "dependencies": [
         "bs.random"
       ],
-      "features": []
+      "features": [
+        {
+          "id": "#bs.fsm:new",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#new",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2025/07/16",
+            "minecraft_version": "1.21.7"
+          },
+          "updated": {
+            "date": "2025/07/16",
+            "minecraft_version": "1.21.7"
+          }
+        }
+      ]
     },
     {
       "id": "bs.generation",
