@@ -45,7 +45,7 @@ execute if data storage bs:ctx _.not_found_states[0] run function #bs.log:error 
   namespace: "bs.fsm", \
   path: "#bs.fsm:new", \
   tag: "new", \
-  message: [{text: "The states '"}, {nbt: "_.not_found_states", storage: "bs:ctx"},{text: "' cannot reach a final state."}] \
+  message: [{text: "The states '"}, {nbt: "_.not_found_states[].name", storage: "bs:ctx"},{text: "' cannot reach a final state."}] \
 }
 execute if data storage bs:ctx _.not_found_states[0] run return fail
 

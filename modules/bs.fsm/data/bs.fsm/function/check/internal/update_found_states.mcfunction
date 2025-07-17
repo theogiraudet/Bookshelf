@@ -21,6 +21,9 @@ execute if score #s bs.ctx matches 0 run function #bs.log:error { \
 }
 execute if score #s bs.ctx matches 0 run return fail
 
+# display selected state
+tellraw @a [{text: "selected state: "}, {nbt: "_.states_to_find[{selected: true}].name",storage: "bs:ctx"}]
+
 # If we succeed to write the state as found, it means that the state was not found before
 execute store success score #s bs.ctx run data modify storage bs:ctx _.states_to_find[{selected: true}].found set value true
 data remove storage bs:ctx _.states_to_find[{selected: true}].selected

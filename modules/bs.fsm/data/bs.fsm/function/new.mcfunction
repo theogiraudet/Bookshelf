@@ -21,8 +21,6 @@
 #   ]
 # }
 
-# TODO: manque la vérification de l'unicité des noms des états
-
 # Check if the FSM already exists.
 $execute if data storage bs:data fsm.fsm.'$(name)' run function #bs.log:error { \
   namespace: bs.fsm, \

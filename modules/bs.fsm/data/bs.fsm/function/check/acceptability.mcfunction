@@ -10,13 +10,13 @@
 
 data modify storage bs:ctx _.finals set value []
 data modify storage bs:ctx _.finals append from storage bs:ctx _.fsm.states[{final: true}]
-execute if data storage bs:ctx _.finals[0] run function #bs.log:error { \
+execute unless data storage bs:ctx _.finals[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
   path: "#bs.fsm:new", \
   tag: "new", \
   message: [{text: "The FSM has no final state."}] \
 }
-execute if data storage bs:ctx _.finals[0] run return fail
+execute unless data storage bs:ctx _.finals[0] run return fail
 
 execute if data storage bs:ctx _.finals[].transitions[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
