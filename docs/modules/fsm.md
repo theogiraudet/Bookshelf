@@ -142,9 +142,12 @@ function #bs.fsm:new { \
 
 ### Start
 
+```{tab-set}
+```{tab-item} Global Instance
+
 ```{function} #bs.fsm:start
 
-Start a new instance of a Finite State Machine.
+Start a new global instance of a Finite State Machine.
 
 :Inputs:
   **Function macro**:
@@ -152,27 +155,62 @@ Start a new instance of a Finite State Machine.
   - {nbt}`compound` Arguments
     - {nbt}`string` **fsm_name**: Name of the FSM to instantiate (must exist).
     - {nbt}`string` **instance_name**: Unique identifier for this FSM instance.
-    - {nbt}`string` **bind**: Binding type for the instance.
-      - **"global"**: Instance is bound globally and accessible from anywhere.
-      - **"local"**: Instance is bound to the current execution context.
   :::
 
 :Outputs:
   **Return**: Success (1) if instance was started successfully, failure (0) otherwise.
 
-  **State**: The FSM instance is created and begins execution in its initial state.
+  **State**: The FSM instance is created globally and begins execution in its initial state.
 ```
 
 *Example: Start a door FSM instance:*
 
 ```mcfunction
 # Start a door FSM instance
-function #bs.fsm:start { fsm_name: "door_fsm", instance_name: "main_door", bind: "global" }
+function #bs.fsm:start { fsm_name: "door_fsm", instance_name: "main_door" }
 
-# The door FSM is now running and will execute its initial state
+# The door FSM is now running globally and will execute its initial state
 ```
 
 > **Credits**: theogiraudet
+
+```
+
+```{tab-item} Local Instance
+
+```{function} #bs.fsm:start_as
+
+Start new local instances of a Finite State Machine bound to the executing entities.
+
+:Inputs:
+  **Execution `as <entities>`**: Entities to bind. The entities must not be players.
+
+  **Function macro**:
+  :::{treeview}
+  - {nbt}`compound` Arguments
+    - {nbt}`string` **fsm_name**: Name of the FSM to instantiate (must exist).
+    - {nbt}`string` **instance_name**: Unique identifier for this FSM instance.
+  :::
+
+:Outputs:
+  **Return**: Success (1) if instance was started successfully, failure (0) otherwise.
+
+  **State**: The FSM instances are created locally for the executing entities and begins execution in their initial state.
+```
+
+*Example: Start a door FSM instance for an entity:*
+
+```mcfunction
+# Start a door FSM instance bound to the executing entity
+execute as @n[type=zombie] run function #bs.fsm:start_as { fsm_name: "door_fsm", instance_name: "entity_door" }
+
+# The door FSM is now running locally for this zombie and will execute its initial state
+```
+
+> **Credits**: theogiraudet
+
+```
+```
 
 ---
 

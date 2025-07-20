@@ -45,14 +45,13 @@ execute store success score #s bs.ctx run data modify storage bs:ctx _.condition
 execute if score #s bs.ctx matches 0 run return 1
 
 # If the condition is not "manual", we need to check if the condition is an object
-execute store success score #s bs.ctx run data modify storage bs:ctx _.condition merge value {test: true}
-execute if score #s bs.ctx matches 0 run function #bs.log:error { \
+execute unless data storage bs:ctx _.states[0].transitions[0].condition.type run function #bs.log:error { \
   namespace: "bs.fsm", \
   path: "#bs.fsm:new", \
   tag: "new", \
   message: [{text: "A transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' has an invalid condition."}] \
 }
-execute if score #s bs.ctx matches 0 run return fail
+execute unless data storage bs:ctx _.states[0].transitions[0].condition.type run return fail
 
 # Now, we need to check the validity of the condition object, notably the wait
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.wait run function #bs.log:error { \
@@ -67,10 +66,10 @@ execute unless data storage bs:ctx _.states[0].transitions[0].condition.wait run
 data modify storage bs:ctx _.condition set value []
 data modify storage bs:ctx _.condition append from storage bs:ctx _.states[0].transitions[0].condition
 
-execute store success score #s bs.ctx unless data storage bs:ctx _.condition[{type: "predicate"}] \
-unless data storage bs:ctx _.condition[{type: "function"}] \
-unless data storage bs:ctx _.condition[{type: "hook"}] \
-unless data storage bs:ctx _.condition[{type: "delay"}]
+execute store success score #s bs.ctx unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "predicate"}] \
+unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "function"}] \
+unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "hook"}] \
+unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "delay"}]
 
 execute if score #s bs.ctx matches 0 run function #bs.log:error { \
   namespace: "bs.fsm", \

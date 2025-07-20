@@ -2,13 +2,13 @@
 # Macro: name: string
 # Macro: fsm: {
 #   initial: state
-#   on_cancel?: function
+#   on_cancel?: command
 #   states: [
 #     {
 #       name: string
-#       on_tick?: function
-#       on_exit?: function
-#       on_enter?: function
+#       on_tick?: command
+#       on_exit?: command
+#       on_enter?: command
 #       final?: boolean
 #       transitions?: [
 #         {
