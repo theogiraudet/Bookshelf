@@ -1,1 +1,1 @@
-$$(command)
+$return run $(command)

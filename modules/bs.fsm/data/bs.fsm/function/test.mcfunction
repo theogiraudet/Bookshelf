@@ -1,5 +1,8 @@
 execute unless entity B5-0-0-0-9 run summon marker ~ ~ ~ {Tags:["bs.entity", "bs.fsm.test"], UUID:[I;181,0,0,9]}
 
+data modify entity B5-0-0-0-9 data set value {}
+data modify storage bs:data fsm set value { fsm: {}, running_instances: {}, listened_transitions: [], ticks: [] }
+
 # Create a traffic light FSM
 function bs.fsm:new { \
   name: "traffic_light", \
@@ -13,7 +16,7 @@ function bs.fsm:new { \
         transitions: [ \
           { \
             name: "to_green", \
-            condition: { type: "delay", wait: "20s" }, \
+            condition: { type: "delay", wait: 100 }, \
             to: "green" \
           }, \
           { \
@@ -25,12 +28,12 @@ function bs.fsm:new { \
       }, \
       { \
         name: "green", \
-        on_enter: "tellraw @a [{\"text\":\"⬤\",\"color\":\"light_green\"},{\"text\":\" Green light - Go!\"}]", \
+        on_enter: "tellraw @a [{\"text\":\"⬤\",\"color\":\"green\"},{\"text\":\" Green light - Go!\"}]", \
         on_tick: "particle minecraft:block{block_state:{Name:\"green_concrete\"}} ~ ~2 ~ 0.5 0.5 0.5 0 10", \
         transitions: [ \
           { \
             name: "to_orange", \
-            condition: { type: "delay", wait: "30s" }, \
+            condition: { type: "delay", wait: 100 }, \
             to: "orange" \
           }, \
           { \
@@ -44,10 +47,11 @@ function bs.fsm:new { \
         name: "orange", \
         on_enter: "tellraw @a [{\"text\":\"⬤\",\"color\":\"gold\"},{\"text\":\" Orange light - Prepare to stop!\"}]", \
         on_tick: "particle minecraft:block{block_state:{Name:\"yellow_concrete\"}} ~ ~2 ~ 0.5 0.5 0.5 0 10", \
+        on_exit: "tellraw @a [{\"text\":\" Reset cycle…\"}]", \
         transitions: [ \
           { \
             name: "to_red", \
-            condition: { type: "delay", wait: "5s" }, \
+            condition: { type: "delay", wait: 100 }, \
             to: "red" \
           }, \
           { \

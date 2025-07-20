@@ -67,7 +67,7 @@ data modify storage bs:ctx _.condition set value []
 data modify storage bs:ctx _.condition append from storage bs:ctx _.states[0].transitions[0].condition
 
 execute store success score #s bs.ctx unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "predicate"}] \
-unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "function"}] \
+unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "command"}] \
 unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "hook"}] \
 unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "delay"}]
 

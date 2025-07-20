@@ -203,7 +203,7 @@ function #bs.fsm:new { \
           }, \
           { \
             name: "function_transition", \
-            condition: { type: "function", wait: "bs.fsm:test/function" }, \
+            condition: { type: "command", wait: "bs.fsm:test/function" }, \
             to: "processing" \
           }, \
           { \

@@ -50,16 +50,16 @@ Create a new Finite State Machine (FSM) with the specified configuration.
                 - **"manual"**: Manual transition triggered by external call.
                 - {nbt}`compound` **predicate**: Predicate-based transition.
                   - {nbt}`string` **type**: Must be "predicate".
-                  - {nbt}`string` **wait**: Predicate function to evaluate.
-                - {nbt}`compound` **function**: Function-based transition.
-                  - {nbt}`string` **type**: Must be "function".
-                  - {nbt}`string` **wait**: Function to call for evaluation.
+                  - {nbt}`string` **wait**: Predicate to check to trigger the transition.
+                - {nbt}`compound` **command**: Command-based transition.
+                  - {nbt}`string` **type**: Must be "command".
+                  - {nbt}`string` **wait**: Command to check to trigger the transition.
                 - {nbt}`compound` **hook**: Hook-based transition.
                   - {nbt}`string` **type**: Must be "hook".
                   - {nbt}`string` **wait**: Hook function to evaluate.
                 - {nbt}`compound` **delay**: Time-based transition.
                   - {nbt}`string` **type**: Must be "delay".
-                  - {nbt}`string` **wait**: Time delay (e.g., "20t" for 1 second).
+                  - {nbt}`string` **wait**: Time delay in ticks.
               - {nbt}`string` **to**: Name of the target state (must exist in states array).
   :::
 

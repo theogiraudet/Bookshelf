@@ -13,7 +13,7 @@
 #       transitions?: [
 #         {
 #           name?: string
-#           condition: 'manual' | { type: 'predicate', wait: string } | { type: 'function', wait: string } | { type: 'hook', wait: string } | { type: 'delay', wait: string }
+#           condition: 'manual' | { type: 'predicate', wait: string } | { type: 'command', wait: string } | { type: 'hook', wait: string } | { type: 'delay', wait: string }
 #           to: state
 #         }
 #       ]

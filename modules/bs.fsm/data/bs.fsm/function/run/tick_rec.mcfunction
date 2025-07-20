@@ -11,11 +11,11 @@ execute if score #c bs.ctx matches ..0 run return 1
 scoreboard players remove #c bs.ctx 1
 
 # If the command is global, we run it
-execute unless data storage bs:data fsm.ticks[0].context run function bs.fsm:run/run_command_global with storage bs:data fsm.ticks[0]
+execute if data storage bs:data fsm.ticks[0].global run function bs.fsm:run/run_command_global with storage bs:data fsm.ticks[0]
 
 scoreboard players set #s bs.ctx -1
 # Else, we first check if the entity exists, otherwise we remove the command from the tick list
-execute if data storage bs:data fsm.ticks[0].context store success score #s bs.ctx run function bs.fsm:run/check_entity with storage bs:data fsm.ticks[0]
+execute unless data storage bs:data fsm.ticks[0].global store success score #s bs.ctx run function bs.fsm:run/check_entity with storage bs:data fsm.ticks[0]
 execute if score #s bs.ctx matches 0 run data remove storage bs:data fsm.ticks[0]
 
 # We run the command only if the entity exists

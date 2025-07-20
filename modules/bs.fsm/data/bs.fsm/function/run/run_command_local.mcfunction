@@ -1,1 +1,1 @@
-$execute as $(context) at $(context) run $(command)
+$return run execute as $(context) at $(context) run $(command)
