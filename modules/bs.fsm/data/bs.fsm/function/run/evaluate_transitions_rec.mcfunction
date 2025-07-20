@@ -16,14 +16,16 @@ execute unless data storage bs:data fsm.listened_transitions[0].global \
 execute if score #s bs.ctx matches 0 run data remove storage bs:data fsm.listened_transitions[0]
 execute if score #s bs.ctx matches 0 run return run function bs.fsm:run/evaluate_transitions_rec
 
+scoreboard players set #s bs.ctx 0
+
 # Delayed transition
 execute store success score #s bs.ctx if data storage bs:data fsm.listened_transitions[0].condition{type: "delay"} run function bs.fsm:run/evaluate_delay_transition
 
-# Function transition
-execute if score #s bs.ctx matches 0 store success score #s bs.ctx if data storage bs:data fsm.listened_transitions[0].condition{type: "command"} run function bs.fsm:run/evaluate_command_transition
+# Command transition
+execute if score #s bs.ctx matches 0 if data storage bs:data fsm.listened_transitions[0].condition{type: "command"} store success score #s bs.ctx run function bs.fsm:run/evaluate_command_transition
 
 # Predicate transitions
-execute if score #s bs.ctx matches 0 store success score #s bs.ctx if data storage bs:data fsm.listened_transitions[0].condition{type: "predicate"} run function bs.fsm:run/evaluate_predicate_transition
+execute if score #s bs.ctx matches 0 if data storage bs:data fsm.listened_transitions[0].condition{type: "predicate"} store success score #s bs.ctx run function bs.fsm:run/evaluate_predicate_transition
 
 # If we didn't evaluated the current transition, we set the transition as checked and we shift the list
 execute if score #s bs.ctx matches 0 run data modify storage bs:data fsm.listened_transitions[0].checked set value true
