@@ -47,17 +47,19 @@ Create a new Finite State Machine (FSM) with the specified configuration.
             - {nbt}`compound` Transition
               - {nbt}`string` **name**: Name of the transition (optional).
               - {nbt}`string` {nbt}`compound` **condition**: Transition condition. One of the following:
-                - **"manual"**: Manual transition triggered by external call.
-                - {nbt}`compound` **predicate**: Predicate-based transition.
+                - {nbt}`compound` Predicate-based transition.
+                  - {nbt}`string` **type**: Must be "manual".
+                  - {nbt}`string` **wait**: A signal sent manually to the FSM using the `#bs.fsm:emit` feature.
+                - {nbt}`compound` Predicate-based transition.
                   - {nbt}`string` **type**: Must be "predicate".
                   - {nbt}`string` **wait**: Predicate to check to trigger the transition.
-                - {nbt}`compound` **command**: Command-based transition.
+                - {nbt}`compound` Command-based transition.
                   - {nbt}`string` **type**: Must be "command".
                   - {nbt}`string` **wait**: Command to check to trigger the transition.
-                - {nbt}`compound` **hook**: Hook-based transition.
+                - {nbt}`compound` Hook-based transition.
                   - {nbt}`string` **type**: Must be "hook".
                   - {nbt}`string` **wait**: Hook function to evaluate.
-                - {nbt}`compound` **delay**: Time-based transition.
+                - {nbt}`compound` Time-based transition.
                   - {nbt}`string` **type**: Must be "delay".
                   - {nbt}`string` **wait**: Time delay in ticks.
               - {nbt}`string` **to**: Name of the target state (must exist in states array).
@@ -181,6 +183,31 @@ execute as @n[type=zombie] run function #bs.fsm:start_as { fsm_name: "light_fsm"
 
 ::::
 :::::
+
+---
+
+### Emit
+
+```{function} #bs.fsm:emit
+
+Emit a signal to a running FSM instance.
+This signal may or may not trigger a transition, according to the current state of the FSM instance.
+
+:Inputs:
+  **Function macro**:
+  :::{treeview}
+  - {nbt}`compound` Arguments
+    - {nbt}`string` **instance_name**: Name of the FSM instance to emit the signal to.
+    - {nbt}`string` **signal**: Name of the signal to emit.
+  :::
+```
+
+*Example: Emit a signal to a FSM instance:*
+
+```mcfunction
+# Emit a signal to a global FSM instance
+function #bs.fsm:emit { instance_name: "main_light", signal: "turn_on" }
+```
 
 ---
 
