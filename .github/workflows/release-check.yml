@@ -28,6 +28,8 @@ jobs:
       - name: Check Versions
         id: check
         run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE/src:$PYTHONPATH"
+
           VERSION=$(python -c "from bookshelf import version; print(version())")
           MC_VERSIONS=$(python -c "from bookshelf import mc_versions; print(mc_versions())")
 
