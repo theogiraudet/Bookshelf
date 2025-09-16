@@ -1146,6 +1146,7 @@
       "features": [
         {
           "id": "#bs.fsm:new",
+          "kind": "function_tag",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#new",
           "authors": [
             "theogiraudet"
@@ -1161,6 +1162,7 @@
         },
         {
           "id": "#bs.fsm:start",
+          "kind": "function_tag",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#start",
           "authors": [
             "theogiraudet"
@@ -1176,6 +1178,7 @@
         },
         {
           "id": "#bs.fsm:start_as",
+          "kind": "function_tag",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#start-as",
           "authors": [
             "theogiraudet"
