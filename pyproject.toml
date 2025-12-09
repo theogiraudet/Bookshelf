@@ -30,7 +30,7 @@ examples = "bookshelf.commands.examples:examples"
 [dependency-groups]
 dev = [
   "click>=8.3.1",
-  "httpx>=0.28.1",
+  "httpx[http2]>=0.28.1",
   "lectern>=0.34.0",
   "platformdirs>=4.5.1",
   "rich>=14.2.0",
