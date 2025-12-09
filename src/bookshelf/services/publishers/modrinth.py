@@ -27,7 +27,10 @@ async def publish(packs: list[PublishSpec]) -> None:
         "Authorization": MODRINTH_TOKEN,
         "User-Agent": "mcbookshelf/bookshelf/release (contact@gunivers.net)",
     }) as client:
-        response = await client.get("projects", params={"ids":[p.slug for p in packs]})
+        response = await client.get(
+            "projects",
+            params={"ids": json.dumps([p.slug for p in packs])},
+        )
         projects = {p["slug"]: p["id"] for p in response.raise_for_status().json()}
 
         tasks = []
