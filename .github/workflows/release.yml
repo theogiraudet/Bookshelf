@@ -5,6 +5,7 @@ on:
     types: [closed]
     branches: [master]
     paths: [data/versions.json]
+  workflow_dispatch:
 
 permissions:
   contents: write
