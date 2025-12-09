@@ -64,13 +64,12 @@ async def _update_icon(
     pack: PublishSpec,
     project_id: str,
 ) -> None:
-    with pack.icon.open("rb") as file:
-        handle_response(await client.patch(
-            f"project/{project_id}/icon",
-            headers={"Content-Type": "image/png"},
-            params={"ext": "png"},
-            data=file, # type: ignore[arg-type]
-        ), "update icon", pack.slug, "Modrinth")
+    handle_response(await client.patch(
+        f"project/{project_id}/icon",
+        headers={"Content-Type": "image/png"},
+        params={"ext": "png"},
+        data=pack.icon.read_bytes(),
+    ), "update icon", pack.slug, "Modrinth")
 
 
 async def _create_version(
