@@ -25,12 +25,15 @@ $data modify storage bs:ctx _.state set from entity $(context) data.bs:fsm.runni
 $data modify storage bs:ctx _.context set value "$(context)"
 
 # We prepare the transitions to be listened
+# _.tmp is shared scratch: reset it so a state without transitions listens to nothing
+data modify storage bs:ctx _.tmp set value []
 data modify storage bs:ctx _.tmp set from storage bs:ctx _.state.transitions
 # We remove the manual transitions since we do not need to listen to them
 data remove storage bs:ctx _.tmp[{condition: "manual"}]
-data modify storage bs:ctx _.tmp[].source set from storage bs:ctx _.state.name
-data modify storage bs:ctx _.tmp[].context set from storage bs:ctx _.context
-$data modify storage bs:ctx _.tmp[].instance_name set value "$(instance_name)"
+# A [] target appends an element to an empty list, so we only inject when one is left
+execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].source set from storage bs:ctx _.state.name
+execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].context set from storage bs:ctx _.context
+$execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].instance_name set value "$(instance_name)"
 
 # We check the listened_transitions list size
 execute store result score #s bs.ctx run data get storage bs:data fsm.listened_transitions

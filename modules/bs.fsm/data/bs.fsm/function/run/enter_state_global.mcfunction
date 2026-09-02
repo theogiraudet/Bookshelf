@@ -23,13 +23,16 @@ $data modify storage bs:data fsm.running_instances.'$(instance_name)'.states[{na
 $data modify storage bs:ctx _.state set from storage bs:data fsm.running_instances.'$(instance_name)'.states[{name: "$(state_name)"}]
 
 # We prepare the transitions to be listened
+# _.tmp is shared scratch: reset it so a state without transitions listens to nothing
+data modify storage bs:ctx _.tmp set value []
 data modify storage bs:ctx _.tmp set from storage bs:ctx _.state.transitions
 # We remove the manual transitions since we do not need to listen to them
 data remove storage bs:ctx _.tmp[{condition: "manual"}]
-data modify storage bs:ctx _.tmp[].source set from storage bs:ctx _.state.name
-data modify storage bs:ctx _.tmp[].context set value "global"
-data modify storage bs:ctx _.tmp[].global set value true
-$data modify storage bs:ctx _.tmp[].instance_name set value "$(instance_name)"
+# A [] target appends an element to an empty list, so we only inject when one is left
+execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].source set from storage bs:ctx _.state.name
+execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].context set value "global"
+execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].global set value true
+$execute if data storage bs:ctx _.tmp[0] run data modify storage bs:ctx _.tmp[].instance_name set value "$(instance_name)"
 
 # We check the listened_transitions list size
 execute store result score #s bs.ctx run data get storage bs:data fsm.listened_transitions
@@ -44,8 +47,8 @@ execute if score #s bs.ctx matches ..0 run schedule function bs.fsm:run/evaluate
 execute if data storage bs:ctx _.state.on_enter run data modify storage bs:ctx _.command set from storage bs:ctx _.state.on_enter
 execute if data storage bs:ctx _.state.on_enter run function bs.fsm:run/run_command_global with storage bs:ctx _
 
-# We register the on_tick command
-execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp set value {}
+# We register the on_tick command, flagged as global so the tick loop runs it in the global context
+execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp set value { context: "global", global: true }
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp.command set from storage bs:ctx _.state.on_tick
 $execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp.instance_name set value "$(instance_name)"
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:data fsm.ticks append from storage bs:ctx _.tmp

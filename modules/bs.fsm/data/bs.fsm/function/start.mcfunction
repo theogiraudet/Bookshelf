@@ -20,7 +20,7 @@
 $data modify storage bs:ctx _ set value { fsm_name: $(fsm_name), instance_name: $(instance_name) }
 
 # We check if the instance already exists
-$execute if score #s bs.ctx matches 0 store success score #e bs.ctx if data storage bs:data fsm.running_instances.'$(instance_name)'
+$execute store success score #e bs.ctx if data storage bs:data fsm.running_instances.'$(instance_name)'
 execute if score #e bs.ctx matches 1 run function #bs.log:error { \
   namespace: "bs.fsm", \
   path: "#bs.fsm:start", \
