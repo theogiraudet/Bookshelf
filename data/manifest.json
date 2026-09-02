@@ -2320,6 +2320,38 @@
       ],
       "features": [
         {
+          "id": "#bs.fsm:cancel",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#cancel",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2025/07/16",
+            "minecraft_version": "1.21.7"
+          },
+          "updated": {
+            "date": "2025/07/16",
+            "minecraft_version": "1.21.7"
+          }
+        },
+        {
+          "id": "#bs.fsm:delete",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#delete",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2025/07/16",
+            "minecraft_version": "1.21.7"
+          },
+          "updated": {
+            "date": "2025/07/16",
+            "minecraft_version": "1.21.7"
+          }
+        },
+        {
           "id": "#bs.fsm:new",
           "kind": "function_tag",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#new",
