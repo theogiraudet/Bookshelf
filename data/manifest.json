@@ -2305,16 +2305,18 @@
     },
     {
       "id": "bs.fsm",
-      "name": "Final State Machine",
+      "name": "Finite State Machine",
       "slug": "bookshelf-fsm",
-      "description": "Bookshelf final state machine module.",
+      "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.fsm/pack.png",
+      "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.fsm/README.md",
+      "description": "Describe behaviors as states and transitions, and run them on entities or globally.",
       "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html",
       "kind": "data_pack",
       "tags": [
         "runtime"
       ],
-      "dependencies": [
-        "bs.random"
+      "weak_dependencies": [
+        "bs.log"
       ],
       "features": [
         {
