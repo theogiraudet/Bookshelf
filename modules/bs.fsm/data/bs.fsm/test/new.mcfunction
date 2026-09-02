@@ -15,8 +15,10 @@
 
 ## === SETUP ===
 
-# Clear any existing FSM data
-data remove storage bs:data fsm.fsm
+# Clear the FSMs this test registers, in case a previous run left them behind
+data remove storage bs:data fsm.fsm.test_fsm
+data remove storage bs:data fsm.fsm.complex_fsm
+data remove storage bs:data fsm.fsm.minimal_fsm
 
 ## === VALID FSM CREATION ===
 
@@ -55,7 +57,8 @@ execute unless data storage bs:data fsm.fsm.test_fsm run fail "Failed to create 
 ## === DUPLICATE FSM ERROR ===
 
 # Test 2: Try to create the same FSM again (should fail)
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "test_fsm", \
   fsm: { \
     initial: "idle", \
@@ -70,12 +73,13 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when creating a duplicate FSM"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when creating a duplicate FSM"
 
 ## === INVALID FSM - MISSING INITIAL STATE ===
 
 # Test 3: Create FSM with missing initial state
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "invalid_fsm_1", \
   fsm: { \
     on_cancel: "bs.fsm:test/cancel", \
@@ -89,12 +93,13 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when FSM has no initial state"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when FSM has no initial state"
 
 ## === INVALID FSM - INITIAL STATE NOT FOUND ===
 
 # Test 4: Create FSM with initial state that doesn't exist
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "invalid_fsm_2", \
   fsm: { \
     initial: "nonexistent", \
@@ -109,12 +114,13 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when initial state doesn't exist"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when initial state doesn't exist"
 
 ## === INVALID FSM - DUPLICATE STATE NAMES ===
 
 # Test 5: Create FSM with duplicate state names
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "invalid_fsm_3", \
   fsm: { \
     initial: "idle", \
@@ -135,12 +141,13 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when FSM has duplicate state names"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when FSM has duplicate state names"
 
 ## === INVALID FSM - TRANSITION TO NONEXISTENT STATE ===
 
 # Test 6: Create FSM with transition to non-existent state
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "invalid_fsm_4", \
   fsm: { \
     initial: "idle", \
@@ -174,7 +181,7 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when transition points to non-existent state"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when transition points to non-existent state"
 
 ## === VALID FSM WITH COMPLEX TRANSITIONS ===
 
@@ -263,7 +270,8 @@ execute unless data storage bs:data fsm.fsm.minimal_fsm run fail "Failed to crea
 ## === INVALID FSM - UNREACHABLE FINAL STATE ===
 
 # Test 9: Create FSM with unreachable final state
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "invalid_fsm_5", \
   fsm: { \
     initial: "idle", \
@@ -286,12 +294,13 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when FSM has unreachable final state"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when FSM has unreachable final state"
 
 ## === INVALID FSM - NO FINAL STATE ===
 
 # Test 10: Create FSM with no final state
-execute store success score #s bs.ctx run function #bs.fsm:new { \
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:new { \
   name: "invalid_fsm_6", \
   fsm: { \
     initial: "idle", \
@@ -314,9 +323,11 @@ execute store success score #s bs.ctx run function #bs.fsm:new { \
     ] \
   } \
 }
-execute unless score #s bs.ctx matches 0 run fail "Failed to return an error when FSM has no final state"
+execute unless score #ward.fsm bs.ctx matches 0 run fail "Failed to return an error when FSM has no final state"
 
 ## === CLEANUP ===
 
 # Clean up test data
-data remove storage bs:data fsm.fsm
+data remove storage bs:data fsm.fsm.test_fsm
+data remove storage bs:data fsm.fsm.complex_fsm
+data remove storage bs:data fsm.fsm.minimal_fsm
