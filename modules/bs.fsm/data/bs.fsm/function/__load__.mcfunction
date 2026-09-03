@@ -20,3 +20,10 @@ execute unless entity B5-0-0-0-2 run summon minecraft:text_display -30000000 0 1
 scoreboard objectives add bs.ctx dummy [{text:"BS ",color:"dark_gray"},{text:"Context",color:"aqua"}]
 
 execute unless data storage bs:data fsm run data modify storage bs:data fsm set value { machines: {}, listened_transitions: [], ticks: [] }
+
+# A world load leaves the chunks holding the bound entities behind for a moment, and a missing entity is read as a dead one,
+# so we push the loops back to give the entities time to come back instead of having their machines evicted.
+# An entity whose chunk is still not loaded once the delay has elapsed is still dropped.
+# This also runs on a plain reload, where it merely holds the running machines for a second.
+execute if data storage bs:data fsm.ticks[0] run schedule function bs.fsm:run/tick 20t
+execute if data storage bs:data fsm.listened_transitions[0] run schedule function bs.fsm:run/evaluate_transitions 20t

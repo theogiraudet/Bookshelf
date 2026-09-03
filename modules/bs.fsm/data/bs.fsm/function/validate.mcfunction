@@ -16,10 +16,6 @@
 # Input:
 # Macro: uses: string
 
-# Missing checks:
-# - Check the structural validity of the FSM
-# - Check if all transitions refer to existing states
-
 $data modify storage bs:ctx _ set value { uses: "$(uses)" }
 
 # We work on a copy of the template, the checks annotate it as they go
@@ -32,16 +28,23 @@ execute if score #s bs.ctx matches 0 run function #bs.log:error { \
 }
 execute if score #s bs.ctx matches 0 run return fail
 
+# The checks report through bs:out collection, which may hold a collection the caller is working on
+# We keep it out of _, which the checks pass whole as a macro argument
+data modify storage bs:ctx fsm_out set from storage bs:out collection
+
 execute store success score #s bs.ctx run function bs.fsm:check/well_formedness
-# Also save the initial property in the initial state object
 execute if score #s bs.ctx matches 1 run execute store success score #s bs.ctx run function bs.fsm:check/initiality
 execute if score #s bs.ctx matches 1 store success score #s bs.ctx run function bs.fsm:check/unicity
 # Need to be call before reachability, since this latter uses the finals states
 execute if score #s bs.ctx matches 1 store success score #s bs.ctx run function bs.fsm:check/acceptability
 execute if score #s bs.ctx matches 1 store success score #s bs.ctx run function bs.fsm:check/reachability
 
-data remove storage bs:ctx _
+# We give the caller its collection back, leaving nothing behind if it had none
 data remove storage bs:out collection
+data modify storage bs:out collection set from storage bs:ctx fsm_out
+
+data remove storage bs:ctx fsm_out
+data remove storage bs:ctx _
 
 execute if score #s bs.ctx matches 0 run return fail
 

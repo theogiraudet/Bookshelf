@@ -21,6 +21,15 @@
 # We use fsm instead of _ to avoid conflicts with lambdas, since switch_state runs the commands of the machine
 $data modify storage bs:ctx fsm set value { machine: "$(name)", bind: "$(bind)", context: "global" }
 
+# Any other binding would silently fall through to the local branch
+execute unless data storage bs:ctx fsm{bind: "global"} unless data storage bs:ctx fsm{bind: "local"} run function #bs.log:error { \
+  namespace: "bs.fsm", \
+  path: "#bs.fsm:emit", \
+  tag: "emit", \
+  message: [{text: "Invalid binding '"}, {nbt: "fsm.bind", storage: "bs:ctx"}, {text: "', expected 'global' or 'local'."}] \
+}
+execute unless data storage bs:ctx fsm{bind: "global"} unless data storage bs:ctx fsm{bind: "local"} run return fail
+
 # We check if the machine is running, for a local machine @s is the entity it is bound to
 scoreboard players set #s bs.ctx 0
 $execute if data storage bs:ctx fsm{bind: "global"} store success score #s bs.ctx if data storage bs:data fsm.machines.'$(name)'

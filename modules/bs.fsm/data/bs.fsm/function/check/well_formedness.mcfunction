@@ -21,38 +21,39 @@ data modify storage bs:out collection.value set value []
 data modify storage bs:out collection.value append from storage bs:ctx _.template.states[].name
 
 # bs.collection works in bs:ctx _, so we move our context aside for the whole check
-data modify storage bs:ctx fsm set from storage bs:ctx _
-data modify storage bs:ctx fsm.states set value []
-data modify storage bs:ctx fsm.states append from storage bs:ctx fsm.template.states[]
+# We use check and not fsm, which the runtime holds while it runs the commands of a machine
+data modify storage bs:ctx check set from storage bs:ctx _
+data modify storage bs:ctx check.states set value []
+data modify storage bs:ctx check.states append from storage bs:ctx check.template.states[]
 
 scoreboard players set #r bs.ctx 1
 
 # We check if the FSM is valid
 
 # First, we check if the FSM has an initial state
-execute unless data storage bs:ctx fsm.template.initial run function #bs.log:error { \
+execute unless data storage bs:ctx check.template.initial run function #bs.log:error { \
   namespace: "bs.fsm", \
   path: "#bs.fsm:validate", \
   tag: "validate", \
   message: [{text: "The FSM does not have an initial state."}] \
 }
-execute unless data storage bs:ctx fsm.template.initial run scoreboard players set #r bs.ctx 0
+execute unless data storage bs:ctx check.template.initial run scoreboard players set #r bs.ctx 0
 
 # Then, we check if the FSM has at least one state
-execute unless data storage bs:ctx fsm.states[0] run function #bs.log:error { \
+execute unless data storage bs:ctx check.states[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
   path: "#bs.fsm:validate", \
   tag: "validate", \
   message: [{text: "The FSM does not have any state."}] \
 }
-execute unless data storage bs:ctx fsm.states[0] run scoreboard players set #r bs.ctx 0
+execute unless data storage bs:ctx check.states[0] run scoreboard players set #r bs.ctx 0
 
 # Finally, we have to check each state
 execute unless score #r bs.ctx matches 0 store success score #r bs.ctx run function bs.fsm:check/internal/well_formedness_state
 
 # We restore our context
-data modify storage bs:ctx _ set from storage bs:ctx fsm
-data remove storage bs:ctx fsm
+data modify storage bs:ctx _ set from storage bs:ctx check
+data remove storage bs:ctx check
 
 # We return the result of the check
 execute if score #r bs.ctx matches 0 run return fail

@@ -27,10 +27,11 @@ data modify storage bs:out collection.value set value []
 data modify storage bs:out collection.value append from storage bs:ctx _.template.states[].name
 
 # bs.collection works in bs:ctx _, so we move our context aside during the call
-data modify storage bs:ctx fsm set from storage bs:ctx _
+# We use check and not fsm, which the runtime holds while it runs the commands of a machine
+data modify storage bs:ctx check set from storage bs:ctx _
 function #bs.collection:distinct
-data modify storage bs:ctx _ set from storage bs:ctx fsm
-data remove storage bs:ctx fsm
+data modify storage bs:ctx _ set from storage bs:ctx check
+data remove storage bs:ctx check
 
 execute store result score #b bs.ctx run data get storage bs:out collection.value
 

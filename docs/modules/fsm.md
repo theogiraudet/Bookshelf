@@ -31,7 +31,7 @@ Since a template is just data, you can write it once on load, or build and edit 
       - {nbt}`string` **on_tick**: Command to run every tick while in this state (optional).
       - {nbt}`string` **on_enter**: Command to run when entering this state (optional).
       - {nbt}`string` **on_exit**: Command to run when exiting this state (optional).
-      - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false). This is a validation annotation: a final state must have no transition, and a machine stops as soon as it enters a state with no outgoing transition.
+      - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false). Validation metadata only, never read at runtime: a machine stops as soon as it enters a state with no outgoing transition, whether or not it is flagged. Validation requires a final state to have no transition, so on a validated template the two coincide.
       - {nbt}`list` **transitions**: Array of transition definitions (optional).
         - {nbt}`compound` Transition
           - {nbt}`string` **name**: Name of the transition (optional, required on a manual transition: it is the signal name that fires it).
@@ -157,7 +157,8 @@ function #bs.fsm:init { name: "main_light", uses: "my_pack:fsm light" }
 
 Run new state machines from a template, bound to the executing entities.
 The commands and predicates of the machine are executed as and at the entity it is bound to.
-If the entity is killed while the machine runs, the module automatically stops its tick commands and transitions evaluation.
+If the entity leaves the world while the machine runs, whether it is killed or its chunk is unloaded, the module automatically stops its tick commands and transitions evaluation.
+The machine itself stays stored on the entity, so an entity coming back does not resume it and still holds its name: cancel it as that entity to free the name again.
 
 :Inputs:
   **Execution `as <entities>`**: Entities to bind. The entities must not be players.
@@ -240,6 +241,8 @@ Only a machine that is not running at all is reported through the log module.
 Cancel and stop a running machine.
 
 :Inputs:
+  **Execution `as <entity>`**: Entity the machine is bound to, for a local machine.
+
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
@@ -340,8 +343,8 @@ The FSM system enforces several validation rules to ensure proper operation:
 - Final states are states marked with `final: true`
 
 ### Reachability
-- All final states must be reachable from the initial state
-- This is determined by analyzing the transition graph
+- Every state must be able to reach a final state
+- This is determined by walking the transition graph backwards from the final states
 
 ### Transition Validation
 - All transition target states must exist in the states array

@@ -219,6 +219,18 @@ scoreboard players set #ward.fsm bs.ctx -1
 execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.no_target" }
 assert score #ward.fsm bs.ctx matches 0
 
+## === CALLER COLLECTION ===
+
+# The checks report through bs:out collection, which must be given back to the caller untouched
+data modify storage bs:out collection.value set value [1, 2, 3]
+function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.minimal" }
+assert data storage bs:out collection{value: [1, 2, 3]}
+
+# A caller working on no collection must not be left with one
+data remove storage bs:out collection
+function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.minimal" }
+assert not data storage bs:out collection
+
 ## === CLEANUP ===
 
 data remove storage bs:ward fsm.templates.validate
