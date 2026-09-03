@@ -34,7 +34,7 @@ Since a template is just data, you can write it once on load, or build and edit 
       - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false). This is a validation annotation: a final state must have no transition, and a machine stops as soon as it enters a state with no outgoing transition.
       - {nbt}`list` **transitions**: Array of transition definitions (optional).
         - {nbt}`compound` Transition
-          - {nbt}`string` **name**: Name of the transition (optional).
+          - {nbt}`string` **name**: Name of the transition (optional, required on a manual transition: it is the signal name that fires it).
           - {nbt}`string` {nbt}`compound` **condition**: Transition condition. One of the following:
             - {nbt}`string` Manual transition: the literal `"manual"`, triggered by the `#bs.fsm:emit` feature.
             - {nbt}`compound` Predicate-based transition.
@@ -43,9 +43,6 @@ Since a template is just data, you can write it once on load, or build and edit 
             - {nbt}`compound` Command-based transition.
               - {nbt}`string` **type**: Must be "command".
               - {nbt}`string` **wait**: Command to check to trigger the transition.
-            - {nbt}`compound` Hook-based transition.
-              - {nbt}`string` **type**: Must be "hook".
-              - {nbt}`string` **wait**: Hook function to evaluate.
             - {nbt}`compound` Time-based transition.
               - {nbt}`string` **type**: Must be "delay".
               - {nbt}`int` **wait**: Time delay in ticks.
@@ -198,23 +195,41 @@ execute as @n[type=zombie] run function #bs.fsm:init_as { name: "entity_light", 
 ```{function} #bs.fsm:emit
 
 Emit a signal to a running machine.
-This signal may or may not trigger a transition, according to the current state of the machine.
+The signal takes the manual transition of the current state bearing that name, if there is one.
 
 :Inputs:
+  **Execution `as <entity>`**: Entity the machine is bound to, for a local machine.
+
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
     - {nbt}`string` **name**: Name of the machine to emit the signal to.
     - {nbt}`string` **signal**: Name of the signal to emit.
+    - {nbt}`string` **bind**: Binding of the machine.
+      - **"global"**: The machine runs in the global context.
+      - **"local"**: The machine runs on the current execution context.
   :::
+
+:Outputs:
+  **Return**: Success (1) if the signal triggered a transition, failure (0) otherwise.
+
+  **State**: The machine moves to the target state of the transition, running the `on_exit` of the current state then the `on_enter` of the new one.
 ```
 
 *Example: emit a signal to a machine:*
 
 ```mcfunction
 # Emit a signal to a global machine
-function #bs.fsm:emit { name: "main_light", signal: "turn_on" }
+function #bs.fsm:emit { name: "main_light", signal: "turn_on", bind: "global" }
+
+# Emit a signal to a machine bound to an entity
+execute as @n[type=zombie] run function #bs.fsm:emit { name: "entity_light", signal: "turn_on", bind: "local" }
 ```
+
+Emitting a signal the current state does not listen to is not an error: the machine simply stays where it is and the function fails.
+Only a machine that is not running at all is reported through the log module.
+
+> **Credits**: theogiraudet
 
 ---
 
@@ -319,7 +334,6 @@ The FSM system enforces several validation rules to ensure proper operation:
 
 ### Unicity
 - All state names must be unique within the FSM
-- All transition names must be unique within a state (if specified)
 
 ### Acceptability
 - The FSM must have at least one final state
@@ -332,6 +346,7 @@ The FSM system enforces several validation rules to ensure proper operation:
 ### Transition Validation
 - All transition target states must exist in the states array
 - Transition conditions must be valid according to their type
+- Manual transitions must have a name, since that name is the signal firing them
 
 ---
 
@@ -355,7 +370,7 @@ A machine that has not reached such a state runs until you stop it with `#bs.fsm
 The FSM system supports several types of transitions:
 
 ### Manual
-Triggered by external function calls. 
+Triggered by `#bs.fsm:emit`, which fires the manual transition of the current state named after the emitted signal.
 Useful for player interactions or external events.
 
 ### Predicate
@@ -365,10 +380,6 @@ Useful for conditional logic.
 ### Command
 Triggered when a command succeeds. 
 Useful for complex conditions.
-
-### Hook
-Triggered by hook system events. 
-Useful for integration with other systems.
 
 ### Delay
 Triggered after a specified time delay. 

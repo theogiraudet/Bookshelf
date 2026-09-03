@@ -66,7 +66,6 @@ data modify storage bs:ward fsm.templates.validate.complex set value { \
         { name: "manual_transition", condition: "manual", to: "waiting" }, \
         { name: "predicate_transition", condition: { type: "predicate", wait: "bs.fsm:test/always" }, to: "processing" }, \
         { name: "command_transition", condition: { type: "command", wait: "bs.fsm:test/function" }, to: "processing" }, \
-        { name: "hook_transition", condition: { type: "hook", wait: "bs.fsm:test/hook" }, to: "processing" }, \
         { name: "delay_transition", condition: { type: "delay", wait: 20 }, to: "processing" } \
       ] \
     }, \
@@ -118,8 +117,8 @@ data modify storage bs:ward fsm.templates.validate.bad_transition set value { \
     { \
       name: "idle", \
       transitions: [ \
-        { condition: "manual", to: "nonexistent" }, \
-        { condition: "manual", to: "active" } \
+        { name: "bad", condition: "manual", to: "nonexistent" }, \
+        { name: "start", condition: "manual", to: "active" } \
       ] \
     }, \
     { name: "active", final: true } \
@@ -144,12 +143,38 @@ assert score #ward.fsm bs.ctx matches 0
 data modify storage bs:ward fsm.templates.validate.no_final set value { \
   initial: "idle", \
   states: [ \
-    { name: "idle", transitions: [{ condition: "manual", to: "active" }] }, \
+    { name: "idle", transitions: [{ name: "start", condition: "manual", to: "active" }] }, \
     { name: "active", final: false } \
   ] \
 }
 scoreboard players set #ward.fsm bs.ctx -1
 execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.no_final" }
+assert score #ward.fsm bs.ctx matches 0
+
+## === UNNAMED MANUAL TRANSITION ===
+
+data modify storage bs:ward fsm.templates.validate.unnamed_manual set value { \
+  initial: "idle", \
+  states: [ \
+    { name: "idle", transitions: [{ condition: "manual", to: "active" }] }, \
+    { name: "active", final: true } \
+  ] \
+}
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.unnamed_manual" }
+assert score #ward.fsm bs.ctx matches 0
+
+## === UNKNOWN CONDITION TYPE ===
+
+data modify storage bs:ward fsm.templates.validate.bad_condition set value { \
+  initial: "idle", \
+  states: [ \
+    { name: "idle", transitions: [{ name: "go", condition: { type: "hook", wait: "bs.fsm:test/hook" }, to: "active" }] }, \
+    { name: "active", final: true } \
+  ] \
+}
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.bad_condition" }
 assert score #ward.fsm bs.ctx matches 0
 
 ## === CLEANUP ===

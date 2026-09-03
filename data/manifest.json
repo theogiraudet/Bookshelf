@@ -2336,6 +2336,22 @@
           }
         },
         {
+          "id": "#bs.fsm:emit",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#emit",
+          "authors": [
+            "theogiraudet"
+          ],
+          "created": {
+            "date": "2026/09/03",
+            "minecraft_version": "26.2"
+          },
+          "updated": {
+            "date": "2026/09/03",
+            "minecraft_version": "26.2"
+          }
+        },
+        {
           "id": "#bs.fsm:init",
           "kind": "function_tag",
           "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#init",
@@ -5486,7 +5502,7 @@
       "slug": "bookshelf-spline",
       "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.spline/pack.png",
       "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.spline/README.md",
-      "description": "Create smooth curves from control points, with B\u00e9zier, Catmull-Rom, B-Spline, and Hermite interpolation.",
+      "description": "Create smooth curves from control points, with Bézier, Catmull-Rom, B-Spline, and Hermite interpolation.",
       "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/spline.html",
       "kind": "data_pack",
       "tags": [

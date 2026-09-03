@@ -56,8 +56,19 @@ execute unless data storage bs:ctx _.states[0].transitions[0].condition run retu
 # We check if the condition is "manual"
 data modify storage bs:ctx _.condition set value "manual"
 execute store success score #s bs.ctx run data modify storage bs:ctx _.condition set from storage bs:ctx _.states[0].transitions[0].condition
-# If we fail to overwrite "manual", it means that the condition is "manual" so we can return
-execute if score #s bs.ctx matches 0 run return 1
+# If we fail to overwrite "manual", it means that the condition is "manual"
+# A manual transition is fired by its name through #bs.fsm:emit, so it must have one
+execute if score #s bs.ctx matches 0 unless data storage bs:ctx _.states[0].transitions[0].name run function #bs.log:error { \
+  namespace: "bs.fsm", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
+  message: [{text: "A manual transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' does not have a name."}] \
+}
+execute if score #s bs.ctx matches 0 unless data storage bs:ctx _.states[0].transitions[0].name run return fail
+
+# The remaining checks are about the condition object, we skip them and move on to the next transition
+execute if score #s bs.ctx matches 0 run data remove storage bs:ctx _.states[0].transitions[0]
+execute if score #s bs.ctx matches 0 run return run function bs.fsm:check/internal/well_formedness_transition
 
 # If the condition is not "manual", we need to check if the condition is an object
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.type run function #bs.log:error { \
@@ -78,13 +89,10 @@ execute unless data storage bs:ctx _.states[0].transitions[0].condition.wait run
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.wait run return fail
 
 # We check if the condition type is valid
-data modify storage bs:ctx _.condition set value []
-data modify storage bs:ctx _.condition append from storage bs:ctx _.states[0].transitions[0].condition
-
-execute store success score #s bs.ctx unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "predicate"}] \
-unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "command"}] \
-unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "hook"}] \
-unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "delay"}]
+scoreboard players set #s bs.ctx 0
+execute if data storage bs:ctx _.states[0].transitions[0].condition{type: "predicate"} run scoreboard players set #s bs.ctx 1
+execute if data storage bs:ctx _.states[0].transitions[0].condition{type: "command"} run scoreboard players set #s bs.ctx 1
+execute if data storage bs:ctx _.states[0].transitions[0].condition{type: "delay"} run scoreboard players set #s bs.ctx 1
 
 execute if score #s bs.ctx matches 0 run function #bs.log:error { \
   namespace: "bs.fsm", \
