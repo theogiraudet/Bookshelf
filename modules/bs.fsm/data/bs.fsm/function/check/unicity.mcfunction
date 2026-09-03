@@ -18,24 +18,23 @@
 
 # Goal: check if the names of the states are unique
 # How do we proceed?
-# We will use a specific behavior of Minecraft mob's tag: the list of tags cannot have duplicates
-# Following that, we can compare the size of the list of tags with the size of the list of states
+# We deduplicate the list of the states names and compare its size with the number of states
 # If they are different, that means that there are duplicate names
 
-data modify storage bs:ctx _.tags set from entity B5-0-0-0-1 Tags
-# The entity already carries its own tags, which would collide with state names bearing the same value
-data modify entity B5-0-0-0-1 Tags set value []
-
-# We get the size of the list of states names
 execute store result score #a bs.ctx run data get storage bs:ctx _.template.states
-# We set the list of tags to the list of states names
-data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.template.states[].name
-# We get the list of tags
-execute store result score #b bs.ctx run data get entity B5-0-0-0-1 Tags
-# We reset the tags to the default tags
-data modify entity B5-0-0-0-1 Tags set from storage bs:ctx _.tags
 
-# We compare the size of the list of tags with the size of the list of states, if they are different, that means that there are duplicate names so we log an error and return
+data modify storage bs:out collection.value set value []
+data modify storage bs:out collection.value append from storage bs:ctx _.template.states[].name
+
+# bs.collection works in bs:ctx _, so we move our context aside during the call
+data modify storage bs:ctx fsm set from storage bs:ctx _
+function #bs.collection:distinct
+data modify storage bs:ctx _ set from storage bs:ctx fsm
+data remove storage bs:ctx fsm
+
+execute store result score #b bs.ctx run data get storage bs:out collection.value
+
+# If the deduplicated list is shorter than the list of states, that means that there are duplicate names so we log an error and return
 execute unless score #a bs.ctx = #b bs.ctx run function #bs.log:error { \
   namespace: "bs.fsm", \
   path: "#bs.fsm:check/unicity", \

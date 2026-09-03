@@ -41,6 +41,7 @@ execute if score #s bs.ctx matches 1 store success score #s bs.ctx run function 
 execute if score #s bs.ctx matches 1 store success score #s bs.ctx run function bs.fsm:check/reachability
 
 data remove storage bs:ctx _
+data remove storage bs:out collection
 
 execute if score #s bs.ctx matches 0 run return fail
 
