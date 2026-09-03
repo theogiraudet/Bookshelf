@@ -19,6 +19,15 @@
 
 $data modify storage bs:ctx _ set value { machine: "$(name)", uses: "$(uses)" }
 
+# Players cannot hold custom entity data, so a machine cannot be bound to them
+execute if entity @s[type=player] run function #bs.log:error { \
+  namespace: "bs.fsm", \
+  path: "#bs.fsm:init_as", \
+  tag: "init_as", \
+  message: [{text: "A machine cannot be bound to a player."}] \
+}
+execute if entity @s[type=player] run return fail
+
 # We get the String UUID of the entity, the tag is only needed to resolve the selector
 tag @s add bs.fsm.entity
 data modify entity B5-0-0-0-2 text set value { selector: "@n[tag=bs.fsm.entity]" }

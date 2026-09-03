@@ -39,7 +39,7 @@ Describe behaviors as states and transitions, and run them on entities or global
 - Describe a state machine as a template, stored and edited with plain data commands
 - Validate a state machine before running it (initiality, unicity, acceptability, reachability)
 - Run a state machine globally or bound to specific entities
-- Trigger transitions manually, or from a predicate, a command, a hook, or a delay
+- Trigger transitions manually, or from a predicate, a command, or a delay
 - React to state changes with enter, tick, and exit commands
 
 📚 [Documentation](https://docs.mcbookshelf.dev/en/latest/modules/fsm.html)

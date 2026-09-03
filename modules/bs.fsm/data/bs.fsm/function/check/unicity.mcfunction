@@ -23,20 +23,17 @@
 # If they are different, that means that there are duplicate names
 
 data modify storage bs:ctx _.tags set from entity B5-0-0-0-1 Tags
+# The entity already carries its own tags, which would collide with state names bearing the same value
+data modify entity B5-0-0-0-1 Tags set value []
 
 # We get the size of the list of states names
 execute store result score #a bs.ctx run data get storage bs:ctx _.template.states
-# We get the size of the list of tags to substract at the end
-execute store result score #s bs.ctx run data get entity B5-0-0-0-1 Tags
 # We set the list of tags to the list of states names
 data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.template.states[].name
 # We get the list of tags
 execute store result score #b bs.ctx run data get entity B5-0-0-0-1 Tags
 # We reset the tags to the default tags
 data modify entity B5-0-0-0-1 Tags set from storage bs:ctx _.tags
-
-# As our list of tags has our state names with the default tags, we need to substract the size of the list of tags before our append to the size of the list of states
-scoreboard players operation #b bs.ctx -= #s bs.ctx
 
 # We compare the size of the list of tags with the size of the list of states, if they are different, that means that there are duplicate names so we log an error and return
 execute unless score #a bs.ctx = #b bs.ctx run function #bs.log:error { \

@@ -20,6 +20,8 @@
 # This array will be useful to know if a transition refers to a state that does not exist
 scoreboard players set #r bs.ctx 1
 data modify storage bs:ctx _.saved_tags set from entity B5-0-0-0-1 Tags
+# The entity already carries its own tags, which would collide with state names bearing the same value
+data modify entity B5-0-0-0-1 Tags set value []
 data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.template.states[].name
 
 data modify storage bs:ctx _.states set value []

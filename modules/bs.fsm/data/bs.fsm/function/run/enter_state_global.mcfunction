@@ -56,4 +56,4 @@ execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.
 $execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp.machine set value "$(machine)"
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:data fsm.ticks append from storage bs:ctx _.tmp
 # If this is the only command on the ticks list, we start the tick loop
-execute unless data storage bs:data fsm.ticks[1] run schedule function bs.fsm:run/tick 1t
+execute if data storage bs:data fsm.ticks[0] unless data storage bs:data fsm.ticks[1] run schedule function bs.fsm:run/tick 1t

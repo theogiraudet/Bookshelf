@@ -169,12 +169,41 @@ assert score #ward.fsm bs.ctx matches 0
 data modify storage bs:ward fsm.templates.validate.bad_condition set value { \
   initial: "idle", \
   states: [ \
-    { name: "idle", transitions: [{ name: "go", condition: { type: "hook", wait: "bs.fsm:test/hook" }, to: "active" }] }, \
+    { name: "idle", transitions: [{ name: "go", condition: { type: "unknown", wait: "bs.fsm:test/unknown" }, to: "active" }] }, \
     { name: "active", final: true } \
   ] \
 }
 scoreboard players set #ward.fsm bs.ctx -1
 execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.bad_condition" }
+assert score #ward.fsm bs.ctx matches 0
+
+## === RESERVED TAG NAMES ===
+
+# State names are checked through an entity tag list, which must not be confused with the tags the entity already carries
+data modify storage bs:ward fsm.templates.validate.reserved set value { \
+  initial: "bs.entity", \
+  states: [ \
+    { name: "bs.entity", transitions: [{ name: "start", condition: "manual", to: "smithed.entity" }] }, \
+    { name: "smithed.entity", final: true } \
+  ] \
+}
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.reserved" }
+assert not score #ward.fsm bs.ctx matches 0
+
+# A transition targeting such a name without a matching state must still fail
+data modify storage bs:ward fsm.templates.validate.reserved_unknown set value { \
+  initial: "idle", \
+  states: [ \
+    { name: "idle", transitions: [ \
+      { name: "start", condition: "manual", to: "active" }, \
+      { name: "bad", condition: "manual", to: "bs.persistent" } \
+    ] }, \
+    { name: "active", final: true } \
+  ] \
+}
+scoreboard players set #ward.fsm bs.ctx -1
+execute store success score #ward.fsm bs.ctx run function #bs.fsm:validate { uses: "bs:ward fsm.templates.validate.reserved_unknown" }
 assert score #ward.fsm bs.ctx matches 0
 
 ## === CLEANUP ===
