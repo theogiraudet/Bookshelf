@@ -30,8 +30,8 @@ execute store success score #s bs.ctx run function bs.fsm:check/internal/select_
 # If we fail to select the state, that is because the state does not exist (even if this is supposed to be impossible), we log an error and return
 execute if score #s bs.ctx matches 0 run function #bs.log:error { \
   namespace: bs.fsm, \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "The state '"}, {nbt: "_.state",storage: "bs:ctx"},{text: "' does not exist."}] \
 }
 execute if score #s bs.ctx matches 0 run return fail

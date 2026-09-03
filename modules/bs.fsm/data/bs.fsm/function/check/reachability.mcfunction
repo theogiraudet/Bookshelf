@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Input:
-# Storage: bs:ctx _.fsm (a FSM)
+# Storage: bs:ctx _.template (a FSM)
 # Storage: bs:ctx _.finals (a list of states)
 
 # Storage: bs:ctx _.found_states (a list of states name)
@@ -36,7 +36,7 @@
 
 # Initialization
 data modify storage bs:ctx _.states_to_find set value []
-data modify storage bs:ctx _.states_to_find append from storage bs:ctx _.fsm.states[]
+data modify storage bs:ctx _.states_to_find append from storage bs:ctx _.template.states[]
 data modify storage bs:ctx _.states_to_find[].found set value false
 # We set the final states as found
 data modify storage bs:ctx _.states_to_find[{final: true}].found set value true
@@ -58,8 +58,8 @@ data modify storage bs:ctx _.not_found_states append from storage bs:ctx _.state
 # If we have some states that cannot reach a final state, we log an error and return
 execute if data storage bs:ctx _.not_found_states[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "The states '"}, {nbt: "_.not_found_states[].name", storage: "bs:ctx"},{text: "' cannot reach a final state."}] \
 }
 execute if data storage bs:ctx _.not_found_states[0] run return fail

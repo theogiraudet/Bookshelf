@@ -16,143 +16,151 @@ It allows you to define states, transitions, and behaviors in a declarative way,
 
 ---
 
+## 📦 Templates
+
+A state machine is described by a **template**: a plain NBT compound that you store wherever you want, with vanilla commands.
+Since a template is just data, you can write it once on load, or build and edit it at runtime, and you choose how to namespace it.
+
+:::{treeview}
+- {nbt}`compound` Template
+  - {nbt}`string` **initial**: Name of the initial state (must exist in states array).
+  - {nbt}`string` **on_cancel**: Command to run when the machine is cancelled (optional).
+  - {nbt}`list` **states**: Array of state definitions.
+    - {nbt}`compound` State
+      - {nbt}`string` **name**: Unique name for the state.
+      - {nbt}`string` **on_tick**: Command to run every tick while in this state (optional).
+      - {nbt}`string` **on_enter**: Command to run when entering this state (optional).
+      - {nbt}`string` **on_exit**: Command to run when exiting this state (optional).
+      - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false).
+      - {nbt}`list` **transitions**: Array of transition definitions (optional).
+        - {nbt}`compound` Transition
+          - {nbt}`string` **name**: Name of the transition (optional).
+          - {nbt}`string` {nbt}`compound` **condition**: Transition condition. One of the following:
+            - {nbt}`string` Manual transition: the literal `"manual"`, triggered by the `#bs.fsm:emit` feature.
+            - {nbt}`compound` Predicate-based transition.
+              - {nbt}`string` **type**: Must be "predicate".
+              - {nbt}`string` **wait**: Predicate to check to trigger the transition.
+            - {nbt}`compound` Command-based transition.
+              - {nbt}`string` **type**: Must be "command".
+              - {nbt}`string` **wait**: Command to check to trigger the transition.
+            - {nbt}`compound` Hook-based transition.
+              - {nbt}`string` **type**: Must be "hook".
+              - {nbt}`string` **wait**: Hook function to evaluate.
+            - {nbt}`compound` Time-based transition.
+              - {nbt}`string` **type**: Must be "delay".
+              - {nbt}`int` **wait**: Time delay in ticks.
+          - {nbt}`string` **to**: Name of the target state (must exist in states array).
+:::
+
+*Example: store a light template, then validate it:*
+
+```mcfunction
+# Store the template wherever you want
+data modify storage my_pack:fsm light set value { \
+  initial: "off", \
+  states: [ \
+    { \
+      name: "off", \
+      on_enter: "setblock ~ ~ ~ minecraft:redstone_lamp", \
+      transitions: [{ name: "turn_on", condition: "manual", to: "on" }] \
+    }, \
+    { \
+      name: "on", \
+      on_enter: "setblock ~ ~ ~ minecraft:redstone_lamp[lit=true]", \
+      final: true \
+    } \
+  ] \
+}
+
+# Check it once, before running it
+function #bs.fsm:validate { uses: "my_pack:fsm light" }
+```
+
+Since the template is yours, you delete it like any other data:
+
+```mcfunction
+data remove storage my_pack:fsm light
+```
+
+---
+
 ## 🔧 Functions
 
 You can find below all functions available in this module.
 
 ---
 
-### New
+### Validate
 
-```{function} #bs.fsm:new
+```{function} #bs.fsm:validate
 
-Create a new Finite State Machine (FSM) with the specified configuration.
+Check that a template describes a valid state machine, and report every problem found through the log module.
 
 :Inputs:
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`string` **name**: Unique identifier for the FSM.
-    - {nbt}`compound` **fsm**: FSM configuration object.
-      - {nbt}`string` **initial**: Name of the initial state (must exist in states array).
-      - {nbt}`string` **on_cancel**: Function to call when the FSM is cancelled (optional).
-      - {nbt}`list` **states**: Array of state definitions.
-        - {nbt}`compound` State
-          - {nbt}`string` **name**: Unique name for the state.
-          - {nbt}`string` **on_tick**: Function to call every tick while in this state (optional).
-          - {nbt}`string` **on_enter**: Function to call when entering this state (optional).
-          - {nbt}`string` **on_exit**: Function to call when exiting this state (optional).
-          - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false).
-          - {nbt}`list` **transitions**: Array of transition definitions (optional).
-            - {nbt}`compound` Transition
-              - {nbt}`string` **name**: Name of the transition (optional).
-              - {nbt}`string` {nbt}`compound` **condition**: Transition condition. One of the following:
-                - {nbt}`compound` Predicate-based transition.
-                  - {nbt}`string` **type**: Must be "manual".
-                  - {nbt}`string` **wait**: A signal sent manually to the FSM using the `#bs.fsm:emit` feature.
-                - {nbt}`compound` Predicate-based transition.
-                  - {nbt}`string` **type**: Must be "predicate".
-                  - {nbt}`string` **wait**: Predicate to check to trigger the transition.
-                - {nbt}`compound` Command-based transition.
-                  - {nbt}`string` **type**: Must be "command".
-                  - {nbt}`string` **wait**: Command to check to trigger the transition.
-                - {nbt}`compound` Hook-based transition.
-                  - {nbt}`string` **type**: Must be "hook".
-                  - {nbt}`string` **wait**: Hook function to evaluate.
-                - {nbt}`compound` Time-based transition.
-                  - {nbt}`string` **type**: Must be "delay".
-                  - {nbt}`string` **wait**: Time delay in ticks.
-              - {nbt}`string` **to**: Name of the target state (must exist in states array).
+    - {nbt}`string` **uses**: Storage source of the template, as `<namespace>:<storage> <path>`.
   :::
 
 :Outputs:
-  **Return**: Success (1) if FSM was created successfully, failure (0) otherwise.
-
-  **State**: The FSM is registered and available for use.
+  **Return**: Success (1) if the template is valid, failure (0) otherwise.
 ```
 
-*Example: Create a simple light FSM with on/off states:*
+*Example: validate a template:*
 
 ```mcfunction
-# Create a light FSM
-function #bs.fsm:new { \
-  name: "light_fsm", \
-  fsm: { \
-    initial: "off", \
-    states: [ \
-      { \
-        name: "off", \
-        on_enter: "setblock ~ ~ ~ minecraft:redstone_lamp", \
-        transitions: [ \
-          { \
-            name: "turn_on", \
-            condition: "manual", \
-            to: "on" \
-          } \
-        ] \
-      }, \
-      { \
-        name: "on", \
-        on_enter: "setblock ~ ~ ~ minecraft:redstone_lamp[lit=true]", \
-        transitions: [ \
-          { \
-            name: "turn_off", \
-            condition: "manual", \
-            to: "off" \
-          } \
-        ] \
-      } \
-    ] \
-  } \
-}
+function #bs.fsm:validate { uses: "my_pack:fsm light" }
 ```
+
+Running machines are never validated: this is up to you.
+Validate a static template once on load, and a dynamic one every time you are done editing it.
 
 > **Credits**: theogiraudet
 
 ---
 
-### Start
+### Init
 
 :::::{tab-set}
-::::{tab-item} Global Instance
+::::{tab-item} Global Machine
 
-```{function} #bs.fsm:start
+```{function} #bs.fsm:init
 
-Start a new global instance of a Finite State Machine.
+Run a new state machine from a template, in the global context.
 
 :Inputs:
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`string` **fsm_name**: Name of the FSM to instantiate (must exist).
-    - {nbt}`string` **instance_name**: Unique identifier for this FSM instance.
+    - {nbt}`string` **name**: Unique name of the machine, used to address it later.
+    - {nbt}`string` **uses**: Storage source of the template, as `<namespace>:<storage> <path>`.
   :::
 
 :Outputs:
-  **Return**: Success (1) if instance was started successfully, failure (0) otherwise.
+  **Return**: Success (1) if the machine was started, failure (0) otherwise.
 
-  **State**: The FSM instance is created globally and begins execution in its initial state.
+  **State**: The machine runs globally, starting in its initial state.
 ```
 
-*Example: Start a light FSM instance:*
+*Example: run a light machine:*
 
 ```mcfunction
-# Start a light FSM instance
-function #bs.fsm:start { fsm_name: "light_fsm", instance_name: "main_light" }
+function #bs.fsm:init { name: "main_light", uses: "my_pack:fsm light" }
 
-# The light FSM is now running globally and will execute its initial state
+# The light machine is now running globally and has entered its initial state
 ```
 
 > **Credits**: theogiraudet
 
 ::::
-::::{tab-item} Local Instance
+::::{tab-item} Local Machine
 
-```{function} #bs.fsm:start_as
+```{function} #bs.fsm:init_as
 
-Start new local instances of a Finite State Machine bound to the executing entities.
-The different commands and predicates used in the FSM will be executed as and at the executing entities.
-If the entity is killed during the execution of the FSM, the module will automatically stop the tick commands and transitions evaluation for this entity.
+Run new state machines from a template, bound to the executing entities.
+The commands and predicates of the machine are executed as and at the entity it is bound to.
+If the entity is killed while the machine runs, the module automatically stops its tick commands and transitions evaluation.
 
 :Inputs:
   **Execution `as <entities>`**: Entities to bind. The entities must not be players.
@@ -160,23 +168,22 @@ If the entity is killed during the execution of the FSM, the module will automat
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`string` **fsm_name**: Name of the FSM to instantiate (must exist).
-    - {nbt}`string` **instance_name**: Unique identifier for this FSM instance in this context.
+    - {nbt}`string` **name**: Unique name of the machine for this entity, used to address it later.
+    - {nbt}`string` **uses**: Storage source of the template, as `<namespace>:<storage> <path>`.
   :::
 
 :Outputs:
-  **Return**: Success (1) if instance was started successfully, failure (0) otherwise.
+  **Return**: Success (1) if the machine was started, failure (0) otherwise.
 
-  **State**: The FSM instances are created locally for the executing entities and begins execution in their initial state.
+  **State**: The machines run on the executing entities, starting in their initial state.
 ```
 
-*Example: Start a light FSM instance for an entity:*
+*Example: run a light machine bound to an entity:*
 
 ```mcfunction
-# Start a light FSM instance bound to the executing entity
-execute as @n[type=zombie] run function #bs.fsm:start_as { fsm_name: "light_fsm", instance_name: "entity_light" }
+execute as @n[type=zombie] run function #bs.fsm:init_as { name: "entity_light", uses: "my_pack:fsm light" }
 
-# The light FSM is now running locally for this zombie and will execute its initial state
+# The light machine is now running on this zombie and has entered its initial state
 ```
 
 > **Credits**: theogiraudet
@@ -190,23 +197,23 @@ execute as @n[type=zombie] run function #bs.fsm:start_as { fsm_name: "light_fsm"
 
 ```{function} #bs.fsm:emit
 
-Emit a signal to a running FSM instance.
-This signal may or may not trigger a transition, according to the current state of the FSM instance.
+Emit a signal to a running machine.
+This signal may or may not trigger a transition, according to the current state of the machine.
 
 :Inputs:
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`string` **instance_name**: Name of the FSM instance to emit the signal to.
+    - {nbt}`string` **name**: Name of the machine to emit the signal to.
     - {nbt}`string` **signal**: Name of the signal to emit.
   :::
 ```
 
-*Example: Emit a signal to a FSM instance:*
+*Example: emit a signal to a machine:*
 
 ```mcfunction
-# Emit a signal to a global FSM instance
-function #bs.fsm:emit { instance_name: "main_light", signal: "turn_on" }
+# Emit a signal to a global machine
+function #bs.fsm:emit { name: "main_light", signal: "turn_on" }
 ```
 
 ---
@@ -215,63 +222,31 @@ function #bs.fsm:emit { instance_name: "main_light", signal: "turn_on" }
 
 ```{function} #bs.fsm:cancel
 
-Cancel and stop a running FSM instance.
+Cancel and stop a running machine.
 
 :Inputs:
   **Function macro**:
   :::{treeview}
   - {nbt}`compound` Arguments
-    - {nbt}`string` **instance_name**: Name of the FSM instance to cancel.
-    - {nbt}`string` **bind**: Binding type of the instance.
-      - **"global"**: Instance is bound globally.
-      - **"local"**: Instance is bound to the current execution context.
+    - {nbt}`string` **name**: Name of the machine to cancel.
+    - {nbt}`string` **bind**: Binding of the machine.
+      - **"global"**: The machine runs in the global context.
+      - **"local"**: The machine runs on the current execution context.
   :::
 
 :Outputs:
-  **Return**: Success (1) if instance was cancelled successfully, failure (0) otherwise.
+  **Return**: Success (1) if the machine was cancelled successfully, failure (0) otherwise.
 
-  **State**: The FSM instance is stopped and cleaned up. If the FSM has an on_cancel function, it will be called.
+  **State**: The machine is stopped and cleaned up. If its template has an on_cancel command, it is run.
 ```
 
-*Example: Cancel a door FSM instance:*
+*Example: cancel a door machine:*
 
 ```mcfunction
-# Cancel the door FSM instance
-function #bs.fsm:cancel { instance_name: "main_door", bind: "global" }
+# Cancel the door machine
+function #bs.fsm:cancel { name: "main_door", bind: "global" }
 
-# The door FSM instance is now stopped
-```
-
-> **Credits**: theogiraudet
-
----
-
-### Delete
-
-```{function} #bs.fsm:delete
-
-Delete a Finite State Machine definition and all its instances.
-
-:Inputs:
-  **Function macro**:
-  :::{treeview}
-  - {nbt}`compound` Arguments
-    - {nbt}`string` **fsm_name**: Name of the FSM to delete.
-  :::
-
-:Outputs:
-  **Return**: Success (1) if FSM was deleted successfully, failure (0) otherwise.
-
-  **State**: The FSM definition and all its running instances are removed.
-```
-
-*Example: Delete a door FSM:*
-
-```mcfunction
-# Delete the door FSM
-function #bs.fsm:delete { fsm_name: "door_fsm" }
-
-# The door FSM and all its instances are now removed
+# The door machine is now stopped
 ```
 
 > **Credits**: theogiraudet

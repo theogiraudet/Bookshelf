@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Input:
-# Storage: bs:ctx _.fsm (a FSM)
+# Storage: bs:ctx _.template (a FSM)
 # Macro: initial: state
 
 # Output:
@@ -23,5 +23,5 @@
 
 data remove storage bs:ctx _.initial
 # We save the initial property directly in the state object
-$data modify storage bs:ctx _.fsm.states[{name: $(initial)}].initial set value true
-$return run data modify storage bs:ctx _.initial set from storage bs:ctx _.fsm.states[{name: $(initial)}]
+$data modify storage bs:ctx _.template.states[{name: $(initial)}].initial set value true
+$return run data modify storage bs:ctx _.initial set from storage bs:ctx _.template.states[{name: $(initial)}]

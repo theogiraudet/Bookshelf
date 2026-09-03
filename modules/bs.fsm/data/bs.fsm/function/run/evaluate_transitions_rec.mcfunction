@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Input:
-# - Storage bs:data fsm.listened_transitions: {source: <state_name>, context: <context>, command: <command>, instance_name: <instance_name>, to: <state_name>, condition: { type: "delay" | "predicate" | "function", wait: string }}[]
+# - Storage bs:data fsm.listened_transitions: {source: <state_name>, context: <context>, command: <command>, machine: <machine>, to: <state_name>, condition: { type: "delay" | "predicate" | "function", wait: string }}[]
 
 # Terminal cases:
 # The list is empty

@@ -16,7 +16,7 @@
 # Input:
 # Storage: bs:ctx _.states_to_browse (a list of states name)
 # Storage: bs:ctx _.states_to_find (a list of states name)
-# Storage: bs:ctx _.fsm (a FSM)
+# Storage: bs:ctx _.template (a FSM)
 
 # If we have no more state to browse, we return
 execute unless data storage bs:ctx _.states_to_browse[-1] run return 1

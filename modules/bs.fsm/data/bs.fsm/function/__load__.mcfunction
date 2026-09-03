@@ -20,4 +20,4 @@ execute unless entity B5-0-0-0-2 run summon minecraft:text_display -30000000 0 1
 
 scoreboard objectives add bs.ctx dummy [{text:"BS ",color:"dark_gray"},{text:"Context",color:"aqua"}]
 
-execute unless data storage bs:data fsm run data modify storage bs:data fsm set value { fsm: {}, running_instances: {}, listened_transitions: [], ticks: [] }
+execute unless data storage bs:data fsm run data modify storage bs:data fsm set value { machines: {}, listened_transitions: [], ticks: [] }

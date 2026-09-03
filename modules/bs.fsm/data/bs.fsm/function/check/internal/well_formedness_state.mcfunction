@@ -26,8 +26,8 @@ execute unless data storage bs:ctx _.states[0] run return 1
 # We check if the current state has a name
 execute unless data storage bs:ctx _.states[0].name run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "A state does not have a name."}] \
 }
 execute unless data storage bs:ctx _.states[0].name run return fail

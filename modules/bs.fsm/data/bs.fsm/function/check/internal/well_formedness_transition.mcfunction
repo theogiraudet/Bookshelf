@@ -37,8 +37,8 @@ data modify entity B5-0-0-0-1 Tags set from storage bs:ctx _.tags
 
 execute unless score #a bs.ctx = #b bs.ctx run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "A transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' refers an unknown state: "}, {nbt: "_.states[0].transitions[0].to", storage: "bs:ctx"}] \
 }
 execute unless score #a bs.ctx = #b bs.ctx run return fail
@@ -47,8 +47,8 @@ execute unless score #a bs.ctx = #b bs.ctx run return fail
 # We check if the transition has a condition
 execute unless data storage bs:ctx _.states[0].transitions[0].condition run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "A transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' does not have a condition."}] \
 }
 execute unless data storage bs:ctx _.states[0].transitions[0].condition run return fail
@@ -62,8 +62,8 @@ execute if score #s bs.ctx matches 0 run return 1
 # If the condition is not "manual", we need to check if the condition is an object
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.type run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "A transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' has an invalid condition."}] \
 }
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.type run return fail
@@ -71,8 +71,8 @@ execute unless data storage bs:ctx _.states[0].transitions[0].condition.type run
 # Now, we need to check the validity of the condition object, notably the wait
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.wait run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "A transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' does not have a wait in its condition."}] \
 }
 execute unless data storage bs:ctx _.states[0].transitions[0].condition.wait run return fail
@@ -88,8 +88,8 @@ unless data storage bs:ctx _.states[0].transitions[0].condition[{type: "delay"}]
 
 execute if score #s bs.ctx matches 0 run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "A transition of '"}, {nbt: "_.states[0].name", storage: "bs:ctx"}, {text: "' has an invalid condition."}] \
 }
 execute if score #s bs.ctx matches 0 run return fail

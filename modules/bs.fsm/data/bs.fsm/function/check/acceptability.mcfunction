@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Input:
-# Storage: bs:ctx _.fsm (a FSM)
+# Storage: bs:ctx _.template (a FSM)
 
 # Output:
 # Storage: bs:ctx _.finals (a list of states)
@@ -24,19 +24,19 @@
 # Also check if the final states do not have any transition
 
 data modify storage bs:ctx _.finals set value []
-data modify storage bs:ctx _.finals append from storage bs:ctx _.fsm.states[{final: true}]
+data modify storage bs:ctx _.finals append from storage bs:ctx _.template.states[{final: true}]
 execute unless data storage bs:ctx _.finals[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "The FSM has no final state."}] \
 }
 execute unless data storage bs:ctx _.finals[0] run return fail
 
 execute if data storage bs:ctx _.finals[].transitions[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "At least one final state has a transition."}] \
 }
 execute if data storage bs:ctx _.finals[].transitions[0] run return fail

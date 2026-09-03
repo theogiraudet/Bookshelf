@@ -14,33 +14,33 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Input:
-# Storage: bs:ctx _.fsm (a FSM)
+# Storage: bs:ctx _.template (a FSM)
 
 # We copy the states names to the entity tag since an entity tag array can only store one occurrence of a value
 # This array will be useful to know if a transition refers to a state that does not exist
 scoreboard players set #r bs.ctx 1
 data modify storage bs:ctx _.saved_tags set from entity B5-0-0-0-1 Tags
-data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.fsm.states[].name
+data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.template.states[].name
 
 data modify storage bs:ctx _.states set value []
-data modify storage bs:ctx _.states append from storage bs:ctx _.fsm.states[]
+data modify storage bs:ctx _.states append from storage bs:ctx _.template.states[]
 
 # We check if the FSM is valid
 
 # First, we check if the FSM has an initial state
-execute unless data storage bs:ctx _.fsm.initial run function #bs.log:error { \
+execute unless data storage bs:ctx _.template.initial run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "The FSM does not have an initial state."}] \
 }
-execute unless data storage bs:ctx _.fsm.initial run scoreboard players set #r bs.ctx 0
+execute unless data storage bs:ctx _.template.initial run scoreboard players set #r bs.ctx 0
 
 # Then, we check if the FSM has at least one state
 execute unless data storage bs:ctx _.states[0] run function #bs.log:error { \
   namespace: "bs.fsm", \
-  path: "#bs.fsm:new", \
-  tag: "new", \
+  path: "#bs.fsm:validate", \
+  tag: "validate", \
   message: [{text: "The FSM does not have any state."}] \
 }
 execute unless data storage bs:ctx _.states[0] run scoreboard players set #r bs.ctx 0

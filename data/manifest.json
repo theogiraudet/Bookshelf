@@ -2336,67 +2336,51 @@
           }
         },
         {
-          "id": "#bs.fsm:delete",
+          "id": "#bs.fsm:init",
           "kind": "function_tag",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#delete",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#init",
           "authors": [
             "theogiraudet"
           ],
           "created": {
-            "date": "2025/07/16",
-            "minecraft_version": "1.21.7"
+            "date": "2025/07/20",
+            "minecraft_version": "1.21.8"
           },
           "updated": {
-            "date": "2025/07/16",
-            "minecraft_version": "1.21.7"
+            "date": "2026/09/02",
+            "minecraft_version": "26.2"
           }
         },
         {
-          "id": "#bs.fsm:new",
+          "id": "#bs.fsm:init_as",
           "kind": "function_tag",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#new",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#init",
           "authors": [
             "theogiraudet"
           ],
           "created": {
-            "date": "2025/07/16",
-            "minecraft_version": "1.21.7"
+            "date": "2025/07/20",
+            "minecraft_version": "1.21.8"
           },
           "updated": {
-            "date": "2025/07/16",
-            "minecraft_version": "1.21.7"
+            "date": "2026/09/02",
+            "minecraft_version": "26.2"
           }
         },
         {
-          "id": "#bs.fsm:start",
+          "id": "#bs.fsm:validate",
           "kind": "function_tag",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#start",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#validate",
           "authors": [
             "theogiraudet"
           ],
           "created": {
-            "date": "2025/07/20",
-            "minecraft_version": "1.21.8"
+            "date": "2026/09/02",
+            "minecraft_version": "26.2"
           },
           "updated": {
-            "date": "2025/07/20",
-            "minecraft_version": "1.21.8"
-          }
-        },
-        {
-          "id": "#bs.fsm:start_as",
-          "kind": "function_tag",
-          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html#start-as",
-          "authors": [
-            "theogiraudet"
-          ],
-          "created": {
-            "date": "2025/07/20",
-            "minecraft_version": "1.21.8"
-          },
-          "updated": {
-            "date": "2025/07/20",
-            "minecraft_version": "1.21.8"
+            "date": "2026/09/02",
+            "minecraft_version": "26.2"
           }
         }
       ]

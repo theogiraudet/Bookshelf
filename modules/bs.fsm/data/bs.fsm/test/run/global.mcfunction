@@ -18,33 +18,30 @@
 data remove storage bs:ward fsm.global
 
 # A two-states machine: the first one is left after a 6 ticks delay
-function #bs.fsm:new { \
-  name: "ward_global", \
-  fsm: { \
-    initial: "a", \
-    states: [ \
-      { \
-        name: "a", \
-        on_enter: "data modify storage bs:ward fsm.global.trace append value enter_a", \
-        on_tick: "data modify storage bs:ward fsm.global.ticks append value 1", \
-        on_exit: "data modify storage bs:ward fsm.global.trace append value exit_a", \
-        transitions: [{ name: "go", condition: { type: "delay", wait: 6 }, to: "b" }] \
-      }, \
-      { \
-        name: "b", \
-        on_enter: "data modify storage bs:ward fsm.global.trace append value enter_b", \
-        final: true \
-      } \
-    ] \
-  } \
+data modify storage bs:ward fsm.templates.global.ward_global set value { \
+  initial: "a", \
+  states: [ \
+    { \
+      name: "a", \
+      on_enter: "data modify storage bs:ward fsm.global.trace append value enter_a", \
+      on_tick: "data modify storage bs:ward fsm.global.ticks append value 1", \
+      on_exit: "data modify storage bs:ward fsm.global.trace append value exit_a", \
+      transitions: [{ name: "go", condition: { type: "delay", wait: 6 }, to: "b" }] \
+    }, \
+    { \
+      name: "b", \
+      on_enter: "data modify storage bs:ward fsm.global.trace append value enter_b", \
+      final: true \
+    } \
+  ] \
 }
 
 ## === ENTER ===
 
 # The on_enter command of the initial state runs synchronously
-function #bs.fsm:start { fsm_name: "ward_global", instance_name: "ward_global" }
+function #bs.fsm:init { name: "ward_global", uses: "bs:ward fsm.templates.global.ward_global" }
 assert data storage bs:ward fsm.global{trace: ["enter_a"]}
-assert data storage bs:data fsm.ticks[{instance_name: "ward_global"}]
+assert data storage bs:data fsm.ticks[{machine: "ward_global"}]
 
 ## === TICK ===
 
@@ -55,14 +52,14 @@ await data storage bs:ward fsm.global.ticks[1]
 
 # Once the delay has elapsed, we exit the current state and enter the target one
 await data storage bs:ward fsm.global{trace: ["enter_a", "exit_a", "enter_b"]}
-assert data storage bs:data fsm.running_instances.ward_global.states[{name: "b", current: true}]
-assert not data storage bs:data fsm.running_instances.ward_global.states[{name: "a", current: true}]
+assert data storage bs:data fsm.machines.ward_global.states[{name: "b", current: true}]
+assert not data storage bs:data fsm.machines.ward_global.states[{name: "a", current: true}]
 
 # The state we left must not tick nor listen to its transitions anymore
-assert not data storage bs:data fsm.ticks[{instance_name: "ward_global"}]
-assert not data storage bs:data fsm.listened_transitions[{instance_name: "ward_global"}]
+assert not data storage bs:data fsm.ticks[{machine: "ward_global"}]
+assert not data storage bs:data fsm.listened_transitions[{machine: "ward_global"}]
 
 ## === CLEANUP ===
 
-data remove storage bs:data fsm.running_instances.ward_global
-data remove storage bs:data fsm.fsm.ward_global
+data remove storage bs:data fsm.machines.ward_global
+data remove storage bs:ward fsm.templates.global

@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Input:
-# Storage: bs:ctx _.fsm (a FSM)
+# Storage: bs:ctx _.template (a FSM)
 
 # Goal: check if the names of the states are unique
 # How do we proceed?
@@ -25,11 +25,11 @@
 data modify storage bs:ctx _.tags set from entity B5-0-0-0-1 Tags
 
 # We get the size of the list of states names
-execute store result score #a bs.ctx run data get storage bs:ctx _.fsm.states
+execute store result score #a bs.ctx run data get storage bs:ctx _.template.states
 # We get the size of the list of tags to substract at the end
 execute store result score #s bs.ctx run data get entity B5-0-0-0-1 Tags
 # We set the list of tags to the list of states names
-data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.fsm.states[].name
+data modify entity B5-0-0-0-1 Tags append from storage bs:ctx _.template.states[].name
 # We get the list of tags
 execute store result score #b bs.ctx run data get entity B5-0-0-0-1 Tags
 # We reset the tags to the default tags

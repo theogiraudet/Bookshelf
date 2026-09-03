@@ -36,7 +36,7 @@ Describe behaviors as states and transitions, and run them on entities or global
 
 ### ✨ Features
 
-- Define a state machine declaratively, with its states and transitions
+- Describe a state machine as a template, stored and edited with plain data commands
 - Validate a state machine before running it (initiality, unicity, acceptability, reachability)
 - Run a state machine globally or bound to specific entities
 - Trigger transitions manually, or from a predicate, a command, a hook, or a delay
