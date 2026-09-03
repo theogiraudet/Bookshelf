@@ -47,6 +47,9 @@ execute if score #s bs.ctx matches ..0 run schedule function bs.fsm:run/evaluate
 execute if data storage bs:ctx _.state.on_enter run data modify storage bs:ctx _.command set from storage bs:ctx _.state.on_enter
 execute if data storage bs:ctx _.state.on_enter run function bs.fsm:run/run_command_global with storage bs:ctx _
 
+# A state with no outgoing transition can never be left: the machine is over, we stop it
+$execute unless data storage bs:ctx _.state.transitions[0] run return run function bs.fsm:run/stop_global { machine: "$(machine)" }
+
 # We register the on_tick command, flagged as global so the tick loop runs it in the global context
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp set value { context: "global", global: true }
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp.command set from storage bs:ctx _.state.on_tick

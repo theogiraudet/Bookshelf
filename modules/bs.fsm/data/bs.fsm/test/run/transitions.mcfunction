@@ -57,17 +57,15 @@ function #bs.fsm:init { name: "ward_command", uses: "bs:ward fsm.templates.trans
 await delay 3t
 assert data storage bs:data fsm.machines.ward_command.states[{name: "a", current: true}]
 
-# Once the command succeeds, we move to the target state
+# Once the command succeeds, we move to the target state, which is final and thus stops the machine
 data modify storage bs:ward fsm.transitions.gate set value 1
-await data storage bs:data fsm.machines.ward_command.states[{name: "b", current: true}]
+await not data storage bs:data fsm.machines.ward_command
 
 ## === PREDICATE TRANSITION ===
 
 function #bs.fsm:init { name: "ward_predicate", uses: "bs:ward fsm.templates.transitions.ward_predicate" }
-await data storage bs:data fsm.machines.ward_predicate.states[{name: "b", current: true}]
+await not data storage bs:data fsm.machines.ward_predicate
 
 ## === CLEANUP ===
 
-data remove storage bs:data fsm.machines.ward_command
-data remove storage bs:data fsm.machines.ward_predicate
 data remove storage bs:ward fsm.templates.transitions

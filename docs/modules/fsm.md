@@ -31,7 +31,7 @@ Since a template is just data, you can write it once on load, or build and edit 
       - {nbt}`string` **on_tick**: Command to run every tick while in this state (optional).
       - {nbt}`string` **on_enter**: Command to run when entering this state (optional).
       - {nbt}`string` **on_exit**: Command to run when exiting this state (optional).
-      - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false).
+      - {nbt}`bool` **final**: Whether this state is a final state (optional, default: false). This is a validation annotation: a final state must have no transition, and a machine stops as soon as it enters a state with no outgoing transition.
       - {nbt}`list` **transitions**: Array of transition definitions (optional).
         - {nbt}`compound` Transition
           - {nbt}`string` **name**: Name of the transition (optional).
@@ -237,7 +237,7 @@ Cancel and stop a running machine.
 :Outputs:
   **Return**: Success (1) if the machine was cancelled successfully, failure (0) otherwise.
 
-  **State**: The machine is stopped and cleaned up. If its template has an on_cancel command, it is run.
+  **State**: The machine is stopped and cleaned up: it stops ticking, stops listening to transitions, and its name becomes available again. If its template has an on_cancel command, it is run.
 ```
 
 *Example: cancel a door machine:*
@@ -248,6 +248,9 @@ function #bs.fsm:cancel { name: "main_door", bind: "global" }
 
 # The door machine is now stopped
 ```
+
+The `on_cancel` command runs once the machine has been unregistered, so it cannot read the machine back, but it may start a new one under the same name.
+Cancelling does not run the `on_exit` command of the current state.
 
 > **Credits**: theogiraudet
 
@@ -340,6 +343,10 @@ Each state in an FSM follows a specific lifecycle:
 2. **Tick**: The `on_tick` function is called every tick while in the state
 3. **Transition evaluation**: When a transition condition is met, the state transitions
 4. **Exit**: The `on_exit` function is called when leaving the state
+
+A machine ends when it enters a state with no outgoing transition, which is what a final state is.
+Its `on_enter` still runs, then the machine is unregistered: it stops ticking, stops listening to transitions, and its name becomes available again.
+A machine that has not reached such a state runs until you stop it with `#bs.fsm:cancel`.
 
 ---
 

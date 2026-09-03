@@ -48,6 +48,9 @@ execute if score #s bs.ctx matches ..0 run schedule function bs.fsm:run/evaluate
 execute if data storage bs:ctx _.state.on_enter run data modify storage bs:ctx _.command set from storage bs:ctx _.state.on_enter
 execute if data storage bs:ctx _.state.on_enter run function bs.fsm:run/run_command_local with storage bs:ctx _
 
+# A state with no outgoing transition can never be left: the machine is over, we stop it
+$execute unless data storage bs:ctx _.state.transitions[0] run return run function bs.fsm:run/stop_local { machine: "$(machine)", context: "$(context)" }
+
 # We register the on_tick command, for that we create an object with the context (i.e., the UUID of the entity) and the command
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp set value {}
 execute if data storage bs:ctx _.state.on_tick run data modify storage bs:ctx _.tmp.context set from storage bs:ctx _.context

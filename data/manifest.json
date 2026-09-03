@@ -2331,8 +2331,8 @@
             "minecraft_version": "1.21.7"
           },
           "updated": {
-            "date": "2025/07/16",
-            "minecraft_version": "1.21.7"
+            "date": "2026/09/03",
+            "minecraft_version": "26.2"
           }
         },
         {
@@ -5486,7 +5486,7 @@
       "slug": "bookshelf-spline",
       "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.spline/pack.png",
       "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.spline/README.md",
-      "description": "Create smooth curves from control points, with Bézier, Catmull-Rom, B-Spline, and Hermite interpolation.",
+      "description": "Create smooth curves from control points, with B\u00e9zier, Catmull-Rom, B-Spline, and Hermite interpolation.",
       "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/spline.html",
       "kind": "data_pack",
       "tags": [

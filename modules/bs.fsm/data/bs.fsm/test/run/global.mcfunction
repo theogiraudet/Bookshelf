@@ -52,8 +52,11 @@ await data storage bs:ward fsm.global.ticks[1]
 
 # Once the delay has elapsed, we exit the current state and enter the target one
 await data storage bs:ward fsm.global{trace: ["enter_a", "exit_a", "enter_b"]}
-assert data storage bs:data fsm.machines.ward_global.states[{name: "b", current: true}]
-assert not data storage bs:data fsm.machines.ward_global.states[{name: "a", current: true}]
+
+## === AUTOMATIC STOP ===
+
+# The target state has no outgoing transition, so the machine is dropped as soon as it is entered
+assert not data storage bs:data fsm.machines.ward_global
 
 # The state we left must not tick nor listen to its transitions anymore
 assert not data storage bs:data fsm.ticks[{machine: "ward_global"}]
@@ -61,5 +64,4 @@ assert not data storage bs:data fsm.listened_transitions[{machine: "ward_global"
 
 ## === CLEANUP ===
 
-data remove storage bs:data fsm.machines.ward_global
 data remove storage bs:ward fsm.templates.global
