@@ -2315,6 +2315,9 @@
       "tags": [
         "runtime"
       ],
+      "dependencies": [
+        "bs.collection"
+      ],
       "weak_dependencies": [
         "bs.log"
       ],
