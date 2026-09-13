@@ -126,7 +126,7 @@ Validate a static template once on load, and a dynamic one every time you are do
 
 Run a new state machine from a template, in the global context.
 The global context doesn't keep the context (`as`, `at`, …) in which it is executed.
-Therefore, such a context should directly be specified is different callback commands.
+Therefore, such a context should directly be specified in different callback commands.
 
 :Inputs:
   **Function macro**:
