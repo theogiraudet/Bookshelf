@@ -1,6 +1,133 @@
 {
   "modules": [
     {
+      "id": "bs.animation",
+      "name": "Animation",
+      "slug": "bookshelf-animation",
+      "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.2.0/modules/bs.animation/pack.png",
+      "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.2.0/modules/bs.animation/README.md",
+      "description": "Attach animations to entities.",
+      "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html",
+      "kind": "data_pack",
+      "tags": [
+        "runtime"
+      ],
+      "features": [
+        {
+          "id": "#bs.animation:attach",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#attach",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        },
+        {
+          "id": "#bs.animation:detach",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#delete",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        },
+        {
+          "id": "#bs.animation:pause",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#pause",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        },
+        {
+          "id": "#bs.animation:play",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#play",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        },
+        {
+          "id": "#bs.animation:reset",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#reset",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        },
+        {
+          "id": "#bs.animation:rewind",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#rewind",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        },
+        {
+          "id": "#bs.animation:step",
+          "kind": "function_tag",
+          "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/animation.html#step",
+          "authors": [
+            "Aksiome"
+          ],
+          "created": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          },
+          "updated": {
+            "date": "2026/09/05",
+            "minecraft_version": "26.3"
+          }
+        }
+      ]
+    },
+    {
       "id": "bs.bitwise",
       "name": "Bitwise",
       "slug": "bookshelf-bitwise",
