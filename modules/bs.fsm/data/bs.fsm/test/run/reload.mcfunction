@@ -12,6 +12,9 @@
 #
 # For more details, refer to the MPL v2.0.
 # ------------------------------------------------------------------------------------------------------------
+# The load below holds the shared loops for a second, which would break the timings of the other tests:
+# an environment of its own runs this test in a separate batch
+# @environment bs.load:fsm/reload
 
 ## === SETUP ===
 

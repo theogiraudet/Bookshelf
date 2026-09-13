@@ -78,3 +78,4 @@ assert score #ward.fsm bs.ctx matches 3
 ## === CLEANUP ===
 
 data remove storage bs:ward fsm.templates.delay
+data remove storage bs:ward fsm.delay
