@@ -2434,8 +2434,8 @@
       "id": "bs.fsm",
       "name": "Finite State Machine",
       "slug": "bookshelf-fsm",
-      "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.fsm/pack.png",
-      "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.fsm/README.md",
+      "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.2.0/modules/bs.fsm/pack.png",
+      "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.2.0/modules/bs.fsm/README.md",
       "description": "Describe behaviors as states and transitions, and run them on entities or globally.",
       "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/fsm.html",
       "kind": "data_pack",
@@ -2461,8 +2461,8 @@
             "minecraft_version": "1.21.7"
           },
           "updated": {
-            "date": "2026/09/03",
-            "minecraft_version": "26.2"
+            "date": "2026/09/13",
+            "minecraft_version": "26.3"
           }
         },
         {
@@ -2477,8 +2477,8 @@
             "minecraft_version": "26.2"
           },
           "updated": {
-            "date": "2026/09/03",
-            "minecraft_version": "26.2"
+            "date": "2026/09/13",
+            "minecraft_version": "26.3"
           }
         },
         {
@@ -2493,8 +2493,8 @@
             "minecraft_version": "1.21.8"
           },
           "updated": {
-            "date": "2026/09/02",
-            "minecraft_version": "26.2"
+            "date": "2026/09/13",
+            "minecraft_version": "26.3"
           }
         },
         {
@@ -2509,8 +2509,8 @@
             "minecraft_version": "1.21.8"
           },
           "updated": {
-            "date": "2026/09/02",
-            "minecraft_version": "26.2"
+            "date": "2026/09/13",
+            "minecraft_version": "26.3"
           }
         },
         {
@@ -2525,8 +2525,8 @@
             "minecraft_version": "26.2"
           },
           "updated": {
-            "date": "2026/09/02",
-            "minecraft_version": "26.2"
+            "date": "2026/09/13",
+            "minecraft_version": "26.3"
           }
         }
       ]
@@ -5636,8 +5636,8 @@
       "id": "bs.spline",
       "name": "Spline",
       "slug": "bookshelf-spline",
-      "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.spline/pack.png",
-      "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.1.1/modules/bs.spline/README.md",
+      "icon": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.2.0/modules/bs.spline/pack.png",
+      "readme": "https://raw.githubusercontent.com/mcbookshelf/bookshelf/refs/tags/v4.2.0/modules/bs.spline/README.md",
       "description": "Create smooth curves from control points, with Bézier, Catmull-Rom, B-Spline, and Hermite interpolation.",
       "documentation": "https://docs.mcbookshelf.dev/en/latest/modules/spline.html",
       "kind": "data_pack",
